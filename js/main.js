@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initNavigation();
   initScrollEffects();
   initContactForm();
-  document.title = 'Zypdev Portfolio';
+  document.title = 'aşk adamı Kayra';
 });
 function initNavigation() {
   const hamburger = document.querySelector('.hamburger');
@@ -90,13 +90,13 @@ function initContactForm() {
       const email = document.getElementById('email').value;
       const message = document.getElementById('message').value;
       if (!name || !email || !message) {
-        showNotification('tüm herşeyi doldursana Eksik kalanlar vahi yoluylamı gelecek bana', 'error');
+        showNotification('tüm herşeyi doldursana amk Eksik kalanlar vahi yoluylamı gelecek bana', 'error');
         return;
       }
       
       // çakma bir başarılı mesajı sunuyoruz gerçekten yollamaz
       contactForm.reset();
-      showNotification('Mesajını zypherise iletiyorumm', 'success');
+      showNotification('Mesajının Kayraya iletildi', 'success');
     });
   }
 }
