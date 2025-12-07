@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zypherisDev Portfolio</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="code-icon"><i class="fas fa-code"></i></span>
+      <span class="logo-text">zypherisDev</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </header>
+
+  <section id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="logo-section">
+          <div class="profile-image">
+            <img src="https://images-ext-1.discordapp.net/external/Cda5jQtPeT_MQEG9Xh79IOd97O2Y7DugRcfqlMOvRBs/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1015356240492245054/a684d2bb1f7a159c90f0d39861d38c7b.png?format=webp&quality=lossless" alt="zypheris Profile">
+          </div>
+        </div>
+        <div class="about-section">
+          <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
+          <div class="type-container">
+            <span id="type-text"></span>
+            <span class="cursor">|</span>
+          </div>
+          <p class="about-description">yakında gelecektir</p>
+          <div class="cta-buttons">
+            <a href="#projects" class="btn primary">View My Work</a>
+            <a href="#contact" class="btn secondary">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+      <p class="section-subtitle">Recent work from my GitHub</p>
+      
+      <div class="github-stats">
+        <div class="stat-card">
+          <i class="fas fa-code-branch"></i>
+          <span id="repo-count">0</span>
+          <p>Repositories</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-star"></i>
+          <span id="stars-count">0</span>
+          <p>Stars</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-code"></i>
+          <span id="languages-count">0</span>
+          <p>Languages</p>
+        </div>
+      </div>
+
+      <div class="projects-grid" id="projects-container">
+        <div class="project-card skeleton"></div>
+        <div class="project-card skeleton"></div>
+        <div class="project-card skeleton"></div>
+      </div>
+      
+      <div class="projects-footer">
+        <a href="https://github.com/zypheriss" target="_blank" class="btn primary">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+      <p class="section-subtitle">Hover over a skill to see proficiency</p>
+      
+      <div class="skills-container">
+        <div class="skill">
+          <div class="skill-name">JavaScript</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="100"></div>
+            <div class="skill-percentage">100%</div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <div class="skill-name">HTML</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="100"></div>
+            <div class="skill-percentage">100%</div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <div class="skill-name">CSS</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="100"></div>
+            <div class="skill-percentage">100%</div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <div class="skill-name">React</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="100"></div>
+            <div class="skill-percentage">100%</div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <div class="skill-name">Node.js</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="100"></div>
+            <div class="skill-percentage">100%</div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <div class="skill-name">Python</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="100"></div>
+            <div class="skill-percentage">100%</div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <div class="skill-name">TypeScript</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="100"></div>
+            <div class="skill-percentage">100%</div>
+          </div>
+        </div>
+        
+        <div class="skill">
+          <div class="skill-name">SQL</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="100"></div>
+            <div class="skill-percentage">100%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+      <p class="section-subtitle">Connect with me on social media</p>
+      
+      <div class="social-links">
+        <a href="https://discord.com/users/773582512647569409" target="_blank" class="social-icon discord">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://youtube.com/zypheris" target="_blank" class="social-icon youtube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://github.com/zypheriss" target="_blank" class="social-icon github">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.itemsatis.com/profil/liviuxs.html" target="_blank" class="social-icon store">
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+        <a href="https://instagram.com/ilwixi7" target="_blank" class="social-icon instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      
+      <div class="contact-form">
+        <h3>Bana mesaj atmak istersen yolla</h3>
+        <form id="contact-form">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="code-icon"><i class="fas fa-code"></i></span>
+          <span class="logo-text">ZypDevPortfolio</span>
+        </div>
+        <p>&copy; 2025 Developer Portfolio. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <div class="music-player">
+    <div class="music-player-header">
+      <div class="music-info">
+        <div class="song-title">zypheris şarkı</div>
+        <div class="time-info">
+          <span id="current-time">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+    </div>
+    <div class="progress-container" id="progress-container">
+      <div class="progress" id="progress"></div>
+    </div>
+    <div class="controls">
+      <button id="prev" class="control-btn">
+        <i class="fas fa-backward"></i>
+      </button>
+      <button id="play" class="play-pause">
+        <i class="fas fa-play"></i>
+      </button>
+      <button id="next" class="control-btn">
+        <i class="fas fa-forward"></i>
+      </button>
+      <div class="volume-container">
+        <i class="fas fa-volume-up" id="volume-icon"></i>
+        <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.1" value="1">
+      </div>
+    </div>
+    <audio id="audio" src="Müzikler/zyp.mp3"></audio>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/typewriter.js"></script>
+  <script src="js/github.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/music-player.js"></script>
+</body>
+</html>

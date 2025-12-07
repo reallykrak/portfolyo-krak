@@ -1,0 +1,193 @@
+@media (max-width: 991.98px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo-section, .about-section {
+    flex: 0 0 100%;
+  }
+  
+  .profile-image {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .cta-buttons {
+    justify-content: center;
+  }
+  
+  .github-stats {
+    flex-wrap: wrap;
+  }
+  
+  .stat-card {
+    flex: 0 0 calc(50% - var(--spacing-md));
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .social-links {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 767.98px) {
+  header {
+    padding: 1rem;
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: var(--bg-secondary);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease;
+    z-index: 1001;
+  }
+  
+  nav.active {
+    right: 0;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav ul li {
+    margin: var(--spacing-md) 0;
+  }
+  
+  .hamburger {
+    display: flex;
+    z-index: 1002;
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .about-section h1 {
+    font-size: 2.5rem;
+  }
+  
+  .type-container {
+    font-size: 1.25rem;
+  }
+  
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-links {
+    gap: var(--spacing-md);
+  }
+  
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .container {
+    width: 95%;
+    padding: var(--spacing-sm);
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .about-section h1 {
+    font-size: 2rem;
+  }
+  
+  .type-container {
+    font-size: 1.1rem;
+  }
+  
+  .about-description {
+    font-size: 0.9rem;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .github-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .social-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+  
+ {
+    padding-top: 100px;
+  }
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
