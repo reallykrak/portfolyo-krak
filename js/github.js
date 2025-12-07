@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function fetchGitHubData() {
-  const username = 'zypheriss'; 
+  const username = 'reallykrak'; 
   
   try {
     const userData = await fetchWithRetry(`https://api.github.com/users/${username}`);
