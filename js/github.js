@@ -111,7 +111,7 @@ function displayRepositories(repos) {
           <a href="${repo.html_url}" target="_blank">
             <i class="fab fa-github"></i> View on GitHub
           </a>
-          ${repo.homepage ? `<a href="${repo.homepage}" target="_blank"><i class="fas fa-external-link-alt"></i>zyp</a>` : ''}
+          ${repo.homepage ? `<a href="${repo.homepage}" target="_blank"><i class="fas fa-external-link-alt"></i>Demo</a>` : ''}
         </div>
       </div>
     `;
@@ -128,7 +128,7 @@ function displayFallbackRepositories() {
   projectsContainer.innerHTML = '';
   const fallbackRepos = [
     {
-      name: 'zypherisin Sİkim sonik botu',
+      name: 'Kayranın Botu',
       description: 'Açıklamayı yedim',
       language: 'JavaScript',
       stars: 15,
