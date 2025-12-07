@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init() {
   const nameElement = document.getElementById('name-text');
-  const names = ['Yusuf', 'Zypheris'];
+  const names = ['Kayra', 'reallykrak'];
   const nameWait = 2000;
   const roleElement = document.getElementById('type-text');
   const roles = [
