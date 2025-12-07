@@ -536,6 +536,12 @@ nav ul li a:hover::after {
   box-shadow: 0 0 15px rgba(225, 48, 108, 0.7);
 }
 
+/* Yeni Eklenen Spotify İkonu Rengi */
+.social-icon.spotify:hover {
+  background-color: #1DB954;
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.7);
+}
+
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
