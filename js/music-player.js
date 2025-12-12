@@ -1,69 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
   const audio = document.getElementById('audio');
-  const playBtn = document.getElementById('play');
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-  const progressContainer = document.getElementById('progress-container');
-  const progress = document.getElementById('progress');
-  const currentTimeEl = document.getElementById('current-time');
-  const durationEl = document.getElementById('duration');
+  const playBtn = document.getElementById('play-pause-btn');
   const volumeSlider = document.getElementById('volume');
-  const volumeIcon = document.getElementById('volume-icon');
+  const vinylRecord = document.querySelector('.vinyl-record');
+  const playerContainer = document.querySelector('.vinyl-player-container');
+  const icon = playBtn.querySelector('i');
+
+  // Başlangıç sesi
+  audio.volume = 0.5;
+
   function togglePlay() {
     if (audio.paused) {
       audio.play();
-      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      icon.className = 'fas fa-pause';
+      vinylRecord.classList.add('spinning');
+      playerContainer.classList.add('active'); // Mobilde açık kalsın
     } else {
       audio.pause();
-      playBtn.innerHTML = '<i class="fas fa-play"></i>';
+      icon.className = 'fas fa-play';
+      vinylRecord.classList.remove('spinning');
+      playerContainer.classList.remove('active');
     }
-  }
-  function updateProgress(e) {
-    const { duration, currentTime } = e.srcElement;
-    const progressPercent = (currentTime / duration) * 100;
-    progress.style.width = `${progressPercent}%`;
-    const durationMinutes = Math.floor(duration / 60);
-    const durationSeconds = Math.floor(duration % 60);
-    const currentMinutes = Math.floor(currentTime / 60);
-    const currentSeconds = Math.floor(currentTime % 60);
-
-    if (duration) {
-      durationEl.textContent = `${durationMinutes}:${durationSeconds.toString().padStart(2, '0')}`;
-    }
-    currentTimeEl.textContent = `${currentMinutes}:${currentSeconds.toString().padStart(2, '0')}`;
-  }
-  function setProgress(e) {
-    const width = this.clientWidth;
-    const clickX = e.offsetX;
-    const duration = audio.duration;
-    audio.currentTime = (clickX / width) * duration;
-  }
-  function handleVolumeChange() {
-    audio.volume = volumeSlider.value;
-    updateVolumeIcon();
   }
 
-  function updateVolumeIcon() {
-    if (audio.volume >= 0.6) {
-      volumeIcon.className = 'fas fa-volume-up';
-    } else if (audio.volume >= 0.1) {
-      volumeIcon.className = 'fas fa-volume-down';
-    } else {
-      volumeIcon.className = 'fas fa-volume-off';
-    }
-  }
+  // Plağa tıklayınca da çalsın/dursun
+  document.getElementById('vinyl-wrapper').addEventListener('click', togglePlay);
   playBtn.addEventListener('click', togglePlay);
-  audio.addEventListener('timeupdate', updateProgress);
-  progressContainer.addEventListener('click', setProgress);
-  volumeSlider.addEventListener('change', handleVolumeChange);
-  volumeSlider.addEventListener('input', handleVolumeChange);
-  document.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') {
-      e.preventDefault();
-      togglePlay();
-    }
+
+  volumeSlider.addEventListener('input', (e) => {
+    audio.volume = e.target.value;
   });
+
   audio.addEventListener('ended', () => {
-    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    icon.className = 'fas fa-play';
+    vinylRecord.classList.remove('spinning');
   });
 });
