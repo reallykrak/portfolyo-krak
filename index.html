@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kayra</title>
+  <title>Kayra | Developer</title>
   <link rel="icon" type="image/png" href="image/pode.png"> 
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
+  <div class="background-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <header class="glass">
     <div class="logo">
       <span class="code-icon"><i class="fas fa-code"></i></span>
       <span class="logo-text">kayramiymisw</span>
@@ -32,21 +36,25 @@
     </div>
   </header>
 
+  <div class="menu-overlay"></div>
+
   <section id="home">
     <div class="container">
       <div class="hero-content">
         <div class="logo-section">
-          <div class="profile-image">
+          <div class="profile-image hover-lift">
             <img src="image/reallykrak.png" alt="Kayra Profile">
           </div>
         </div>
-        <div class="about-section">
+        <div class="about-section glass-card">
           <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
           <div class="type-container">
             <span id="type-text"></span>
             <span class="cursor">|</span>
           </div>
-          <p class="about-description" style="font-size: 0.9rem; line-height: 1.6;">
+          <p class="german-tag">ich bin kayra</p>
+          
+          <p class="about-description">
             Merhaba ben Kayra, 14 yaşındayım. Üst düzey şekilde yazılım yapıyorum. Tahmini servetim 250 bin TL civarı. 
             21 tane sevgilim oldu, şuanda Ada Tüysüz adlı kişiyle ciddi ilişkideyim. 
             Buraya geldiysen beni seviyorsundur demek. İyi günler dilerim.
@@ -58,6 +66,9 @@
         </div>
       </div>
     </div>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
   </section>
 
   <section id="projects">
@@ -66,17 +77,17 @@
       <p class="section-subtitle">Recent work from my GitHub</p>
       
       <div class="github-stats">
-        <div class="stat-card">
+        <div class="stat-card glass">
           <i class="fas fa-code-branch"></i>
           <span id="repo-count">0</span>
           <p>Repositories</p>
         </div>
-        <div class="stat-card">
+        <div class="stat-card glass">
           <i class="fas fa-star"></i>
           <span id="stars-count">0</span>
           <p>Stars</p>
         </div>
-        <div class="stat-card">
+        <div class="stat-card glass">
           <i class="fas fa-code"></i>
           <span id="languages-count">0</span>
           <p>Languages</p>
@@ -84,9 +95,9 @@
       </div>
 
       <div class="projects-grid" id="projects-container">
-        <div class="project-card skeleton"></div>
-        <div class="project-card skeleton"></div>
-        <div class="project-card skeleton"></div>
+        <div class="project-card skeleton glass"></div>
+        <div class="project-card skeleton glass"></div>
+        <div class="project-card skeleton glass"></div>
       </div>
       
       <div class="projects-footer">
@@ -101,67 +112,46 @@
       <p class="section-subtitle">Hover over a skill to see proficiency</p>
       
       <div class="skills-container">
-        <div class="skill">
+        <div class="skill glass">
           <div class="skill-name">JavaScript</div>
           <div class="skill-bar-container">
-            <div class="skill-bar" data-percentage="100"></div>
-            <div class="skill-percentage">100%</div>
+            <div class="skill-bar" data-percentage="95"></div>
+            <div class="skill-percentage">95%</div>
           </div>
         </div>
-        
-        <div class="skill">
-          <div class="skill-name">HTML</div>
-          <div class="skill-bar-container">
-            <div class="skill-bar" data-percentage="100"></div>
-            <div class="skill-percentage">100%</div>
-          </div>
-        </div>
-        
-        <div class="skill">
-          <div class="skill-name">CSS</div>
-          <div class="skill-bar-container">
-            <div class="skill-bar" data-percentage="100"></div>
-            <div class="skill-percentage">100%</div>
-          </div>
-        </div>
-        
-        <div class="skill">
-          <div class="skill-name">React</div>
-          <div class="skill-bar-container">
-            <div class="skill-bar" data-percentage="100"></div>
-            <div class="skill-percentage">100%</div>
-          </div>
-        </div>
-        
-        <div class="skill">
+        <div class="skill glass">
           <div class="skill-name">Node.js</div>
           <div class="skill-bar-container">
-            <div class="skill-bar" data-percentage="100"></div>
-            <div class="skill-percentage">100%</div>
+            <div class="skill-bar" data-percentage="90"></div>
+            <div class="skill-percentage">90%</div>
           </div>
         </div>
-        
-        <div class="skill">
+        <div class="skill glass">
+          <div class="skill-name">React</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="85"></div>
+            <div class="skill-percentage">85%</div>
+          </div>
+        </div>
+        <div class="skill glass">
           <div class="skill-name">Python</div>
           <div class="skill-bar-container">
-            <div class="skill-bar" data-percentage="100"></div>
-            <div class="skill-percentage">100%</div>
+            <div class="skill-bar" data-percentage="80"></div>
+            <div class="skill-percentage">80%</div>
           </div>
         </div>
-        
-        <div class="skill">
-          <div class="skill-name">TypeScript</div>
+        <div class="skill glass">
+          <div class="skill-name">HTML/CSS</div>
           <div class="skill-bar-container">
             <div class="skill-bar" data-percentage="100"></div>
             <div class="skill-percentage">100%</div>
           </div>
         </div>
-        
-        <div class="skill">
+        <div class="skill glass">
           <div class="skill-name">SQL</div>
           <div class="skill-bar-container">
-            <div class="skill-bar" data-percentage="100"></div>
-            <div class="skill-percentage">100%</div>
+            <div class="skill-bar" data-percentage="75"></div>
+            <div class="skill-percentage">75%</div>
           </div>
         </div>
       </div>
@@ -174,31 +164,31 @@
       <p class="section-subtitle">Connect with me on social media</p>
       
       <div class="social-links">
-        <a href="https://open.spotify.com/user/31iwzd3magj7h6zqb7i3nkjcripi" target="_blank" class="social-icon spotify">
+        <a href="https://open.spotify.com/user/31iwzd3magj7h6zqb7i3nkjcripi" target="_blank" class="social-icon spotify glass">
           <i class="fab fa-spotify"></i>
         </a>
-        <a href="https://youtube.com/reallykrak" target="_blank" class="social-icon youtube">
+        <a href="https://youtube.com/reallykrak" target="_blank" class="social-icon youtube glass">
           <i class="fab fa-youtube"></i>
         </a>
-        <a href="https://github.com/reallykrak" target="_blank" class="social-icon github">
+        <a href="https://github.com/reallykrak" target="_blank" class="social-icon github glass">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://instagram.com/kayramiymisw" target="_blank" class="social-icon instagram">
+        <a href="https://instagram.com/kayramiymisw" target="_blank" class="social-icon instagram glass">
           <i class="fab fa-instagram"></i>
         </a>
       </div>
       
-      <div class="contact-form">
+      <div class="contact-form glass">
         <h3>mailden mesaj atcan mııı</h3>
         <form id="contact-form">
           <div class="form-group">
-            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" id="name" placeholder="Your Name" required class="glass-input">
           </div>
           <div class="form-group">
-            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="email" id="email" placeholder="Your Email" required class="glass-input">
           </div>
           <div class="form-group">
-            <textarea id="message" placeholder="Your Message" required></textarea>
+            <textarea id="message" placeholder="Your Message" required class="glass-input"></textarea>
           </div>
           <button type="submit" class="btn primary">Send Message</button>
         </form>
@@ -213,36 +203,27 @@
           <span class="code-icon"><i class="fas fa-code"></i></span>
           <span class="logo-text">KayraDev</span>
         </div>
-        <p>&copy; 2025 Developer Kayra All rights reserved.</p>
+        <p>© 2025 Developer Kayra All rights reserved.</p>
       </div>
     </div>
   </footer>
-  <div class="music-player">
-    <div class="music-player-header">
-      <div class="music-info">
-        <div class="song-title">Favori Şarkımmm</div>
-        <div class="time-info">
-          <span id="current-time">0:00</span>
-          <span id="duration">0:00</span>
-        </div>
+
+  <div class="vinyl-player-container">
+    <div class="vinyl-record-wrapper" id="vinyl-wrapper">
+      <div class="vinyl-record">
+        <div class="vinyl-art" style="background-image: url('image/reallykrak.png');"></div> <div class="center-hole"></div>
       </div>
     </div>
-    <div class="progress-container" id="progress-container">
-      <div class="progress" id="progress"></div>
-    </div>
-    <div class="controls">
-      <button id="prev" class="control-btn">
-        <i class="fas fa-backward"></i>
-      </button>
-      <button id="play" class="play-pause">
-        <i class="fas fa-play"></i>
-      </button>
-      <button id="next" class="control-btn">
-        <i class="fas fa-forward"></i>
-      </button>
-      <div class="volume-container">
-        <i class="fas fa-volume-up" id="volume-icon"></i>
-        <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.1" value="1">
+    
+    <div class="player-controls glass">
+      <div class="song-info">
+        <span class="scrolling-text">Hallettim Vechera - Favori Şarkım</span>
+      </div>
+      <div class="control-buttons">
+        <button id="play-pause-btn" class="play-btn">
+          <i class="fas fa-play"></i>
+        </button>
+        <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.1" value="0.5">
       </div>
     </div>
     <audio id="audio" src="Müzikler/hallettim vechera.mp3"></audio>
