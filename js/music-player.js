@@ -1,7 +1,6 @@
-/* js/music-player.js */
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ── PLAYLIST ──────────────────────────────────────────────
+  // ── PLAYLIST ─────────────────────────────────────────────
   const playlist = [
     {
       title:  "Nuron's Krak",
@@ -9,51 +8,54 @@ document.addEventListener('DOMContentLoaded', function () {
       src:    "Müzikler/hallettim.mp3",
       art:    "image/reallykrak.png"
     }
+    // Yeni şarkı eklemek için buraya yeni satır ekle
   ];
 
   let currentIndex = 0;
   let isPlaying    = false;
 
-  // ── DOM REFERANSLARI ──────────────────────────────────────
-  const audio       = document.getElementById('audio');
-  const playBtn     = document.getElementById('play-pause-btn');
-  const prevBtn     = document.getElementById('prev-btn');
-  const nextBtn     = document.getElementById('next-btn');
-  const volumeSlider= document.getElementById('volume');
-  const songTitle   = document.getElementById('song-title');
-  const songArtist  = document.getElementById('song-artist');
-  const albumArt    = document.getElementById('album-art');
-  const bannerMusicArt = document.getElementById('banner-music-art'); // YENİ REFERANS
+  // ── DOM ───────────────────────────────────────────────────
+  const audio        = document.getElementById('audio');
+  const playBtn      = document.getElementById('play-pause-btn');
+  const prevBtn      = document.getElementById('prev-btn');
+  const nextBtn      = document.getElementById('next-btn');
+  const volumeSlider = document.getElementById('volume');
+  const songTitle    = document.getElementById('song-title');
+  const songArtist   = document.getElementById('song-artist');
+  const albumArt     = document.getElementById('album-art');
+  const drawer       = document.getElementById('music-drawer');
+  const tab          = document.getElementById('music-tab');
 
-  // ── YARDIMCI FONKSİYONLAR ────────────────────────────────
-
-  function loadTrack(index) {
-    const track = playlist[index];
-    audio.src         = track.src;
-    songTitle.textContent  = track.title;
-    songArtist.textContent = track.artist;
-    albumArt.src      = track.art;
-    // YENİ: Bannerdaki resmi de müzik kapağıyla güncelle
-    if (bannerMusicArt) {
-      bannerMusicArt.src = track.art;
+  // ── DRAWER (soldan kayma) ─────────────────────────────────
+  tab.addEventListener('click', function (e) {
+    e.stopPropagation();
+    drawer.classList.toggle('open');
+  });
+  // Dışarı tıklanırsa kapat
+  document.addEventListener('click', function (e) {
+    if (!drawer.contains(e.target)) {
+      drawer.classList.remove('open');
     }
+  });
+
+  // ── YARDIMCI ─────────────────────────────────────────────
+  function loadTrack(index) {
+    const t = playlist[index];
+    audio.src              = t.src;
+    songTitle.textContent  = t.title;
+    songArtist.textContent = t.artist;
+    albumArt.src           = t.art;
   }
 
   function updateIcon() {
-    const icon = playBtn.querySelector('i');
-    icon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
+    playBtn.querySelector('i').className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
   }
 
   function play() {
-    const promise = audio.play();
-    if (promise !== undefined) {
-      promise.then(() => {
-        isPlaying = true;
-        updateIcon();
-      }).catch(() => {
-        isPlaying = false;
-        updateIcon();
-      });
+    const p = audio.play();
+    if (p !== undefined) {
+      p.then(() => { isPlaying = true;  updateIcon(); })
+       .catch(() => { isPlaying = false; updateIcon(); });
     }
   }
 
@@ -80,51 +82,41 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // ── İLK YÜKLEME ───────────────────────────────────────────
+  // ── İLK YÜKLEME ──────────────────────────────────────────
   audio.volume = parseFloat(volumeSlider.value);
   loadTrack(currentIndex);
 
-  // ── OTO-BAŞLATMA ──────────────────────────────────────────
-  audio.muted = false;
-  const autoPlayAttempt = audio.play();
-  if (autoPlayAttempt !== undefined) {
-    autoPlayAttempt.then(() => {
+  // ── OTO-BAŞLATMA ─────────────────────────────────────────
+  // Tarayıcılar etkileşim olmadan sesi bloklar.
+  // Önce dene; bloklanırsa ilk kullanıcı dokunuşunda başlat.
+  const attempt = audio.play();
+  if (attempt !== undefined) {
+    attempt.then(() => {
       isPlaying = true;
       updateIcon();
+      // Otomatik açılınca drawer'ı da göster (1.2 sn sonra)
+      setTimeout(() => drawer.classList.add('open'), 1200);
     }).catch(() => {
       isPlaying = false;
       updateIcon();
-      const startOnInteraction = () => {
+      // İlk etkileşimde başlat
+      const start = () => {
         play();
-        document.removeEventListener('click',     startOnInteraction);
-        document.removeEventListener('keydown',   startOnInteraction);
-        document.removeEventListener('touchstart',startOnInteraction);
+        setTimeout(() => drawer.classList.add('open'), 600);
+        document.removeEventListener('click',      start);
+        document.removeEventListener('keydown',    start);
+        document.removeEventListener('touchstart', start);
       };
-      document.addEventListener('click',      startOnInteraction, { once: true });
-      document.addEventListener('keydown',    startOnInteraction, { once: true });
-      document.addEventListener('touchstart', startOnInteraction, { once: true });
+      document.addEventListener('click',      start, { once: true });
+      document.addEventListener('keydown',    start, { once: true });
+      document.addEventListener('touchstart', start, { once: true });
     });
   }
 
-  // ── BUTON ETKİNLEŞTİRME ───────────────────────────────────
-  playBtn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    isPlaying ? pause() : play();
-  });
-
-  prevBtn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    playPrev();
-  });
-
-  nextBtn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    playNext();
-  });
-
-  volumeSlider.addEventListener('input', function () {
-    audio.volume = parseFloat(this.value);
-  });
-
+  // ── BUTONLAR ─────────────────────────────────────────────
+  playBtn.addEventListener('click', e => { e.stopPropagation(); isPlaying ? pause() : play(); });
+  prevBtn.addEventListener('click', e => { e.stopPropagation(); playPrev(); });
+  nextBtn.addEventListener('click', e => { e.stopPropagation(); playNext(); });
+  volumeSlider.addEventListener('input', function () { audio.volume = parseFloat(this.value); });
   audio.addEventListener('ended', playNext);
 });
