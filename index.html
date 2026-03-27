@@ -24,7 +24,6 @@
     <div class="orb orb-3"></div>
   </div>
 
-  <!-- HEADER -->
   <header class="glass">
     <div class="logo">
       <span class="code-icon"><i class="fas fa-code"></i></span>
@@ -35,7 +34,6 @@
     </div>
   </header>
 
-  <!-- FULLSCREEN NAV -->
   <nav class="fullscreen-menu">
     <ul>
       <li><a href="#home"     class="nav-link active-link">Home</a></li>
@@ -47,34 +45,24 @@
 
   <main id="main-content">
 
-    <!-- ═══════════════ HOME ═══════════════ -->
+    <!-- HOME -->
     <section id="home" class="page-section active">
       <div class="container">
 
-        <!-- BANNER ALANI -->
+        <!-- BANNER -->
         <div class="banner-wrap">
-
-          <!-- Yatay video banner -->
           <video class="banner-video" autoplay loop muted playsinline>
             <source src="image/deneme.mov" type="video/mp4">
             <source src="image/deneme.mov" type="video/quicktime">
           </video>
-
-          <!-- Sol üst: profil daire + beyaz halka + Tolunay yazısı -->
+          <!-- hello.png — banner sol üst, taşmıyor -->
           <div class="banner-profile">
-            <div class="profile-ring-wrap">
-              <div class="profile-ring-outer"></div>
-              <img src="image/hello.png" alt="Tolunay" class="profile-circle">
-            </div>
-            <span class="profile-neon-name">Tolunay</span>
+            <img src="image/hello.png" alt="Profile" class="profile-circle">
           </div>
-
         </div>
-        <!-- /banner-wrap -->
 
-        <!-- BANNER ALTINDA: About Me + Hero Sağ -->
+        <!-- BANNER ALTI -->
         <div class="below-banner">
-
           <div class="about-neon-card">
             <div class="about-tab">ABOUT ME</div>
             <p class="about-name">reallykrak</p>
@@ -93,13 +81,12 @@
               <span class="hero-tag"><i class="fas fa-lightbulb"></i> Problem Solver</span>
             </div>
           </div>
-
         </div>
 
       </div>
     </section>
 
-    <!-- ═══════════════ PROJECTS ═══════════════ -->
+    <!-- PROJECTS -->
     <section id="projects" class="page-section">
       <div class="container">
         <h2 class="section-title">My <span class="highlight">Projects</span></h2>
@@ -113,7 +100,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════ SKILLS ═══════════════ -->
+    <!-- SKILLS -->
     <section id="skills" class="page-section">
       <div class="container">
         <h2 class="section-title">My <span class="highlight">Skills</span></h2>
@@ -132,15 +119,15 @@
       </div>
     </section>
 
-    <!-- ═══════════════ CONTACT ═══════════════ -->
+    <!-- CONTACT -->
     <section id="contact" class="page-section">
       <div class="container">
         <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
         <p class="section-subtitle">Connect with me on social media</p>
         <div class="social-links">
           <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="social-icon spotify glass"><i class="fab fa-spotify"></i></a>
-          <a href="https://youtube.com/reallykrak"  target="_blank" class="social-icon youtube  glass"><i class="fab fa-youtube"></i></a>
-          <a href="https://github.com/reallykrak"   target="_blank" class="social-icon github   glass"><i class="fab fa-github"></i></a>
+          <a href="https://youtube.com/reallykrak"   target="_blank" class="social-icon youtube  glass"><i class="fab fa-youtube"></i></a>
+          <a href="https://github.com/reallykrak"    target="_blank" class="social-icon github   glass"><i class="fab fa-github"></i></a>
           <a href="https://instagram.com/reallykrak" target="_blank" class="social-icon instagram glass"><i class="fab fa-instagram"></i></a>
         </div>
         <div class="contact-form glass">
@@ -159,28 +146,21 @@
 
   </main>
 
-  <!-- ═══════════════ MÜZİK PLAYER (soldan kayar) ═══════════════ -->
-  <div class="music-drawer" id="music-drawer">
-    <!-- Küçük sekme — her zaman görünür, tıklanınca açar -->
-    <div class="music-tab" id="music-tab">
-      <i class="fas fa-music"></i>
-    </div>
-    <!-- İçerik -->
-    <div class="music-inner glass">
-      <img src="image/reallykrak.png" alt="Album Art" class="album-art-sq" id="album-art">
-      <div class="player-content">
-        <span class="song-title"  id="song-title">Nuron's Krak</span>
-        <span class="song-artist" id="song-artist">reallykrak</span>
-        <div class="player-btns">
-          <button id="prev-btn"       title="Previous"><i class="fas fa-backward-step"></i></button>
-          <button id="play-pause-btn" class="play-main" title="Play/Pause"><i class="fas fa-play"></i></button>
-          <button id="next-btn"       title="Next"><i class="fas fa-forward-step"></i></button>
-        </div>
-        <div class="volume-row">
-          <i class="fas fa-volume-low"></i>
-          <input type="range" id="volume" min="0" max="1" step="0.05" value="0.5">
-          <i class="fas fa-volume-high"></i>
-        </div>
+  <!-- MÜZİK PLAYER — herzaman açık -->
+  <div class="music-player glass" id="music-player">
+    <img src="image/reallykrak.png" alt="Album Art" class="album-art-sq" id="album-art">
+    <div class="player-content">
+      <span class="song-title"  id="song-title">Nuron's Krak</span>
+      <span class="song-artist" id="song-artist">reallykrak</span>
+      <div class="player-btns">
+        <button id="prev-btn"       title="Previous"><i class="fas fa-backward-step"></i></button>
+        <button id="play-pause-btn" class="play-main" title="Play/Pause"><i class="fas fa-play"></i></button>
+        <button id="next-btn"       title="Next"><i class="fas fa-forward-step"></i></button>
+      </div>
+      <div class="volume-row">
+        <i class="fas fa-volume-low"></i>
+        <input type="range" id="volume" min="0" max="1" step="0.05" value="0.5">
+        <i class="fas fa-volume-high"></i>
       </div>
     </div>
   </div>
@@ -189,7 +169,7 @@
   <!-- ZİYARETÇİ SAYACI -->
   <div class="visitor-counter">
     <i class="fas fa-eye"></i>
-    <span id="visitor-count">0</span>
+    <span id="visitor-count">3528</span>
   </div>
 
   <script src="js/main.js"></script>
@@ -199,12 +179,14 @@
   <script src="js/music-player.js"></script>
 
   <script>
-    // Ziyaretçi sayacı
+    // Ziyaretçi sayacı — 3528 baz alınarak artar
     (function(){
       const k = 'krak_visits';
-      let n = parseInt(localStorage.getItem(k)||'0',10)+1;
-      localStorage.setItem(k,n);
-      document.getElementById('visitor-count').textContent = n.toLocaleString();
+      const base = 3528;
+      let extra = parseInt(localStorage.getItem(k) || '0', 10);
+      extra++;
+      localStorage.setItem(k, extra);
+      document.getElementById('visitor-count').textContent = (base + extra).toLocaleString();
     })();
   </script>
 </body>
