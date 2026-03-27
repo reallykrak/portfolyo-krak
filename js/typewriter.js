@@ -40,11 +40,18 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init() {
   const nameElement = document.getElementById('name-text');
-  // Burada senin istediğin "ich bin krak" ve "ich bin Tolunay" metinleri dönüyor.
-  const names = ['ich bin krak', 'ich bin Tolunay']; 
-  const nameWait = 2500;
-
+  const names = ['Kayra', 'reallykrak'];
+  const nameWait = 2000;
+  const roleElement = document.getElementById('type-text');
+  const roles = [
+    'Software Developer',
+    'Problem Solver'
+  ];
+  const roleWait = 2000;
   if (nameElement) {
     new TypeWriter(nameElement, names, nameWait);
+  }
+  if (roleElement) {
+    new TypeWriter(roleElement, roles, roleWait);
   }
 }
