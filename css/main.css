@@ -1,4 +1,3 @@
-/* css/main.css */
 :root {
   --primary-color: #9945e8;
   --primary-light: #b76af8;
@@ -82,7 +81,7 @@ body {
 
 /* --- GLASSMORPHISM --- */
 .glass { background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); border: 1px solid var(--glass-border); }
-.glass-card { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--border-radius-md); padding: var(--spacing-lg); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); position: relative; } /* position: relative eklendi */
+.glass-card { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--border-radius-md); padding: var(--spacing-lg); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
 .glass-input { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: white; backdrop-filter: blur(5px); }
 
 /* --- TEMEL YAPILAR --- */
@@ -132,77 +131,87 @@ header {
 
 .profile-left {
   display: flex;
-  align-items: center; /* Merkeze hizala */
+  flex-direction: column;
+  align-items: center;
   gap: 24px;
   flex-shrink: 0;
-  width: 100%; /* Bannerın tam genişlikte olması için */
-  max-width: 500px; /* Maksimum genişlik sınırla */
 }
 
-/* YENİ BANNER STİLLERİ */
-.profile-banner {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 24px;
-  gap: 20px;
-  min-height: 150px;
+.profile-gif-wrapper {
   position: relative;
-  overflow: hidden; /* Dışarı taşmaları engelle */
+  width: 170px;
+  height: 170px;
 }
 
-.neon-border {
+.profile-gif {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+  box-shadow:
+    0 0 20px var(--primary-color),
+    0 0 50px rgba(153, 69, 232, 0.35);
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-ring {
+  position: absolute;
+  top: -6px; left: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  border-radius: 50%;
+  border: 2px dashed rgba(153, 69, 232, 0.5);
+  animation: spinRing 8s linear infinite;
+  pointer-events: none;
+}
+@keyframes spinRing { to { transform: rotate(360deg); } }
+
+.about-neon-card {
+  position: relative;
+  background: #080808;
   border: 1.5px solid var(--primary-color);
+  border-radius: 14px;
+  padding: 20px 24px 18px;
+  max-width: 280px;
   box-shadow:
     0 0 18px rgba(153, 69, 232, 0.5),
     0 0 40px rgba(153, 69, 232, 0.15),
     inset 0 0 25px rgba(153, 69, 232, 0.04);
+  margin-top: 14px;
 }
 
-.banner-art {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%; /* Yuvarlak resim (referans gibi) */
-  object-fit: cover;
-  border: 3px solid var(--primary-color);
-  box-shadow: 0 0 15px rgba(153, 69, 232, 0.6);
-  flex-shrink: 0;
-}
-
-.banner-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+.about-tab {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  padding: 4px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 0 14px var(--primary-color);
 }
 
 .about-name {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.4rem; /* İsim daha büyük */
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--primary-light);
-  margin-bottom: 8px;
-  text-shadow: 0 0 12px rgba(183, 106, 248, 0.7);
+  margin-bottom: 6px;
+  text-shadow: 0 0 10px rgba(183, 106, 248, 0.6);
 }
 
 .about-desc {
-  font-size: 0.95rem; /* Açıklama daha okunabilir */
+  font-size: 0.88rem;
   color: #cccccc;
-  line-height: 1.6;
-}
-
-.banner-views {
-  position: absolute;
-  bottom: 12px;
-  right: 16px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #bbbbbb; /* Referans gibi daha sönük beyaz */
-  font-size: 0.82rem;
-  font-family: 'Roboto', sans-serif;
-}
-.banner-views i {
-  color: #bbbbbb;
+  line-height: 1.65;
 }
 
 .hero-right {
@@ -210,7 +219,6 @@ header {
   flex-direction: column;
   justify-content: center;
   gap: 12px;
-  flex: 1; /* Sağ taraf daha fazla alan kaplasın */
 }
 
 .hero-right h1 {
@@ -263,14 +271,83 @@ header {
 }
 .hero-tag i { color: var(--primary-color); }
 
-/* ESKİ PROFIL STİLLERİ KALDIRILDI
-.profile-gif-wrapper { ... }
-.profile-gif { ... }
-.profile-ring { ... }
-@keyframes spinRing { ... }
-.about-neon-card { ... }
-.about-tab { ... }
-*/
+/* --- BANNER (Video arka plan + küçük profil + view counter) --- */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45));
+}
+
+.banner-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.45);
+}
+
+.banner-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 22px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.banner-profile {
+  width: 84px;
+  height: 84px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 18px rgba(153,69,232,0.12);
+  margin-right: 18px;
+  flex-shrink: 0;
+}
+
+.banner-text {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 8px;
+}
+
+.banner-views {
+  position: absolute;
+  left: 18px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.45);
+  color: var(--text-secondary);
+  font-weight: 600;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.04);
+  z-index: 3;
+}
+.banner-views i { color: var(--primary-light); margin-right: 6px; }
+.banner-views #view-count { color: #fff; font-weight: 700; margin-right: 4px; }
+.banner-views .views-label { font-size: 0.85rem; color: var(--text-secondary); }
 
 /* --- PROJELER & KARTLAR --- */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
@@ -442,29 +519,8 @@ header {
     gap: 2rem;
     text-align: center;
   }
-  .profile-left {
-    justify-content: center; /* Mobilde ortala */
-    max-width: 100%; /* Tam genişlik */
-  }
-  .profile-banner {
-    flex-direction: column; /* Mobilde alt alta */
-    text-align: center;
-    padding-bottom: 40px; /* Görüntülenme sayısı için alan */
-  }
-  .banner-art {
-    width: 80px;
-    height: 80px;
-  }
-  .about-name {
-    font-size: 1.25rem;
-  }
-  .about-desc {
-    font-size: 0.9rem;
-  }
   .hero-right {
     align-items: center;
-    flex: none; /* Mobilde tam genişlik */
-    width: 100%;
   }
   .hero-tags {
     justify-content: center;
@@ -475,4 +531,10 @@ header {
     bottom: 12px;
     min-width: 260px;
   }
+
+  .hero-banner { height: 260px; padding: 12px; }
+  .banner-profile { width: 64px; height: 64px; }
+  .banner-text { align-items: center; text-align: center; margin-left: 0; }
+  .banner-overlay { flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .banner-views { left: 50%; transform: translateX(-50%); bottom: 10px; }
 }
