@@ -6,15 +6,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const playerContainer = document.querySelector('.vinyl-player-container');
   const icon = playBtn.querySelector('i');
 
-  // Başlangıç sesi
   audio.volume = 0.5;
 
   function togglePlay() {
     if (audio.paused) {
-      audio.play();
-      icon.className = 'fas fa-pause';
-      vinylRecord.classList.add('spinning');
-      playerContainer.classList.add('active'); // Mobilde açık kalsın
+      // Tarayıcı bug'ını engellemek için Promise yapısı
+      let playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          icon.className = 'fas fa-pause';
+          vinylRecord.classList.add('spinning');
+          playerContainer.classList.add('active');
+        }).catch(error => {
+          console.log("Otomatik oynatma engeli. Bir kere ekrana tıklanması gerek.", error);
+        });
+      }
     } else {
       audio.pause();
       icon.className = 'fas fa-play';
@@ -23,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Plağa tıklayınca da çalsın/dursun
   document.getElementById('vinyl-wrapper').addEventListener('click', togglePlay);
   playBtn.addEventListener('click', togglePlay);
 
@@ -34,5 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
   audio.addEventListener('ended', () => {
     icon.className = 'fas fa-play';
     vinylRecord.classList.remove('spinning');
+    playerContainer.classList.remove('active');
   });
 });
