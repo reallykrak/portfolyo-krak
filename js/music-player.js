@@ -1,76 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
   const audio = document.getElementById('audio');
-  const playPauseBtn = document.getElementById('play-pause-btn-new');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-  const progressContainer = document.getElementById('progress-container');
-  const progressFill = document.getElementById('progress-fill');
-  const currTimeEl = document.getElementById('curr-time');
-  const durTimeEl = document.getElementById('dur-time');
+  const playBtn = document.getElementById('play-pause-btn');
+  const volumeSlider = document.getElementById('volume');
+  const vinylRecord = document.querySelector('.vinyl-record');
+  const playerContainer = document.querySelector('.vinyl-player-container');
+  const icon = playBtn.querySelector('i');
 
-  // Süreyi dakika:saniye formatına çevirir
-  function formatTime(seconds) {
-    if (isNaN(seconds)) return "0:00";
-    const min = Math.floor(seconds / 60);
-    const sec = Math.floor(seconds % 60);
-    return `${min}:${sec < 10 ? '0' : ''}${sec}`;
-  }
+  audio.volume = 0.5;
 
-  // Oynatma / Duraklatma
   function togglePlay() {
     if (audio.paused) {
-      audio.play();
-      playPauseBtn.className = 'fas fa-pause';
+      // Tarayıcı bug'ını engellemek için Promise yapısı
+      let playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          icon.className = 'fas fa-pause';
+          vinylRecord.classList.add('spinning');
+          playerContainer.classList.add('active');
+        }).catch(error => {
+          console.log("Otomatik oynatma engeli. Bir kere ekrana tıklanması gerek.", error);
+        });
+      }
     } else {
       audio.pause();
-      playPauseBtn.className = 'fas fa-play';
+      icon.className = 'fas fa-play';
+      vinylRecord.classList.remove('spinning');
+      playerContainer.classList.remove('active');
     }
   }
 
-  playPauseBtn.addEventListener('click', togglePlay);
+  document.getElementById('vinyl-wrapper').addEventListener('click', togglePlay);
+  playBtn.addEventListener('click', togglePlay);
 
-  // Müzik yüklenince süreyi yaz
-  audio.addEventListener('loadedmetadata', () => {
-    durTimeEl.textContent = formatTime(audio.duration);
+  volumeSlider.addEventListener('input', (e) => {
+    audio.volume = e.target.value;
   });
 
-  // Müzik çalarken progress barı güncelle
-  audio.addEventListener('timeupdate', () => {
-    const duration = audio.duration;
-    const currentTime = audio.currentTime;
-    
-    if(!isNaN(duration)) {
-      const progressPercent = (currentTime / duration) * 100;
-      progressFill.style.width = `${progressPercent}%`;
-      currTimeEl.textContent = formatTime(currentTime);
-      durTimeEl.textContent = formatTime(duration);
-    }
-  });
-
-  // Progress bara tıklayarak sarmayı sağlar
-  progressContainer.addEventListener('click', (e) => {
-    const width = progressContainer.clientWidth;
-    const clickX = e.offsetX;
-    const duration = audio.duration;
-    audio.currentTime = (clickX / width) * duration;
-  });
-
-  // Şarkı bittiğinde sıfırla
   audio.addEventListener('ended', () => {
-    // Autoplay ve Loop aktifse buraya düşmeden kendi tekrar başlar
-    // Ama düşerse play ikonuna dönsün
-    if(!audio.loop) {
-      playPauseBtn.className = 'fas fa-play';
-      progressFill.style.width = '0%';
-      audio.currentTime = 0;
-    }
-  });
-
-  // İleri geri butonları (Tek şarkı var, başa sarmaya yarar)
-  prevBtn.addEventListener('click', () => {
-    audio.currentTime = 0;
-  });
-  nextBtn.addEventListener('click', () => {
-    audio.currentTime = audio.duration; // Bitişe götürür
+    icon.className = 'fas fa-play';
+    vinylRecord.classList.remove('spinning');
+    playerContainer.classList.remove('active');
   });
 });
