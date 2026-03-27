@@ -7,7 +7,6 @@
   <link rel="icon" type="image/png" href="image/pode.png"> 
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,147 +21,196 @@
       <span class="code-icon"><i class="fas fa-code"></i></span>
       <span class="logo-text">krak</span>
     </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
     <div class="hamburger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
   </header>
 
   <div class="menu-overlay"></div>
-  <nav class="full-screen-nav">
-    <ul>
-      <li><a href="#home" class="nav-link active">Home</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-  </nav>
 
-  <main class="content-container">
-    
-    <section id="home" class="section-page active-section">
-      <div class="hero">
-        <div class="hero-content">
-          <h1>Hi, I'm <span id="name-text" class="highlight"></span></h1>
-          <p class="subtitle">Full Stack Developer & Designer</p>
+  <section id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="logo-section">
+          <div class="profile-image hover-lift">
+            <img src="image/reallykrak.png" alt="Tolunay Profile">
+          </div>
+        </div>
+        <div class="about-section glass-card">
+          <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
+          <div class="type-container">
+            <span id="type-text"></span>
+            <span class="cursor">|</span>
+          </div>
+          <p class="german-tag">ich bin Tolunay</p>
           
-          <div class="discord-profile-wrapper">
-            <div class="snow-bg" id="snow-container"></div>
-            
-            <div class="discord-card">
-              <div class="discord-banner" style="background-color: #5c64f3;"></div>
-              <div class="discord-avatar-wrapper">
-                <img src="image/reallykrak.png" alt="Avatar" class="discord-avatar">
-                <div class="status-indicator dnd"></div>
-              </div>
-              <div class="discord-badges">
-                <img src="https://cdn.discordapp.com/badge-icons/6bdc42827a38498929a4920da12695d9.png" alt="Active Developer">
-                <img src="https://cdn.discordapp.com/badge-icons/011940fd013da14a3afa738531778c77.png" alt="Nitro">
-              </div>
-              <div class="discord-info">
-                <h3>reallykrak</h3>
-                <p class="discord-username">reallykrakw</p>
-                <div class="discord-divider"></div>
-                <div class="discord-about">
-                  <h4>ABOUT ME</h4>
-                  <p>Developer by day, gamer by night. Building the web one line at a time. 🚀</p>
-                </div>
-              </div>
-            </div>
+          <p class="about-description">
+            reallykrak - Tolunay, 21 years old, professional software developer and reverse engineer with 9 years of experience.
+          </p>
+          <div class="cta-buttons">
+            <a href="#projects" class="btn primary">View My Work</a>
+            <a href="#contact" class="btn secondary">Get In Touch</a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
 
-    <section id="projects" class="section-page">
-      <div class="container">
-        <h2 class="section-title">My <span>Projects</span></h2>
-        <div class="github-stats glass">
-          <div class="stat-item">
-            <i class="fas fa-book"></i>
-            <div>
-              <span id="repo-count" class="stat-number">0</span>
-              <span class="stat-label">Repositories</span>
-            </div>
-          </div>
-          <div class="stat-item">
-            <i class="fas fa-star"></i>
-            <div>
-              <span id="star-count" class="stat-number">0</span>
-              <span class="stat-label">Stars</span>
-            </div>
-          </div>
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+      <p class="section-subtitle">Recent work from my GitHub</p>
+      
+      <div class="github-stats">
+        <div class="stat-card glass">
+          <i class="fas fa-code-branch"></i>
+          <span id="repo-count">0</span>
+          <p>Repositories</p>
         </div>
-        <div class="projects-grid" id="github-projects">
-          </div>
-      </div>
-    </section>
-
-    <section id="skills" class="section-page">
-      <div class="container">
-        <h2 class="section-title">My <span>Skills</span></h2>
-        <div class="skills-neon-grid">
-          <div class="neon-skill" style="--clr:#f0db4f"><i class="devicon-javascript-plain"></i> JavaScript</div>
-          <div class="neon-skill" style="--clr:#83cd29"><i class="devicon-nodejs-plain"></i> Node.js</div>
-          <div class="neon-skill" style="--clr:#3776ab"><i class="devicon-python-plain"></i> Python</div>
-          <div class="neon-skill" style="--clr:#000080"><i class="devicon-lua-plain"></i> Lua</div>
-          <div class="neon-skill" style="--clr:#3178c6"><i class="devicon-typescript-plain"></i> TypeScript</div>
-          <div class="neon-skill" style="--clr:#e34c26"><i class="devicon-html5-plain"></i> HTML5</div>
-          <div class="neon-skill" style="--clr:#264de4"><i class="devicon-css3-plain"></i> CSS3</div>
-          <div class="neon-skill" style="--clr:#61dafb"><i class="devicon-react-original"></i> React</div>
-          <div class="neon-skill" style="--clr:#00599C"><i class="devicon-cplusplus-plain"></i> C++</div>
-          <div class="neon-skill" style="--clr:#239120"><i class="devicon-csharp-plain"></i> C#</div>
-          <div class="neon-skill" style="--clr:#b07219"><i class="devicon-java-plain"></i> Java</div>
-          <div class="neon-skill" style="--clr:#4479A1"><i class="devicon-mysql-plain"></i> SQL</div>
+        <div class="stat-card glass">
+          <i class="fas fa-star"></i>
+          <span id="stars-count">0</span>
+          <p>Stars</p>
+        </div>
+        <div class="stat-card glass">
+          <i class="fas fa-code"></i>
+          <span id="languages-count">0</span>
+          <p>Languages</p>
         </div>
       </div>
-    </section>
 
-    <section id="contact" class="section-page">
-      <div class="container">
-        <h2 class="section-title">Get in <span>Touch</span></h2>
-        <div class="social-links-grid">
-          <a href="mailto:reallykrakw@gmail.com" class="social-card mail">
-            <i class="fas fa-envelope"></i>
-            <span>Email</span>
-            <small>reallykrakw@gmail.com</small>
-          </a>
-          <a href="#" target="_blank" class="social-card discord">
-            <i class="fab fa-discord"></i>
-            <span>Discord</span>
-            <small>@reallykrak</small>
-          </a>
-          <a href="#" target="_blank" class="social-card instagram">
-            <i class="fab fa-instagram"></i>
-            <span>Instagram</span>
-            <small>@tolunay</small>
-          </a>
-          <a href="#" target="_blank" class="social-card spotify">
-            <i class="fab fa-spotify"></i>
-            <span>Spotify</span>
-            <small>Listen with me</small>
-          </a>
-          <a href="#" target="_blank" class="social-card youtube">
-            <i class="fab fa-youtube"></i>
-            <span>YouTube</span>
-            <small>Subscribe</small>
-          </a>
-          <a href="https://github.com/reallykrak" target="_blank" class="social-card github">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-            <small>My Open Source</small>
-          </a>
+      <div class="projects-grid" id="projects-container">
+        <div class="project-card skeleton glass"></div>
+        <div class="project-card skeleton glass"></div>
+        <div class="project-card skeleton glass"></div>
+      </div>
+      
+      <div class="projects-footer">
+        <a href="https://github.com/reallykrak" target="_blank" class="btn primary">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+      <p class="section-subtitle">Hover over a skill to see proficiency</p>
+      
+      <div class="skills-container">
+        <div class="skill glass">
+          <div class="skill-name">JavaScript</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="95"></div>
+            <div class="skill-percentage">95%</div>
+          </div>
+        </div>
+        <div class="skill glass">
+          <div class="skill-name">Node.js</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="90"></div>
+            <div class="skill-percentage">90%</div>
+          </div>
+        </div>
+        <div class="skill glass">
+          <div class="skill-name">React</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="85"></div>
+            <div class="skill-percentage">85%</div>
+          </div>
+        </div>
+        <div class="skill glass">
+          <div class="skill-name">Python</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="80"></div>
+            <div class="skill-percentage">80%</div>
+          </div>
+        </div>
+        <div class="skill glass">
+          <div class="skill-name">HTML/CSS</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="100"></div>
+            <div class="skill-percentage">100%</div>
+          </div>
+        </div>
+        <div class="skill glass">
+          <div class="skill-name">SQL</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-percentage="75"></div>
+            <div class="skill-percentage">75%</div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+      <p class="section-subtitle">Connect with me on social media</p>
+      
+      <div class="social-links">
+        <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="social-icon spotify glass">
+          <i class="fab fa-spotify"></i>
+        </a>
+        <a href="https://youtube.com/reallykrak" target="_blank" class="social-icon youtube glass">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://github.com/reallykrak" target="_blank" class="social-icon github glass">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://instagram.com/reallykrak" target="_blank" class="social-icon instagram glass">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      
+      <div class="contact-form glass">
+        <h3>contact to me</h3>
+        <form id="contact-form">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required class="glass-input">
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Your Email" required class="glass-input">
+          </div>
+          <div class="form-group">
+            <textarea id="message" placeholder="Your Message" required class="glass-input"></textarea>
+          </div>
+          <button type="submit" class="btn primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="code-icon"><i class="fas fa-code"></i></span>
+          <span class="logo-text">krakDev</span>
+        </div>
+        <p>© 2025 Developer Tolunay All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
   <div class="vinyl-player-container">
     <div class="vinyl-record-wrapper" id="vinyl-wrapper">
       <div class="vinyl-record">
-        <div class="vinyl-art" style="background-image: url('image/reallykrak.png');"></div> <div class="center-hole"></div>
+        <div class="vinyl-art" style="background-image: url('image/reallykrak.png');"></div>
+        <div class="center-hole"></div>
       </div>
     </div>
     
@@ -183,6 +231,7 @@
   <script src="js/main.js"></script>
   <script src="js/typewriter.js"></script>
   <script src="js/github.js"></script>
+  <script src="js/skills.js"></script>
   <script src="js/music-player.js"></script>
 </body>
 </html>
