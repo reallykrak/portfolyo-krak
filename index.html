@@ -46,131 +46,134 @@
 
   <main id="main-content">
     
+    <!-- HOME -->
     <section id="home" class="page-section active">
       <div class="container">
-        <div class="hero-content">
 
-          <div class="profile-left">
-            <div class="profile-banner glass-card neon-border">
-              <img src="image/reallykrak.png" alt="Song Profile" class="banner-art" id="banner-music-art">
-              
-              <div class="banner-content">
-                <div class="about-name">reallykrak</div>
-                <p class="about-desc">21 years old, professional software developer and reverse engineer with 9 years of experience.</p>
+        <!-- HERO BANNER -->
+        <div class="hero-banner glass">
+          <!-- Video as background banner (autoplay, muted, loop, playsinline) -->
+          <video class="banner-video" src="image/deneme.mov" autoplay muted loop playsinline></video>
+
+          <!-- overlay content inside banner -->
+          <div class="banner-overlay">
+            <!-- small profile image top-left -->
+            <img src="image/hello.png" alt="Profile small" class="banner-profile">
+
+            <!-- main hero text (kept similar to önceki) -->
+            <div class="banner-text">
+              <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
+              <div class="type-container">
+                <span id="type-text"></span>
+                <span class="cursor">|</span>
               </div>
+            </div>
 
-              <div class="banner-views">
-                <span>3251</span>
-                <i class="fas fa-eye"></i>
+            <!-- view counter bottom-left -->
+            <div class="banner-views glass">
+              <i class="fas fa-eye"></i>
+              <span id="view-count">0</span>
+              <span class="views-label">views</span>
+            </div>
+          </div>
+        </div>
+        <!-- /HERO BANNER -->
+
+        <!-- PROJECTS -->
+        <section id="projects" class="page-section">
+          <div class="container">
+            <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+            <p class="section-subtitle">Recent work from my GitHub</p>
+            
+            <div class="github-stats">
+              <div class="stat-card glass">
+                <i class="fas fa-code-branch"></i>
+                <span id="repo-count">0</span>
+                <p>Repositories</p>
+              </div>
+              <div class="stat-card glass">
+                <i class="fas fa-star"></i>
+                <span id="stars-count">0</span>
+                <p>Stars</p>
+              </div>
+              <div class="stat-card glass">
+                <i class="fas fa-code"></i>
+                <span id="languages-count">0</span>
+                <p>Languages</p>
               </div>
             </div>
+
+            <div class="projects-grid" id="projects-container"></div>
           </div>
+        </section>
 
-          <div class="hero-right">
-            <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
-            <div class="type-container">
-              <span id="type-text"></span>
-              <span class="cursor">|</span>
-            </div>
-            <div class="hero-tags">
-              <span class="hero-tag"><i class="fas fa-code"></i> Developer</span>
-              <span class="hero-tag"><i class="fas fa-shield-halved"></i> Reverse Engineer</span>
-              <span class="hero-tag"><i class="fas fa-lightbulb"></i> Problem Solver</span>
+        <!-- SKILLS -->
+        <section id="skills" class="page-section">
+          <div class="container">
+            <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+            <p class="section-subtitle">Technologies I work with</p>
+            
+            <div class="skills-neon-container">
+              <div class="neon-btn skill-btn"><i class="devicon-csharp-plain"></i> C#</div>
+              <div class="neon-btn skill-btn"><i class="devicon-lua-plain"></i> Lua</div>
+              <div class="neon-btn skill-btn"><i class="devicon-nodejs-plain"></i> Node.js</div>
+              <div class="neon-btn skill-btn"><i class="devicon-python-plain"></i> Python</div>
+              <div class="neon-btn skill-btn"><i class="devicon-javascript-plain"></i> JavaScript</div>
+              <div class="neon-btn skill-btn"><i class="devicon-html5-plain"></i> HTML/CSS</div>
+              <div class="neon-btn skill-btn"><i class="devicon-cplusplus-plain"></i> C++</div>
+              <div class="neon-btn skill-btn"><i class="devicon-react-original"></i> React</div>
+              <div class="neon-btn skill-btn"><i class="devicon-mysql-plain"></i> SQL</div>
             </div>
           </div>
+        </section>
 
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="page-section">
-      <div class="container">
-        <h2 class="section-title">My <span class="highlight">Projects</span></h2>
-        <p class="section-subtitle">Recent work from my GitHub</p>
-        
-        <div class="github-stats">
-          <div class="stat-card glass">
-            <i class="fas fa-code-branch"></i>
-            <span id="repo-count">0</span>
-            <p>Repositories</p>
-          </div>
-          <div class="stat-card glass">
-            <i class="fas fa-star"></i>
-            <span id="stars-count">0</span>
-            <p>Stars</p>
-          </div>
-          <div class="stat-card glass">
-            <i class="fas fa-code"></i>
-            <span id="languages-count">0</span>
-            <p>Languages</p>
-          </div>
-        </div>
-
-        <div class="projects-grid" id="projects-container"></div>
-      </div>
-    </section>
-
-    <section id="skills" class="page-section">
-      <div class="container">
-        <h2 class="section-title">My <span class="highlight">Skills</span></h2>
-        <p class="section-subtitle">Technologies I work with</p>
-        
-        <div class="skills-neon-container">
-          <div class="neon-btn skill-btn"><i class="devicon-csharp-plain"></i> C#</div>
-          <div class="neon-btn skill-btn"><i class="devicon-lua-plain"></i> Lua</div>
-          <div class="neon-btn skill-btn"><i class="devicon-nodejs-plain"></i> Node.js</div>
-          <div class="neon-btn skill-btn"><i class="devicon-python-plain"></i> Python</div>
-          <div class="neon-btn skill-btn"><i class="devicon-javascript-plain"></i> JavaScript</div>
-          <div class="neon-btn skill-btn"><i class="devicon-html5-plain"></i> HTML/CSS</div>
-          <div class="neon-btn skill-btn"><i class="devicon-cplusplus-plain"></i> C++</div>
-          <div class="neon-btn skill-btn"><i class="devicon-react-original"></i> React</div>
-          <div class="neon-btn skill-btn"><i class="devicon-mysql-plain"></i> SQL</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="page-section">
-      <div class="container">
-        <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
-        <p class="section-subtitle">Connect with me on social media</p>
-        
-        <div class="social-links">
-          <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="social-icon spotify glass">
-            <i class="fab fa-spotify"></i>
-          </a>
-          <a href="https://youtube.com/reallykrak" target="_blank" class="social-icon youtube glass">
-            <i class="fab fa-youtube"></i>
-          </a>
-          <a href="https://github.com/reallykrak" target="_blank" class="social-icon github glass">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://instagram.com/reallykrak" target="_blank" class="social-icon instagram glass">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-        
-        <div class="contact-form glass">
-          <h3>Contact to me</h3>
-          <form id="contact-form" action="https://formsubmit.co/reallykrakw@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Portfolyondan Yeni Mesaj!">
-            <input type="hidden" name="_captcha" value="false">
-            <div class="form-group">
-              <input type="text" name="name" id="name" placeholder="Your Name" required class="glass-input">
+        <!-- CONTACT -->
+        <section id="contact" class="page-section">
+          <div class="container">
+            <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+            <p class="section-subtitle">Connect with me on social media</p>
+            
+            <div class="social-links">
+              <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="social-icon spotify glass">
+                <i class="fab fa-spotify"></i>
+              </a>
+              <a href="https://youtube.com/reallykrak" target="_blank" class="social-icon youtube glass">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="https://github.com/reallykrak" target="_blank" class="social-icon github glass">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://instagram.com/reallykrak" target="_blank" class="social-icon instagram glass">
+                <i class="fab fa-instagram"></i>
+              </a>
             </div>
-            <div class="form-group">
-              <input type="email" name="email" id="email" placeholder="Your Email" required class="glass-input">
+            
+            <div class="contact-form glass">
+              <h3>Contact to me</h3>
+              <form id="contact-form" action="https://formsubmit.co/reallykrakw@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Portfolyondan Yeni Mesaj!">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                  <input type="text" name="name" id="name" placeholder="Your Name" required class="glass-input">
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" id="email" placeholder="Your Email" required class="glass-input">
+                </div>
+                <div class="form-group">
+                  <textarea name="message" id="message" placeholder="Your Message" required class="glass-input"></textarea>
+                </div>
+                <button type="submit" class="btn primary">Send Message</button>
+              </form>
             </div>
-            <div class="form-group">
-              <textarea name="message" id="message" placeholder="Your Message" required class="glass-input"></textarea>
-            </div>
-            <button type="submit" class="btn primary">Send Message</button>
-          </form>
-        </div>
+          </div>
+        </section>
+
       </div>
     </section>
 
   </main>
 
+  <!-- MÜZİK PLAYER (Kare / Dikdörtgen) -->
   <div class="music-player glass" id="music-player">
     <img src="image/reallykrak.png" alt="Album Art" class="album-art-sq" id="album-art">
     <div class="player-content">
