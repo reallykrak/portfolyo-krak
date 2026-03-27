@@ -4,95 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tolunay | Developer</title>
-  <link rel="icon" type="image/png" href="image/pode.png"> 
+  <link rel="icon" type="image/png" href="image/pode.png">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    /* ── BANNER ─────────────────────────────────────────── */
-    .hero-banner {
-      position: relative;
-      width: 100%;
-      height: 340px;
-      border-radius: 18px;
-      overflow: visible;
-      margin-bottom: 40px;
-      flex-shrink: 0;
-    }
-
-    .banner-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 18px;
-      display: block;
-      border: 1px solid rgba(153, 69, 232, 0.3);
-      box-shadow: 0 0 30px rgba(153, 69, 232, 0.25);
-      overflow: hidden;
-    }
-
-    /* hello.png — sol üst daire */
-    .banner-avatar {
-      position: absolute;
-      top: -22px;
-      left: 24px;
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      border: 3px solid var(--primary-color);
-      box-shadow:
-        0 0 18px var(--primary-color),
-        0 0 40px rgba(153, 69, 232, 0.3);
-      object-fit: cover;
-      z-index: 3;
-    }
-
-    /* Dönen halka */
-    .banner-avatar-ring {
-      position: absolute;
-      top: calc(-22px - 8px);
-      left: calc(24px - 8px);
-      width: 126px;
-      height: 126px;
-      border-radius: 50%;
-      border: 2px dashed rgba(183, 106, 248, 0.55);
-      animation: spinRing 7s linear infinite;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* ── ZİYARETÇİ SAYACI ───────────────────────────────── */
-    .visitor-counter {
-      position: fixed;
-      bottom: 18px;
-      right: 20px;
-      z-index: 1100;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(8, 8, 8, 0.85);
-      border: 1px solid rgba(153, 69, 232, 0.35);
-      border-radius: 20px;
-      padding: 6px 13px;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.7);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 12px rgba(153, 69, 232, 0.2);
-      pointer-events: none;
-    }
-    .visitor-counter i {
-      font-size: 0.85rem;
-      color: var(--primary-light);
-    }
-    .visitor-counter span {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      color: #fff;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <div class="snowflakes" aria-hidden="true">
     <div class="snowflake">❅</div><div class="snowflake">❆</div><div class="snowflake">❅</div>
     <div class="snowflake">❆</div><div class="snowflake">❅</div><div class="snowflake">❆</div>
@@ -105,56 +24,63 @@
     <div class="orb orb-3"></div>
   </div>
 
+  <!-- HEADER -->
   <header class="glass">
     <div class="logo">
       <span class="code-icon"><i class="fas fa-code"></i></span>
       <span class="logo-text">krak</span>
     </div>
     <div class="hamburger">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
     </div>
   </header>
 
+  <!-- FULLSCREEN NAV -->
   <nav class="fullscreen-menu">
     <ul>
-      <li><a href="#home" class="nav-link active-link">Home</a></li>
+      <li><a href="#home"     class="nav-link active-link">Home</a></li>
       <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#skills"   class="nav-link">Skills</a></li>
+      <li><a href="#contact"  class="nav-link">Contact</a></li>
     </ul>
   </nav>
 
   <main id="main-content">
 
-    <!-- HOME -->
+    <!-- ═══════════════ HOME ═══════════════ -->
     <section id="home" class="page-section active">
       <div class="container">
 
-        <!-- ── BANNER ── -->
-        <div class="hero-banner">
+        <!-- BANNER ALANI -->
+        <div class="banner-wrap">
+
+          <!-- Yatay video banner -->
           <video class="banner-video" autoplay loop muted playsinline>
             <source src="image/deneme.mov" type="video/mp4">
             <source src="image/deneme.mov" type="video/quicktime">
           </video>
-          <div class="banner-avatar-ring"></div>
-          <img src="image/hello.png" alt="Profile" class="banner-avatar">
-        </div>
 
-        <!-- ── HERO İÇERİK ── -->
-        <div class="hero-content">
-
-          <!-- SOL: About Me -->
-          <div class="profile-left">
-            <div class="about-neon-card">
-              <div class="about-tab">ABOUT ME</div>
-              <p class="about-name">reallykrak</p>
-              <p class="about-desc">21 years old, professional software developer and reverse engineer with 9 years of experience.</p>
+          <!-- Sol üst: profil daire + beyaz halka + Tolunay yazısı -->
+          <div class="banner-profile">
+            <div class="profile-ring-wrap">
+              <div class="profile-ring-outer"></div>
+              <img src="image/hello.png" alt="Tolunay" class="profile-circle">
             </div>
+            <span class="profile-neon-name">Tolunay</span>
           </div>
 
-          <!-- SAĞ: İsim + Typewriter -->
+        </div>
+        <!-- /banner-wrap -->
+
+        <!-- BANNER ALTINDA: About Me + Hero Sağ -->
+        <div class="below-banner">
+
+          <div class="about-neon-card">
+            <div class="about-tab">ABOUT ME</div>
+            <p class="about-name">reallykrak</p>
+            <p class="about-desc">21 years old, professional software developer and reverse engineer with 9 years of experience.</p>
+          </div>
+
           <div class="hero-right">
             <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
             <div class="type-container">
@@ -169,43 +95,29 @@
           </div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- ═══════════════ PROJECTS ═══════════════ -->
     <section id="projects" class="page-section">
       <div class="container">
         <h2 class="section-title">My <span class="highlight">Projects</span></h2>
         <p class="section-subtitle">Recent work from my GitHub</p>
-        
         <div class="github-stats">
-          <div class="stat-card glass">
-            <i class="fas fa-code-branch"></i>
-            <span id="repo-count">0</span>
-            <p>Repositories</p>
-          </div>
-          <div class="stat-card glass">
-            <i class="fas fa-star"></i>
-            <span id="stars-count">0</span>
-            <p>Stars</p>
-          </div>
-          <div class="stat-card glass">
-            <i class="fas fa-code"></i>
-            <span id="languages-count">0</span>
-            <p>Languages</p>
-          </div>
+          <div class="stat-card glass"><i class="fas fa-code-branch"></i><span id="repo-count">0</span><p>Repositories</p></div>
+          <div class="stat-card glass"><i class="fas fa-star"></i><span id="stars-count">0</span><p>Stars</p></div>
+          <div class="stat-card glass"><i class="fas fa-code"></i><span id="languages-count">0</span><p>Languages</p></div>
         </div>
-
         <div class="projects-grid" id="projects-container"></div>
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- ═══════════════ SKILLS ═══════════════ -->
     <section id="skills" class="page-section">
       <div class="container">
         <h2 class="section-title">My <span class="highlight">Skills</span></h2>
         <p class="section-subtitle">Technologies I work with</p>
-        
         <div class="skills-neon-container">
           <div class="neon-btn skill-btn"><i class="devicon-csharp-plain"></i> C#</div>
           <div class="neon-btn skill-btn"><i class="devicon-lua-plain"></i> Lua</div>
@@ -220,41 +132,25 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- ═══════════════ CONTACT ═══════════════ -->
     <section id="contact" class="page-section">
       <div class="container">
         <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
         <p class="section-subtitle">Connect with me on social media</p>
-        
         <div class="social-links">
-          <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="social-icon spotify glass">
-            <i class="fab fa-spotify"></i>
-          </a>
-          <a href="https://youtube.com/reallykrak" target="_blank" class="social-icon youtube glass">
-            <i class="fab fa-youtube"></i>
-          </a>
-          <a href="https://github.com/reallykrak" target="_blank" class="social-icon github glass">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://instagram.com/reallykrak" target="_blank" class="social-icon instagram glass">
-            <i class="fab fa-instagram"></i>
-          </a>
+          <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="social-icon spotify glass"><i class="fab fa-spotify"></i></a>
+          <a href="https://youtube.com/reallykrak"  target="_blank" class="social-icon youtube  glass"><i class="fab fa-youtube"></i></a>
+          <a href="https://github.com/reallykrak"   target="_blank" class="social-icon github   glass"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/reallykrak" target="_blank" class="social-icon instagram glass"><i class="fab fa-instagram"></i></a>
         </div>
-        
         <div class="contact-form glass">
           <h3>Contact to me</h3>
           <form id="contact-form" action="https://formsubmit.co/reallykrakw@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Portfolyondan Yeni Mesaj!">
             <input type="hidden" name="_captcha" value="false">
-            <div class="form-group">
-              <input type="text" name="name" id="name" placeholder="Your Name" required class="glass-input">
-            </div>
-            <div class="form-group">
-              <input type="email" name="email" id="email" placeholder="Your Email" required class="glass-input">
-            </div>
-            <div class="form-group">
-              <textarea name="message" id="message" placeholder="Your Message" required class="glass-input"></textarea>
-            </div>
+            <div class="form-group"><input type="text"  name="name"    id="name"    placeholder="Your Name"    required class="glass-input"></div>
+            <div class="form-group"><input type="email" name="email"   id="email"   placeholder="Your Email"   required class="glass-input"></div>
+            <div class="form-group"><textarea           name="message" id="message" placeholder="Your Message" required class="glass-input"></textarea></div>
             <button type="submit" class="btn primary">Send Message</button>
           </form>
         </div>
@@ -263,21 +159,28 @@
 
   </main>
 
-  <!-- MÜZİK PLAYER -->
-  <div class="music-player glass" id="music-player">
-    <img src="image/reallykrak.png" alt="Album Art" class="album-art-sq" id="album-art">
-    <div class="player-content">
-      <span class="song-title" id="song-title">Nuron's Krak</span>
-      <span class="song-artist" id="song-artist">reallykrak</span>
-      <div class="player-btns">
-        <button id="prev-btn" title="Previous"><i class="fas fa-backward-step"></i></button>
-        <button id="play-pause-btn" class="play-main" title="Play/Pause"><i class="fas fa-play"></i></button>
-        <button id="next-btn" title="Next"><i class="fas fa-forward-step"></i></button>
-      </div>
-      <div class="volume-row">
-        <i class="fas fa-volume-low"></i>
-        <input type="range" id="volume" min="0" max="1" step="0.05" value="0.5">
-        <i class="fas fa-volume-high"></i>
+  <!-- ═══════════════ MÜZİK PLAYER (soldan kayar) ═══════════════ -->
+  <div class="music-drawer" id="music-drawer">
+    <!-- Küçük sekme — her zaman görünür, tıklanınca açar -->
+    <div class="music-tab" id="music-tab">
+      <i class="fas fa-music"></i>
+    </div>
+    <!-- İçerik -->
+    <div class="music-inner glass">
+      <img src="image/reallykrak.png" alt="Album Art" class="album-art-sq" id="album-art">
+      <div class="player-content">
+        <span class="song-title"  id="song-title">Nuron's Krak</span>
+        <span class="song-artist" id="song-artist">reallykrak</span>
+        <div class="player-btns">
+          <button id="prev-btn"       title="Previous"><i class="fas fa-backward-step"></i></button>
+          <button id="play-pause-btn" class="play-main" title="Play/Pause"><i class="fas fa-play"></i></button>
+          <button id="next-btn"       title="Next"><i class="fas fa-forward-step"></i></button>
+        </div>
+        <div class="volume-row">
+          <i class="fas fa-volume-low"></i>
+          <input type="range" id="volume" min="0" max="1" step="0.05" value="0.5">
+          <i class="fas fa-volume-high"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -296,13 +199,12 @@
   <script src="js/music-player.js"></script>
 
   <script>
-    // Ziyaretçi sayacı (localStorage)
-    (function () {
-      const key = 'krak_visitor_count';
-      let count = parseInt(localStorage.getItem(key) || '0', 10);
-      count++;
-      localStorage.setItem(key, count);
-      document.getElementById('visitor-count').textContent = count.toLocaleString();
+    // Ziyaretçi sayacı
+    (function(){
+      const k = 'krak_visits';
+      let n = parseInt(localStorage.getItem(k)||'0',10)+1;
+      localStorage.setItem(k,n);
+      document.getElementById('visitor-count').textContent = n.toLocaleString();
     })();
   </script>
 </body>
