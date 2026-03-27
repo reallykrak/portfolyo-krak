@@ -1,8 +1,7 @@
+/* js/music-player.js */
 document.addEventListener('DOMContentLoaded', function () {
 
   // ── PLAYLIST ──────────────────────────────────────────────
-  // Birden fazla şarkı eklemek istersen buraya yeni satır ekle:
-  // { title: "Şarkı Adı", artist: "Sanatçı", src: "Müzikler/dosya.mp3", art: "image/kapak.png" }
   const playlist = [
     {
       title:  "Nuron's Krak",
@@ -24,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const songTitle   = document.getElementById('song-title');
   const songArtist  = document.getElementById('song-artist');
   const albumArt    = document.getElementById('album-art');
+  const bannerMusicArt = document.getElementById('banner-music-art'); // YENİ REFERANS
 
   // ── YARDIMCI FONKSİYONLAR ────────────────────────────────
 
@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
     songTitle.textContent  = track.title;
     songArtist.textContent = track.artist;
     albumArt.src      = track.art;
+    // YENİ: Bannerdaki resmi de müzik kapağıyla güncelle
+    if (bannerMusicArt) {
+      bannerMusicArt.src = track.art;
+    }
   }
 
   function updateIcon() {
@@ -66,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function playPrev() {
-    // 3 saniyeden fazla geçtiyse aynı şarkıyı başa al
     if (audio.currentTime > 3) {
       audio.currentTime = 0;
       play();
@@ -82,8 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
   loadTrack(currentIndex);
 
   // ── OTO-BAŞLATMA ──────────────────────────────────────────
-  // Tarayıcılar kullanıcı etkileşimi olmadan ses çalmayı bloklar.
-  // Önce sessizce dene; başarısız olursa ilk tıklamada başlat.
   audio.muted = false;
   const autoPlayAttempt = audio.play();
   if (autoPlayAttempt !== undefined) {
@@ -91,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
       isPlaying = true;
       updateIcon();
     }).catch(() => {
-      // Tarayıcı engelledi → ilk kullanıcı etkileşimini bekle
       isPlaying = false;
       updateIcon();
       const startOnInteraction = () => {
@@ -126,6 +126,5 @@ document.addEventListener('DOMContentLoaded', function () {
     audio.volume = parseFloat(this.value);
   });
 
-  // Şarkı bitince sıradakine geç
   audio.addEventListener('ended', playNext);
 });
