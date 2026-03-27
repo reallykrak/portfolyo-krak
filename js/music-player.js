@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
       src:    "Müzikler/hallettim.mp3",
       art:    "image/reallykrak.png"
     }
-    // Yeni şarkı eklemek için buraya yeni satır ekle
+    // Yeni şarkı: { title:"...", artist:"...", src:"Müzikler/....mp3", art:"image/....png" }
   ];
 
   let currentIndex = 0;
@@ -23,20 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const songTitle    = document.getElementById('song-title');
   const songArtist   = document.getElementById('song-artist');
   const albumArt     = document.getElementById('album-art');
-  const drawer       = document.getElementById('music-drawer');
-  const tab          = document.getElementById('music-tab');
-
-  // ── DRAWER (soldan kayma) ─────────────────────────────────
-  tab.addEventListener('click', function (e) {
-    e.stopPropagation();
-    drawer.classList.toggle('open');
-  });
-  // Dışarı tıklanırsa kapat
-  document.addEventListener('click', function (e) {
-    if (!drawer.contains(e.target)) {
-      drawer.classList.remove('open');
-    }
-  });
 
   // ── YARDIMCI ─────────────────────────────────────────────
   function loadTrack(index) {
@@ -54,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function play() {
     const p = audio.play();
     if (p !== undefined) {
-      p.then(() => { isPlaying = true;  updateIcon(); })
+      p.then(()  => { isPlaying = true;  updateIcon(); })
        .catch(() => { isPlaying = false; updateIcon(); });
     }
   }
@@ -87,30 +73,24 @@ document.addEventListener('DOMContentLoaded', function () {
   loadTrack(currentIndex);
 
   // ── OTO-BAŞLATMA ─────────────────────────────────────────
-  // Tarayıcılar etkileşim olmadan sesi bloklar.
-  // Önce dene; bloklanırsa ilk kullanıcı dokunuşunda başlat.
   const attempt = audio.play();
   if (attempt !== undefined) {
-    attempt.then(() => {
-      isPlaying = true;
-      updateIcon();
-      // Otomatik açılınca drawer'ı da göster (1.2 sn sonra)
-      setTimeout(() => drawer.classList.add('open'), 1200);
-    }).catch(() => {
-      isPlaying = false;
-      updateIcon();
-      // İlk etkileşimde başlat
-      const start = () => {
-        play();
-        setTimeout(() => drawer.classList.add('open'), 600);
-        document.removeEventListener('click',      start);
-        document.removeEventListener('keydown',    start);
-        document.removeEventListener('touchstart', start);
-      };
-      document.addEventListener('click',      start, { once: true });
-      document.addEventListener('keydown',    start, { once: true });
-      document.addEventListener('touchstart', start, { once: true });
-    });
+    attempt
+      .then(() => { isPlaying = true; updateIcon(); })
+      .catch(() => {
+        // Tarayıcı engeli — ilk dokunuşta başlat
+        isPlaying = false;
+        updateIcon();
+        const start = () => {
+          play();
+          document.removeEventListener('click',      start);
+          document.removeEventListener('keydown',    start);
+          document.removeEventListener('touchstart', start);
+        };
+        document.addEventListener('click',      start, { once: true });
+        document.addEventListener('keydown',    start, { once: true });
+        document.addEventListener('touchstart', start, { once: true });
+      });
   }
 
   // ── BUTONLAR ─────────────────────────────────────────────
