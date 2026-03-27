@@ -1,4 +1,3 @@
-// GitHub API Integration
 document.addEventListener('DOMContentLoaded', function() {
   fetchGitHubData();
 });
@@ -9,7 +8,6 @@ async function fetchGitHubData() {
   try {
     const userData = await fetchWithRetry(`https://api.github.com/users/${username}`);
     const repos = await fetchWithRetry(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-    
     updateGitHubStats(userData, repos);
     displayRepositories(repos);
   } catch (error) {
@@ -72,10 +70,33 @@ function animateCountUp(element, start, end) {
   }, 50);
 }
 
+// LOGO EŞLEŞTİRİCİ FONKSİYON (Senin istediğin özellik)
+function getLanguageIcon(language) {
+  if (!language) return '<i class="fas fa-code"></i>';
+  const langLower = language.toLowerCase();
+  
+  const iconMap = {
+    'c#': 'devicon-csharp-plain',
+    'javascript': 'devicon-javascript-plain',
+    'html': 'devicon-html5-plain',
+    'css': 'devicon-css3-plain',
+    'python': 'devicon-python-plain',
+    'lua': 'devicon-lua-plain',
+    'java': 'devicon-java-plain',
+    'c++': 'devicon-cplusplus-plain',
+    'typescript': 'devicon-typescript-plain',
+    'nodejs': 'devicon-nodejs-plain',
+    'react': 'devicon-react-original'
+  };
+
+  const iconClass = iconMap[langLower];
+  return iconClass ? `<i class="${iconClass}"></i>` : '<i class="fas fa-code"></i>';
+}
+
 function displayRepositories(repos) {
   const projectsContainer = document.getElementById('projects-container');
   if (!projectsContainer) return;
-
+  
   projectsContainer.innerHTML = '';
 
   const featuredRepos = repos
@@ -84,29 +105,21 @@ function displayRepositories(repos) {
     .slice(0, 6);
   
   featuredRepos.forEach(repo => {
-    const placeholderImage = `https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}`;
-    
     const card = document.createElement('div');
-    card.className = 'project-card glass';
-    const randomColor = getRandomColor();
+    card.className = 'project-card';
+    const langIcon = getLanguageIcon(repo.language);
     
     card.innerHTML = `
-      <div class="project-image">
-        <img src="${placeholderImage}" alt="${repo.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x150/${randomColor.replace('#', '')}/${getContrastColor(randomColor).replace('#', '')}?text=${repo.name}';">
+      <h3 class="project-title"><i class="fab fa-github"></i> ${repo.name}</h3>
+      <p class="project-description">${repo.description || 'No description available.'}</p>
+      <div class="project-tech">
+        ${repo.language ? `<span class="tech-tag">${langIcon} ${repo.language}</span>` : ''}
+        ${repo.stargazers_count > 0 ? `<span class="tech-tag">★ ${repo.stargazers_count}</span>` : ''}
+        ${repo.forks_count > 0 ? `<span class="tech-tag">🍴 ${repo.forks_count}</span>` : ''}
       </div>
-      <div class="project-details">
-        <h3 class="project-title">${repo.name}</h3>
-        <p class="project-description">${repo.description || 'No description available.'}</p>
-        <div class="project-tech">
-          ${repo.language ? `<span class="tech-tag">${repo.language}</span>` : ''}
-          ${repo.stargazers_count > 0 ? `<span class="tech-tag">★ ${repo.stargazers_count}</span>` : ''}
-          ${repo.forks_count > 0 ? `<span class="tech-tag">🍴 ${repo.forks_count}</span>` : ''}
-        </div>
-        <div class="project-links" style="margin-top: 15px; display: flex; gap: 10px;">
-          <a href="${repo.html_url}" target="_blank" class="btn secondary" style="font-size:0.8rem; padding: 0.5rem 1rem;">
-            <i class="fab fa-github"></i> View
-          </a>
-        </div>
+      <div class="project-links">
+        <a href="${repo.html_url}" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
+        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
       </div>
     `;
     
@@ -117,41 +130,5 @@ function displayRepositories(repos) {
 function displayFallbackRepositories() {
   const projectsContainer = document.getElementById('projects-container');
   if (!projectsContainer) return;
-  
-  projectsContainer.innerHTML = '';
-  const fallbackRepos = [
-    { name: 'krak Botu', description: 'Açıklamayı yedim', language: 'JavaScript', stars: 15, forks: 5, color: '#f1e05a' },
-    { name: 'bot', description: 'Github hesabı eklenmediği için devreye girdim', language: 'Node.js', stars: 12, forks: 3, color: '#68a063' },
-    { name: 'Portfolio Website', description: 'Personal portfolio website', language: 'HTML/CSS', stars: 8, forks: 2, color: '#e34c26' }
-  ];
-  
-  fallbackRepos.forEach(repo => {
-    const card = document.createElement('div');
-    card.className = 'project-card glass';
-    card.innerHTML = `
-      <div class="project-image">
-        <img src="https://via.placeholder.com/300x150/${repo.color.replace('#', '')}/FFFFFF?text=${repo.name}" alt="${repo.name}">
-      </div>
-      <div class="project-details">
-        <h3 class="project-title">${repo.name}</h3>
-        <p class="project-description">${repo.description}</p>
-        <div class="project-tech">
-          <span class="tech-tag">${repo.language}</span>
-          <span class="tech-tag">★ ${repo.stars}</span>
-        </div>
-      </div>
-    `;
-    projectsContainer.appendChild(card);
-  });
-}
-
-function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) { color += letters[Math.floor(Math.random() * 16)]; }
-  return color;
-}
-function getContrastColor(hexColor) {
-  const r = parseInt(hexColor.substr(1, 2), 16), g = parseInt(hexColor.substr(3, 2), 16), b = parseInt(hexColor.substr(5, 2), 16);
-  return ((0.299 * r + 0.587 * g + 0.114 * b) / 255) > 0.5 ? '#000000' : '#FFFFFF';
+  projectsContainer.innerHTML = '<p style="text-align:center;">GitHub verileri çekilemedi.</p>';
 }
