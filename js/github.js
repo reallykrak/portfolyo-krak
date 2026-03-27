@@ -8,13 +8,10 @@ async function fetchGitHubData() {
   
   try {
     const userData = await fetchWithRetry(`https://api.github.com/users/${username}`);
-
     const repos = await fetchWithRetry(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-
-    updateGitHubStats(userData, repos);
-
-    displayRepositories(repos);
     
+    updateGitHubStats(userData, repos);
+    displayRepositories(repos);
   } catch (error) {
     console.error('Error fetching GitHub data:', error);
     displayFallbackRepositories();
@@ -38,7 +35,6 @@ async function fetchWithRetry(url, retries = 3, delay = 1000) {
 }
 
 function updateGitHubStats(userData, repos) {
-
   const repoCountElement = document.getElementById('repo-count');
   if (repoCountElement) {
     repoCountElement.textContent = userData.public_repos || repos.length;
@@ -79,7 +75,6 @@ function animateCountUp(element, start, end) {
 function displayRepositories(repos) {
   const projectsContainer = document.getElementById('projects-container');
   if (!projectsContainer) return;
-  
 
   projectsContainer.innerHTML = '';
 
@@ -92,7 +87,7 @@ function displayRepositories(repos) {
     const placeholderImage = `https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}`;
     
     const card = document.createElement('div');
-    card.className = 'project-card';
+    card.className = 'project-card glass';
     const randomColor = getRandomColor();
     
     card.innerHTML = `
@@ -107,11 +102,10 @@ function displayRepositories(repos) {
           ${repo.stargazers_count > 0 ? `<span class="tech-tag">★ ${repo.stargazers_count}</span>` : ''}
           ${repo.forks_count > 0 ? `<span class="tech-tag">🍴 ${repo.forks_count}</span>` : ''}
         </div>
-        <div class="project-links">
-          <a href="${repo.html_url}" target="_blank">
-            <i class="fab fa-github"></i> View on GitHub
+        <div class="project-links" style="margin-top: 15px; display: flex; gap: 10px;">
+          <a href="${repo.html_url}" target="_blank" class="btn secondary" style="font-size:0.8rem; padding: 0.5rem 1rem;">
+            <i class="fab fa-github"></i> View
           </a>
-          ${repo.homepage ? `<a href="${repo.homepage}" target="_blank"><i class="fas fa-external-link-alt"></i>Demo</a>` : ''}
         </div>
       </div>
     `;
@@ -124,63 +118,16 @@ function displayFallbackRepositories() {
   const projectsContainer = document.getElementById('projects-container');
   if (!projectsContainer) return;
   
-  // Clear loading state
   projectsContainer.innerHTML = '';
   const fallbackRepos = [
-    {
-      name: 'Kayranın Botu',
-      description: 'Açıklamayı yedim',
-      language: 'JavaScript',
-      stars: 15,
-      forks: 5,
-      color: '#f1e05a'
-    },
-    {
-      name: 'bot',
-      description: 'Github hesabı eklenmediği için devreye girdim',
-      language: 'Node.js',
-      stars: 12,
-      forks: 3,
-      color: '#68a063'
-    },
-    {
-      name: 'Portfolio Website',
-      description: 'Personal portfolio website showcasing projects and skills.',
-      language: 'HTML/CSS',
-      stars: 8,
-      forks: 2,
-      color: '#e34c26'
-    },
-    {
-      name: 'tool',
-      description: '',
-      language: 'React',
-      stars: 10,
-      forks: 4,
-      color: '#61dafb'
-    },
-    {
-      name: 'zyp',
-      description: '',
-      language: 'JavaScript',
-      stars: 11,
-      forks: 2,
-      color: '#f1e05a'
-    },
-    {
-      name: 'zyp',
-      description: '',
-      language: 'D3.js',
-      stars: 9,
-      forks: 1,
-      color: '#f9a03c'
-    }
+    { name: 'krak Botu', description: 'Açıklamayı yedim', language: 'JavaScript', stars: 15, forks: 5, color: '#f1e05a' },
+    { name: 'bot', description: 'Github hesabı eklenmediği için devreye girdim', language: 'Node.js', stars: 12, forks: 3, color: '#68a063' },
+    { name: 'Portfolio Website', description: 'Personal portfolio website', language: 'HTML/CSS', stars: 8, forks: 2, color: '#e34c26' }
   ];
   
   fallbackRepos.forEach(repo => {
     const card = document.createElement('div');
-    card.className = 'project-card';
-    
+    card.className = 'project-card glass';
     card.innerHTML = `
       <div class="project-image">
         <img src="https://via.placeholder.com/300x150/${repo.color.replace('#', '')}/FFFFFF?text=${repo.name}" alt="${repo.name}">
@@ -191,37 +138,20 @@ function displayFallbackRepositories() {
         <div class="project-tech">
           <span class="tech-tag">${repo.language}</span>
           <span class="tech-tag">★ ${repo.stars}</span>
-          <span class="tech-tag">🍴 ${repo.forks}</span>
-        </div>
-        <div class="project-links">
-          <a href="#" target="_blank">
-            <i class="fab fa-github"></i> View on GitHub
-          </a>
-          <a href="#" target="_blank">
-            <i class="fas fa-external-link-alt"></i> Live Demo
-          </a>
         </div>
       </div>
     `;
-    
     projectsContainer.appendChild(card);
   });
 }
 
-
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
+  for (let i = 0; i < 6; i++) { color += letters[Math.floor(Math.random() * 16)]; }
   return color;
 }
-
 function getContrastColor(hexColor) {
-  const r = parseInt(hexColor.substr(1, 2), 16);
-  const g = parseInt(hexColor.substr(3, 2), 16);
-  const b = parseInt(hexColor.substr(5, 2), 16);
-  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance > 0.5 ? '#000000' : '#FFFFFF';
+  const r = parseInt(hexColor.substr(1, 2), 16), g = parseInt(hexColor.substr(3, 2), 16), b = parseInt(hexColor.substr(5, 2), 16);
+  return ((0.299 * r + 0.587 * g + 0.114 * b) / 255) > 0.5 ? '#000000' : '#FFFFFF';
 }
