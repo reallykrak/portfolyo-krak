@@ -46,43 +46,44 @@
 
   <main id="main-content">
     
+    <!-- HOME -->
     <section id="home" class="page-section active">
       <div class="container">
         <div class="hero-content">
-          <div class="about-section glass-card">
+
+          <!-- SOL: Profil + About Me -->
+          <div class="profile-left">
+            <div class="profile-gif-wrapper">
+              <img src="image/deneme.gif" alt="Profile" class="profile-gif">
+              <div class="profile-ring"></div>
+            </div>
+
+            <div class="about-neon-card">
+              <div class="about-tab">ABOUT ME</div>
+              <p class="about-name">reallykrak</p>
+              <p class="about-desc">21 years old, professional software developer and reverse engineer with 9 years of experience.</p>
+            </div>
+          </div>
+
+          <!-- SAĞ: İsim + Typewriter -->
+          <div class="hero-right">
             <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
             <div class="type-container">
               <span id="type-text"></span>
               <span class="cursor">|</span>
             </div>
-            
-            <div class="discord-profile-card">
-              <div class="discord-banner"></div>
-              <div class="discord-avatar-wrapper">
-                <img src="image/reallykrak.png" alt="Discord Avatar" class="discord-avatar">
-                <div class="status-indicator online"></div>
-              </div>
-              <div class="discord-info">
-                <div class="discord-name-wrapper">
-                  <h3>reallykrak</h3>
-                  <span class="badges">
-                    <i class="fa-brands fa-discord"></i>
-                    <i class="fas fa-hammer"></i>
-                  </span>
-                </div>
-                <p class="discord-tag">Developer</p>
-                <div class="discord-about">
-                  <h4>ABOUT ME</h4>
-                  <p>Software developer and reverse engineer with 9 years of experience. ich bin Tolunay.</p>
-                </div>
-              </div>
+            <div class="hero-tags">
+              <span class="hero-tag"><i class="fas fa-code"></i> Developer</span>
+              <span class="hero-tag"><i class="fas fa-shield-halved"></i> Reverse Engineer</span>
+              <span class="hero-tag"><i class="fas fa-lightbulb"></i> Problem Solver</span>
             </div>
-            
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" class="page-section">
       <div class="container">
         <h2 class="section-title">My <span class="highlight">Projects</span></h2>
@@ -106,11 +107,11 @@
           </div>
         </div>
 
-        <div class="projects-grid" id="projects-container">
-          </div>
+        <div class="projects-grid" id="projects-container"></div>
       </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills" class="page-section">
       <div class="container">
         <h2 class="section-title">My <span class="highlight">Skills</span></h2>
@@ -130,6 +131,7 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="page-section">
       <div class="container">
         <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
@@ -172,26 +174,25 @@
 
   </main>
 
-  <div class="vinyl-player-container">
-    <div class="vinyl-record-wrapper" id="vinyl-wrapper">
-      <div class="vinyl-record">
-        <div class="vinyl-art" style="background-image: url('image/reallykrak.png');"></div> <div class="center-hole"></div>
+  <!-- MÜZİK PLAYER (Kare / Dikdörtgen) -->
+  <div class="music-player glass" id="music-player">
+    <img src="image/reallykrak.png" alt="Album Art" class="album-art-sq" id="album-art">
+    <div class="player-content">
+      <span class="song-title" id="song-title">Nuron's Krak</span>
+      <span class="song-artist" id="song-artist">reallykrak</span>
+      <div class="player-btns">
+        <button id="prev-btn" title="Previous"><i class="fas fa-backward-step"></i></button>
+        <button id="play-pause-btn" class="play-main" title="Play/Pause"><i class="fas fa-play"></i></button>
+        <button id="next-btn" title="Next"><i class="fas fa-forward-step"></i></button>
+      </div>
+      <div class="volume-row">
+        <i class="fas fa-volume-low"></i>
+        <input type="range" id="volume" min="0" max="1" step="0.05" value="0.5">
+        <i class="fas fa-volume-high"></i>
       </div>
     </div>
-    
-    <div class="player-controls glass">
-      <div class="song-info">
-        <span class="scrolling-text">Nuron's Krak</span>
-      </div>
-      <div class="control-buttons">
-        <button id="play-pause-btn" class="play-btn">
-          <i class="fas fa-play"></i>
-        </button>
-        <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.1" value="0.5">
-      </div>
-    </div>
-    <audio id="audio" src="Müzikler/hallettim.mp3"></audio>
   </div>
+  <audio id="audio"></audio>
 
   <script src="js/main.js"></script>
   <script src="js/typewriter.js"></script>
