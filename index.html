@@ -24,7 +24,6 @@
     <div class="logo-badge">
       <div class="logo-circle"><i class="fas fa-code"></i></div>
       <span class="logo-text">krak</span>
-      <!-- Online status -->
       <span class="online-dot" title="Online"></span>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -32,7 +31,7 @@
     </button>
   </header>
 
-  <!-- NAV — genişletilmiş -->
+  <!-- NAV -->
   <nav class="drop-nav" id="drop-nav">
     <div class="nav-section-label">Navigate</div>
     <a href="#home"     class="nav-link active-link"><i class="fas fa-house"></i> Home</a>
@@ -45,7 +44,6 @@
     <a href="https://instagram.com/reallykrak" target="_blank" class="nav-ext"><i class="fab fa-instagram"></i> Instagram</a>
     <a href="https://youtube.com/reallykrak"   target="_blank" class="nav-ext"><i class="fab fa-youtube"></i> YouTube</a>
     <div class="nav-divider"></div>
-    <!-- Now playing göstergesi -->
     <div class="nav-playing" id="nav-playing">
       <i class="fas fa-music"></i>
       <span id="nav-song-name">Not playing</span>
@@ -89,8 +87,6 @@
     <!-- PROJECTS -->
     <section id="projects" class="page-section">
       <div class="container">
-
-        <!-- GitHub Profil Kartı -->
         <div class="gh-profile" id="gh-profile">
           <div class="gh-skeleton">
             <div class="sk-circle"></div>
@@ -101,20 +97,14 @@
             </div>
           </div>
         </div>
-
-        <!-- Stats -->
         <div class="github-stats">
           <div class="stat-card"><i class="fas fa-code-branch"></i><span id="repo-count">—</span><p>Repos</p></div>
           <div class="stat-card"><i class="fas fa-star"></i><span id="stars-count">—</span><p>Stars</p></div>
           <div class="stat-card"><i class="fas fa-code"></i><span id="languages-count">—</span><p>Languages</p></div>
         </div>
-
-        <!-- Projects grid -->
         <h2 class="section-title" style="margin-top:1rem">My <span class="highlight">Projects</span></h2>
         <p class="section-subtitle">Latest repositories</p>
         <div class="projects-grid" id="projects-container"></div>
-
-        <!-- Load More -->
         <div style="text-align:center;margin-top:1.5rem">
           <button class="load-more-btn" id="load-more-btn" style="display:none">Load More</button>
         </div>
@@ -195,15 +185,13 @@
       </div>
     </section>
 
-    <!-- CONTACT — yeni kart tasarımı -->
+    <!-- CONTACT -->
     <section id="contact" class="page-section">
       <div class="container">
         <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
         <p class="section-subtitle">Reach me through any platform</p>
-
         <div class="contact-cards">
 
-          <!-- Discord -->
           <div class="contact-card-item">
             <div class="cc-icon" style="background:rgba(88,101,242,.18);border-color:rgba(88,101,242,.35)">
               <i class="fab fa-discord" style="color:#5865F2"></i>
@@ -217,7 +205,6 @@
             </button>
           </div>
 
-          <!-- Telegram -->
           <div class="contact-card-item">
             <div class="cc-icon" style="background:rgba(0,136,204,.18);border-color:rgba(0,136,204,.35)">
               <i class="fab fa-telegram" style="color:#0088cc"></i>
@@ -231,7 +218,6 @@
             </a>
           </div>
 
-          <!-- YouTube -->
           <div class="contact-card-item">
             <div class="cc-icon" style="background:rgba(255,0,0,.14);border-color:rgba(255,0,0,.30)">
               <i class="fab fa-youtube" style="color:#FF0000"></i>
@@ -245,7 +231,6 @@
             </a>
           </div>
 
-          <!-- Instagram -->
           <div class="contact-card-item">
             <div class="cc-icon" style="background:rgba(214,36,159,.15);border-color:rgba(214,36,159,.32)">
               <i class="fab fa-instagram" style="color:#d6249f"></i>
@@ -259,7 +244,6 @@
             </a>
           </div>
 
-          <!-- GitHub -->
           <div class="contact-card-item">
             <div class="cc-icon" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)">
               <i class="fab fa-github" style="color:#fff"></i>
@@ -273,7 +257,6 @@
             </a>
           </div>
 
-          <!-- Spotify -->
           <div class="contact-card-item">
             <div class="cc-icon" style="background:rgba(29,185,84,.14);border-color:rgba(29,185,84,.30)">
               <i class="fab fa-spotify" style="color:#1DB954"></i>
@@ -287,7 +270,6 @@
             </a>
           </div>
 
-          <!-- Email -->
           <div class="contact-card-item">
             <div class="cc-icon" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)">
               <i class="fas fa-envelope" style="color:#ccc"></i>
@@ -308,8 +290,10 @@
 
   </main>
 
-  <!-- MUSIC PLAYER -->
-  <audio id="the-audio" preload="auto" src="Müzikler/hallettim.mp3"></audio>
+  <!-- AUDIO -->
+  <audio id="the-audio" preload="auto"></audio>
+
+  <!-- MINI PLAYER -->
   <div class="mini-player" id="mini-player">
     <img id="sp-art" src="image/reallykrak.png" alt="art" class="mini-art">
     <div class="mini-info">
@@ -349,19 +333,21 @@
     };
     document.addEventListener('click', function(e) {
       if (!dnav.contains(e.target) && !hbg.contains(e.target)) {
-        hbg.classList.remove('open'); dnav.classList.remove('open');
+        hbg.classList.remove('open');
+        dnav.classList.remove('open');
       }
     });
     document.querySelectorAll('.nav-link').forEach(function(l) {
       l.onclick = function(e) {
         e.preventDefault();
-        hbg.classList.remove('open'); dnav.classList.remove('open');
-        document.querySelectorAll('.nav-link').forEach(function(x){x.classList.remove('active-link');});
+        hbg.classList.remove('open');
+        dnav.classList.remove('open');
+        document.querySelectorAll('.nav-link').forEach(function(x){ x.classList.remove('active-link'); });
         l.classList.add('active-link');
         var id = l.getAttribute('href').substring(1);
-        document.querySelectorAll('.page-section').forEach(function(s){s.classList.remove('active');});
+        document.querySelectorAll('.page-section').forEach(function(s){ s.classList.remove('active'); });
         document.getElementById(id).classList.add('active');
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
       };
     });
 
@@ -384,22 +370,11 @@
 
     /* VISITOR */
     (function() {
-      var k='krak_v5', base=3528;
-      var n=parseInt(localStorage.getItem(k)||'0',10)+1;
-      localStorage.setItem(k,n);
-      document.getElementById('visitor-count').textContent=(base+n).toLocaleString();
+      var k = 'krak_v5', base = 3528;
+      var n = parseInt(localStorage.getItem(k) || '0', 10) + 1;
+      localStorage.setItem(k, n);
+      document.getElementById('visitor-count').textContent = (base + n).toLocaleString();
     })();
-
-    /* Now Playing → nav göstergesi */
-    var audio = document.getElementById('the-audio');
-    var navSong = document.getElementById('nav-song-name');
-    if (audio && navSong) {
-      audio.addEventListener('play', function() {
-        navSong.textContent = document.getElementById('sp-title').textContent || 'Playing';
-      });
-      audio.addEventListener('pause', function() { navSong.textContent = 'Paused'; });
-      audio.addEventListener('ended', function() { navSong.textContent = 'Not playing'; });
-    }
   </script>
 </body>
 </html>
