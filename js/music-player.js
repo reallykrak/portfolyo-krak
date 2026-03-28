@@ -6,7 +6,7 @@ var TRACKS = [
 {
 title:  “Nuron’s Krak”,
 artist: “reallykrak”,
-src:    “Muzikler/hallettim.mp3”,   // klasör adı: Muzikler (ü yok)
+src:    “Müzikler/hallettim.mp3”,   // klasör adı: Muzikler (ü yok)
 art:    “image/reallykrak.png”
 }
 ];
