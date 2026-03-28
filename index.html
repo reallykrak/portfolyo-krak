@@ -24,28 +24,28 @@
     <div class="orb orb-3"></div>
   </div>
 
+  <!-- HEADER -->
   <header class="glass">
     <div class="logo">
       <span class="code-icon"><i class="fas fa-code"></i></span>
       <span class="logo-text">krak</span>
     </div>
-    <div class="hamburger">
+    <div class="hamburger" id="hamburger">
       <div class="bar"></div><div class="bar"></div><div class="bar"></div>
     </div>
   </header>
 
-  <nav class="fullscreen-menu">
-    <ul>
-      <li><a href="#home"     class="nav-link active-link">Home</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#skills"   class="nav-link">Skills</a></li>
-      <li><a href="#contact"  class="nav-link">Contact</a></li>
-    </ul>
+  <!-- COMPACT DROPDOWN NAV -->
+  <nav class="compact-nav" id="compact-nav">
+    <a href="#home"     class="nav-link active-link">Home</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#skills"   class="nav-link">Skills</a>
+    <a href="#contact"  class="nav-link">Contact</a>
   </nav>
 
   <main id="main-content">
 
-    <!-- HOME -->
+    <!-- ═══ HOME ═══ -->
     <section id="home" class="page-section active">
       <div class="container">
 
@@ -55,13 +55,12 @@
             <source src="image/deneme.mov" type="video/mp4">
             <source src="image/deneme.mov" type="video/quicktime">
           </video>
-          <!-- hello.png — banner sol üst, taşmıyor -->
           <div class="banner-profile">
             <img src="image/hello.png" alt="Profile" class="profile-circle">
           </div>
         </div>
 
-        <!-- BANNER ALTI -->
+        <!-- HERO -->
         <div class="below-banner">
           <div class="about-neon-card">
             <div class="about-tab">ABOUT ME</div>
@@ -83,10 +82,12 @@
           </div>
         </div>
 
+        <!-- boşluk -->
+        <div style="height:60px"></div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- ═══ PROJECTS ═══ -->
     <section id="projects" class="page-section">
       <div class="container">
         <h2 class="section-title">My <span class="highlight">Projects</span></h2>
@@ -97,29 +98,97 @@
           <div class="stat-card glass"><i class="fas fa-code"></i><span id="languages-count">0</span><p>Languages</p></div>
         </div>
         <div class="projects-grid" id="projects-container"></div>
+        <div style="height:80px"></div>
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- ═══ SKILLS ═══ -->
     <section id="skills" class="page-section">
       <div class="container">
         <h2 class="section-title">My <span class="highlight">Skills</span></h2>
-        <p class="section-subtitle">Technologies I work with</p>
-        <div class="skills-neon-container">
-          <div class="neon-btn skill-btn"><i class="devicon-csharp-plain"></i> C#</div>
-          <div class="neon-btn skill-btn"><i class="devicon-lua-plain"></i> Lua</div>
-          <div class="neon-btn skill-btn"><i class="devicon-nodejs-plain"></i> Node.js</div>
-          <div class="neon-btn skill-btn"><i class="devicon-python-plain"></i> Python</div>
-          <div class="neon-btn skill-btn"><i class="devicon-javascript-plain"></i> JavaScript</div>
-          <div class="neon-btn skill-btn"><i class="devicon-html5-plain"></i> HTML/CSS</div>
-          <div class="neon-btn skill-btn"><i class="devicon-cplusplus-plain"></i> C++</div>
-          <div class="neon-btn skill-btn"><i class="devicon-react-original"></i> React</div>
-          <div class="neon-btn skill-btn"><i class="devicon-mysql-plain"></i> SQL</div>
+        <p class="section-subtitle">Technologies &amp; tools I work with</p>
+
+        <!-- KATEGORİ: Languages -->
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fas fa-terminal"></i> Programming Languages</div>
+          <div class="skills-neon-container">
+            <div class="neon-btn skill-btn"><i class="devicon-csharp-plain"></i> C#</div>
+            <div class="neon-btn skill-btn"><i class="devicon-javascript-plain"></i> JavaScript</div>
+            <div class="neon-btn skill-btn"><i class="devicon-typescript-plain"></i> TypeScript</div>
+            <div class="neon-btn skill-btn"><i class="devicon-python-plain"></i> Python</div>
+            <div class="neon-btn skill-btn"><i class="devicon-lua-plain"></i> Lua</div>
+            <div class="neon-btn skill-btn"><i class="devicon-cplusplus-plain"></i> C++</div>
+            <div class="neon-btn skill-btn"><i class="devicon-html5-plain"></i> HTML</div>
+            <div class="neon-btn skill-btn"><i class="devicon-css3-plain"></i> CSS</div>
+          </div>
         </div>
+
+        <!-- KATEGORİ: Backend & Runtime -->
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fas fa-server"></i> Backend &amp; Runtime</div>
+          <div class="skills-neon-container">
+            <div class="neon-btn skill-btn"><i class="devicon-nodejs-plain"></i> Node.js</div>
+            <div class="neon-btn skill-btn"><i class="devicon-express-original"></i> Express</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-plug"></i> REST API</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-robot"></i> Bot Dev</div>
+            <div class="neon-btn skill-btn"><i class="fab fa-discord"></i> Discord.js</div>
+          </div>
+        </div>
+
+        <!-- KATEGORİ: Frontend & UI -->
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fas fa-palette"></i> Frontend &amp; UI</div>
+          <div class="skills-neon-container">
+            <div class="neon-btn skill-btn"><i class="devicon-react-original"></i> React</div>
+            <div class="neon-btn skill-btn"><i class="devicon-tailwindcss-plain"></i> Tailwind</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-layer-group"></i> SPA</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-mobile-alt"></i> Responsive</div>
+          </div>
+        </div>
+
+        <!-- KATEGORİ: Database -->
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fas fa-database"></i> Database</div>
+          <div class="skills-neon-container">
+            <div class="neon-btn skill-btn"><i class="devicon-mysql-plain"></i> MySQL</div>
+            <div class="neon-btn skill-btn"><i class="devicon-sqlite-plain"></i> SQLite</div>
+            <div class="neon-btn skill-btn"><i class="devicon-mongodb-plain"></i> MongoDB</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-table"></i> SQL</div>
+          </div>
+        </div>
+
+        <!-- KATEGORİ: Reverse Engineering -->
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fas fa-bug"></i> Reverse Engineering</div>
+          <div class="skills-neon-container">
+            <div class="neon-btn skill-btn"><i class="fas fa-microchip"></i> Il2Cpp</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-hammer"></i> HarmonyLib</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-memory"></i> Cheat Engine</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-search"></i> x64dbg</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-eye"></i> dnSpy</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-cube"></i> MelonLoader</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-network-wired"></i> Packet Analysis</div>
+          </div>
+        </div>
+
+        <!-- KATEGORİ: Tools & DevOps -->
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fas fa-tools"></i> Tools &amp; DevOps</div>
+          <div class="skills-neon-container">
+            <div class="neon-btn skill-btn"><i class="devicon-git-plain"></i> Git</div>
+            <div class="neon-btn skill-btn"><i class="fab fa-github"></i> GitHub</div>
+            <div class="neon-btn skill-btn"><i class="devicon-vscode-plain"></i> VS Code</div>
+            <div class="neon-btn skill-btn"><i class="devicon-visualstudio-plain"></i> Visual Studio</div>
+            <div class="neon-btn skill-btn"><i class="fab fa-docker"></i> Docker</div>
+            <div class="neon-btn skill-btn"><i class="fas fa-terminal"></i> CLI / Bash</div>
+          </div>
+        </div>
+
+        <div style="height:80px"></div>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- ═══ CONTACT ═══ -->
     <section id="contact" class="page-section">
       <div class="container">
         <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
@@ -141,14 +210,15 @@
             <button type="submit" class="btn primary">Send Message</button>
           </form>
         </div>
+        <div style="height:80px"></div>
       </div>
     </section>
 
   </main>
 
-  <!-- MÜZİK PLAYER — herzaman açık -->
-  <div class="music-player glass" id="music-player">
-    <img src="image/reallykrak.png" alt="Album Art" class="album-art-sq" id="album-art">
+  <!-- MÜZİK PLAYER — herzaman açık, ses yok -->
+  <div class="music-player" id="music-player">
+    <img src="image/reallykrak.png" alt="Art" class="album-art-sq" id="album-art">
     <div class="player-content">
       <span class="song-title"  id="song-title">Nuron's Krak</span>
       <span class="song-artist" id="song-artist">reallykrak</span>
@@ -157,16 +227,11 @@
         <button id="play-pause-btn" class="play-main" title="Play/Pause"><i class="fas fa-play"></i></button>
         <button id="next-btn"       title="Next"><i class="fas fa-forward-step"></i></button>
       </div>
-      <div class="volume-row">
-        <i class="fas fa-volume-low"></i>
-        <input type="range" id="volume" min="0" max="1" step="0.05" value="0.5">
-        <i class="fas fa-volume-high"></i>
-      </div>
     </div>
   </div>
   <audio id="audio"></audio>
 
-  <!-- ZİYARETÇİ SAYACI -->
+  <!-- ZİYARETÇİ -->
   <div class="visitor-counter">
     <i class="fas fa-eye"></i>
     <span id="visitor-count">3528</span>
@@ -179,14 +244,42 @@
   <script src="js/music-player.js"></script>
 
   <script>
-    // Ziyaretçi sayacı — 3528 baz alınarak artar
+    // Compact nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const nav       = document.getElementById('compact-nav');
+    hamburger.addEventListener('click', function(e){
+      e.stopPropagation();
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e){
+      if(!nav.contains(e.target) && !hamburger.contains(e.target)){
+        nav.classList.remove('open');
+        hamburger.classList.remove('active');
+      }
+    });
+    // Nav link tıklama
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        nav.classList.remove('open');
+        hamburger.classList.remove('active');
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active-link'));
+        this.classList.add('active-link');
+        const id = this.getAttribute('href').substring(1);
+        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+      });
+    });
+
+    // Ziyaretçi sayacı
     (function(){
       const k = 'krak_visits';
       const base = 3528;
-      let extra = parseInt(localStorage.getItem(k) || '0', 10);
-      extra++;
+      let extra = parseInt(localStorage.getItem(k)||'0',10)+1;
       localStorage.setItem(k, extra);
-      document.getElementById('visitor-count').textContent = (base + extra).toLocaleString();
+      document.getElementById('visitor-count').textContent = (base+extra).toLocaleString();
     })();
   </script>
 </body>
