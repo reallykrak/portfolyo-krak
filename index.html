@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Tolunay | Developer</title>
   <link rel="icon" type="image/png" href="image/pode.png">
   <link rel="stylesheet" href="css/main.css">
@@ -25,6 +26,7 @@
   </div>
 
   <!-- HEADER -->
+
   <header class="glass">
     <div class="logo">
       <span class="code-icon"><i class="fas fa-code"></i></span>
@@ -35,8 +37,9 @@
     </div>
   </header>
 
-  <!-- COMPACT DROPDOWN NAV -->
-  <nav class="compact-nav" id="compact-nav">
+  <!-- DROPDOWN NAV — sadece sağ üst köşe, küçük -->
+
+  <nav class="compact-nav glass" id="compact-nav">
     <a href="#home"     class="nav-link active-link">Home</a>
     <a href="#projects" class="nav-link">Projects</a>
     <a href="#skills"   class="nav-link">Skills</a>
@@ -45,225 +48,221 @@
 
   <main id="main-content">
 
-    <!-- ═══ HOME ═══ -->
-    <section id="home" class="page-section active">
-      <div class="container">
+```
+<!-- HOME -->
+<section id="home" class="page-section active">
+  <div class="container">
 
-        <!-- BANNER -->
-        <div class="banner-wrap">
-          <video class="banner-video" autoplay loop muted playsinline>
-            <source src="image/deneme.mov" type="video/mp4">
-            <source src="image/deneme.mov" type="video/quicktime">
-          </video>
-          <div class="banner-profile">
-            <img src="image/hello.png" alt="Profile" class="profile-circle">
-          </div>
-        </div>
-
-        <!-- HERO -->
-        <div class="below-banner">
-          <div class="about-neon-card">
-            <div class="about-tab">ABOUT ME</div>
-            <p class="about-name">reallykrak</p>
-            <p class="about-desc">21 years old, professional software developer and reverse engineer with 9 years of experience.</p>
-          </div>
-
-          <div class="hero-right">
-            <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
-            <div class="type-container">
-              <span id="type-text"></span>
-              <span class="cursor">|</span>
-            </div>
-            <div class="hero-tags">
-              <span class="hero-tag"><i class="fas fa-code"></i> Developer</span>
-              <span class="hero-tag"><i class="fas fa-shield-halved"></i> Reverse Engineer</span>
-              <span class="hero-tag"><i class="fas fa-lightbulb"></i> Problem Solver</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- boşluk -->
-        <div style="height:60px"></div>
+    <div class="banner-wrap">
+      <video class="banner-video" autoplay loop muted playsinline>
+        <source src="image/deneme.mov" type="video/mp4">
+        <source src="image/deneme.mov" type="video/quicktime">
+      </video>
+      <div class="banner-profile">
+        <img src="image/hello.png" alt="Profile" class="profile-circle">
       </div>
-    </section>
+    </div>
 
-    <!-- ═══ PROJECTS ═══ -->
-    <section id="projects" class="page-section">
-      <div class="container">
-        <h2 class="section-title">My <span class="highlight">Projects</span></h2>
-        <p class="section-subtitle">Recent work from my GitHub</p>
-        <div class="github-stats">
-          <div class="stat-card glass"><i class="fas fa-code-branch"></i><span id="repo-count">0</span><p>Repositories</p></div>
-          <div class="stat-card glass"><i class="fas fa-star"></i><span id="stars-count">0</span><p>Stars</p></div>
-          <div class="stat-card glass"><i class="fas fa-code"></i><span id="languages-count">0</span><p>Languages</p></div>
-        </div>
-        <div class="projects-grid" id="projects-container"></div>
-        <div style="height:80px"></div>
+    <div class="below-banner">
+      <div class="about-neon-card">
+        <div class="about-tab">ABOUT ME</div>
+        <p class="about-name">reallykrak</p>
+        <p class="about-desc">21 years old, professional software developer and reverse engineer with 9 years of experience.</p>
       </div>
-    </section>
-
-    <!-- ═══ SKILLS ═══ -->
-    <section id="skills" class="page-section">
-      <div class="container">
-        <h2 class="section-title">My <span class="highlight">Skills</span></h2>
-        <p class="section-subtitle">Technologies &amp; tools I work with</p>
-
-        <!-- KATEGORİ: Languages -->
-        <div class="skill-category">
-          <div class="skill-cat-title"><i class="fas fa-terminal"></i> Programming Languages</div>
-          <div class="skills-neon-container">
-            <div class="neon-btn skill-btn"><i class="devicon-csharp-plain"></i> C#</div>
-            <div class="neon-btn skill-btn"><i class="devicon-javascript-plain"></i> JavaScript</div>
-            <div class="neon-btn skill-btn"><i class="devicon-typescript-plain"></i> TypeScript</div>
-            <div class="neon-btn skill-btn"><i class="devicon-python-plain"></i> Python</div>
-            <div class="neon-btn skill-btn"><i class="devicon-lua-plain"></i> Lua</div>
-            <div class="neon-btn skill-btn"><i class="devicon-cplusplus-plain"></i> C++</div>
-            <div class="neon-btn skill-btn"><i class="devicon-html5-plain"></i> HTML</div>
-            <div class="neon-btn skill-btn"><i class="devicon-css3-plain"></i> CSS</div>
-          </div>
+      <div class="hero-right">
+        <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
+        <div class="type-container">
+          <span id="type-text"></span>
+          <span class="cursor">|</span>
         </div>
-
-        <!-- KATEGORİ: Backend & Runtime -->
-        <div class="skill-category">
-          <div class="skill-cat-title"><i class="fas fa-server"></i> Backend &amp; Runtime</div>
-          <div class="skills-neon-container">
-            <div class="neon-btn skill-btn"><i class="devicon-nodejs-plain"></i> Node.js</div>
-            <div class="neon-btn skill-btn"><i class="devicon-express-original"></i> Express</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-plug"></i> REST API</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-robot"></i> Bot Dev</div>
-            <div class="neon-btn skill-btn"><i class="fab fa-discord"></i> Discord.js</div>
-          </div>
+        <div class="hero-tags">
+          <span class="hero-tag"><i class="fas fa-code"></i> Developer</span>
+          <span class="hero-tag"><i class="fas fa-shield-halved"></i> Reverse Engineer</span>
+          <span class="hero-tag"><i class="fas fa-lightbulb"></i> Problem Solver</span>
         </div>
-
-        <!-- KATEGORİ: Frontend & UI -->
-        <div class="skill-category">
-          <div class="skill-cat-title"><i class="fas fa-palette"></i> Frontend &amp; UI</div>
-          <div class="skills-neon-container">
-            <div class="neon-btn skill-btn"><i class="devicon-react-original"></i> React</div>
-            <div class="neon-btn skill-btn"><i class="devicon-tailwindcss-plain"></i> Tailwind</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-layer-group"></i> SPA</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-mobile-alt"></i> Responsive</div>
-          </div>
-        </div>
-
-        <!-- KATEGORİ: Database -->
-        <div class="skill-category">
-          <div class="skill-cat-title"><i class="fas fa-database"></i> Database</div>
-          <div class="skills-neon-container">
-            <div class="neon-btn skill-btn"><i class="devicon-mysql-plain"></i> MySQL</div>
-            <div class="neon-btn skill-btn"><i class="devicon-sqlite-plain"></i> SQLite</div>
-            <div class="neon-btn skill-btn"><i class="devicon-mongodb-plain"></i> MongoDB</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-table"></i> SQL</div>
-          </div>
-        </div>
-
-        <!-- KATEGORİ: Reverse Engineering -->
-        <div class="skill-category">
-          <div class="skill-cat-title"><i class="fas fa-bug"></i> Reverse Engineering</div>
-          <div class="skills-neon-container">
-            <div class="neon-btn skill-btn"><i class="fas fa-microchip"></i> Il2Cpp</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-hammer"></i> HarmonyLib</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-memory"></i> Cheat Engine</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-search"></i> x64dbg</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-eye"></i> dnSpy</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-cube"></i> MelonLoader</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-network-wired"></i> Packet Analysis</div>
-          </div>
-        </div>
-
-        <!-- KATEGORİ: Tools & DevOps -->
-        <div class="skill-category">
-          <div class="skill-cat-title"><i class="fas fa-tools"></i> Tools &amp; DevOps</div>
-          <div class="skills-neon-container">
-            <div class="neon-btn skill-btn"><i class="devicon-git-plain"></i> Git</div>
-            <div class="neon-btn skill-btn"><i class="fab fa-github"></i> GitHub</div>
-            <div class="neon-btn skill-btn"><i class="devicon-vscode-plain"></i> VS Code</div>
-            <div class="neon-btn skill-btn"><i class="devicon-visualstudio-plain"></i> Visual Studio</div>
-            <div class="neon-btn skill-btn"><i class="fab fa-docker"></i> Docker</div>
-            <div class="neon-btn skill-btn"><i class="fas fa-terminal"></i> CLI / Bash</div>
-          </div>
-        </div>
-
-        <div style="height:80px"></div>
       </div>
-    </section>
+    </div>
+    <div style="height:60px"></div>
+  </div>
+</section>
 
-    <!-- ═══ CONTACT ═══ -->
-    <section id="contact" class="page-section">
-      <div class="container">
-        <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
-        <p class="section-subtitle">Connect with me on social media</p>
-        <div class="social-links">
-          <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="social-icon spotify glass"><i class="fab fa-spotify"></i></a>
-          <a href="https://youtube.com/reallykrak"   target="_blank" class="social-icon youtube  glass"><i class="fab fa-youtube"></i></a>
-          <a href="https://github.com/reallykrak"    target="_blank" class="social-icon github   glass"><i class="fab fa-github"></i></a>
-          <a href="https://instagram.com/reallykrak" target="_blank" class="social-icon instagram glass"><i class="fab fa-instagram"></i></a>
-        </div>
-        <div class="contact-form glass">
-          <h3>Contact to me</h3>
-          <form id="contact-form" action="https://formsubmit.co/reallykrakw@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Portfolyondan Yeni Mesaj!">
-            <input type="hidden" name="_captcha" value="false">
-            <div class="form-group"><input type="text"  name="name"    id="name"    placeholder="Your Name"    required class="glass-input"></div>
-            <div class="form-group"><input type="email" name="email"   id="email"   placeholder="Your Email"   required class="glass-input"></div>
-            <div class="form-group"><textarea           name="message" id="message" placeholder="Your Message" required class="glass-input"></textarea></div>
-            <button type="submit" class="btn primary">Send Message</button>
-          </form>
-        </div>
-        <div style="height:80px"></div>
+<!-- PROJECTS -->
+<section id="projects" class="page-section">
+  <div class="container">
+    <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+    <p class="section-subtitle">Recent work from my GitHub</p>
+    <div class="github-stats">
+      <div class="stat-card glass"><i class="fas fa-code-branch"></i><span id="repo-count">0</span><p>Repositories</p></div>
+      <div class="stat-card glass"><i class="fas fa-star"></i><span id="stars-count">0</span><p>Stars</p></div>
+      <div class="stat-card glass"><i class="fas fa-code"></i><span id="languages-count">0</span><p>Languages</p></div>
+    </div>
+    <div class="projects-grid" id="projects-container"></div>
+    <div style="height:80px"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="page-section">
+  <div class="container">
+    <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+    <p class="section-subtitle">Technologies &amp; tools I work with</p>
+
+    <div class="skill-category">
+      <div class="skill-cat-title"><i class="fas fa-terminal"></i> Programming Languages</div>
+      <div class="skills-neon-container">
+        <div class="neon-btn skill-btn"><i class="devicon-csharp-plain"></i> C#</div>
+        <div class="neon-btn skill-btn"><i class="devicon-javascript-plain"></i> JavaScript</div>
+        <div class="neon-btn skill-btn"><i class="devicon-typescript-plain"></i> TypeScript</div>
+        <div class="neon-btn skill-btn"><i class="devicon-python-plain"></i> Python</div>
+        <div class="neon-btn skill-btn"><i class="devicon-lua-plain"></i> Lua</div>
+        <div class="neon-btn skill-btn"><i class="devicon-cplusplus-plain"></i> C++</div>
+        <div class="neon-btn skill-btn"><i class="devicon-html5-plain"></i> HTML</div>
+        <div class="neon-btn skill-btn"><i class="devicon-css3-plain"></i> CSS</div>
       </div>
-    </section>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-title"><i class="fas fa-server"></i> Backend &amp; Runtime</div>
+      <div class="skills-neon-container">
+        <div class="neon-btn skill-btn"><i class="devicon-nodejs-plain"></i> Node.js</div>
+        <div class="neon-btn skill-btn"><i class="devicon-express-original"></i> Express</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-plug"></i> REST API</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-robot"></i> Bot Dev</div>
+        <div class="neon-btn skill-btn"><i class="fab fa-discord"></i> Discord.js</div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-title"><i class="fas fa-palette"></i> Frontend &amp; UI</div>
+      <div class="skills-neon-container">
+        <div class="neon-btn skill-btn"><i class="devicon-react-original"></i> React</div>
+        <div class="neon-btn skill-btn"><i class="devicon-tailwindcss-plain"></i> Tailwind</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-layer-group"></i> SPA</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-mobile-alt"></i> Responsive</div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-title"><i class="fas fa-database"></i> Database</div>
+      <div class="skills-neon-container">
+        <div class="neon-btn skill-btn"><i class="devicon-mysql-plain"></i> MySQL</div>
+        <div class="neon-btn skill-btn"><i class="devicon-sqlite-plain"></i> SQLite</div>
+        <div class="neon-btn skill-btn"><i class="devicon-mongodb-plain"></i> MongoDB</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-table"></i> SQL</div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-title"><i class="fas fa-bug"></i> Reverse Engineering</div>
+      <div class="skills-neon-container">
+        <div class="neon-btn skill-btn"><i class="fas fa-microchip"></i> Il2Cpp</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-hammer"></i> HarmonyLib</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-memory"></i> Cheat Engine</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-search"></i> x64dbg</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-eye"></i> dnSpy</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-cube"></i> MelonLoader</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-network-wired"></i> Packet Analysis</div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-title"><i class="fas fa-tools"></i> Tools &amp; DevOps</div>
+      <div class="skills-neon-container">
+        <div class="neon-btn skill-btn"><i class="devicon-git-plain"></i> Git</div>
+        <div class="neon-btn skill-btn"><i class="fab fa-github"></i> GitHub</div>
+        <div class="neon-btn skill-btn"><i class="devicon-vscode-plain"></i> VS Code</div>
+        <div class="neon-btn skill-btn"><i class="devicon-visualstudio-plain"></i> Visual Studio</div>
+        <div class="neon-btn skill-btn"><i class="fab fa-docker"></i> Docker</div>
+        <div class="neon-btn skill-btn"><i class="fas fa-terminal"></i> CLI / Bash</div>
+      </div>
+    </div>
+
+    <div style="height:80px"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="page-section">
+  <div class="container">
+    <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+    <p class="section-subtitle">Connect with me on social media</p>
+    <div class="social-links">
+      <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="social-icon spotify glass"><i class="fab fa-spotify"></i></a>
+      <a href="https://youtube.com/reallykrak"   target="_blank" class="social-icon youtube  glass"><i class="fab fa-youtube"></i></a>
+      <a href="https://github.com/reallykrak"    target="_blank" class="social-icon github   glass"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/reallykrak" target="_blank" class="social-icon instagram glass"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="contact-form glass">
+      <h3>Contact to me</h3>
+      <form id="contact-form" action="https://formsubmit.co/reallykrakw@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Portfolyondan Yeni Mesaj!">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="form-group"><input type="text"  name="name"    id="name"    placeholder="Your Name"    required class="glass-input"></div>
+        <div class="form-group"><input type="email" name="email"   id="email"   placeholder="Your Email"   required class="glass-input"></div>
+        <div class="form-group"><textarea           name="message" id="message" placeholder="Your Message" required class="glass-input"></textarea></div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+    <div style="height:80px"></div>
+  </div>
+</section>
+```
 
   </main>
 
-  <!-- MÜZİK PLAYER — herzaman açık, ses yok -->
+  <!-- MÜZİK PLAYER -->
+
   <div class="music-player" id="music-player">
     <img src="image/reallykrak.png" alt="Art" class="album-art-sq" id="album-art">
     <div class="player-content">
       <span class="song-title"  id="song-title">Nuron's Krak</span>
       <span class="song-artist" id="song-artist">reallykrak</span>
       <div class="player-btns">
-        <button id="prev-btn"       title="Previous"><i class="fas fa-backward-step"></i></button>
-        <button id="play-pause-btn" class="play-main" title="Play/Pause"><i class="fas fa-play"></i></button>
-        <button id="next-btn"       title="Next"><i class="fas fa-forward-step"></i></button>
+        <button class="ctrl-btn" id="prev-btn"><i class="fas fa-backward-step"></i></button>
+        <button class="ctrl-btn play-main" id="play-pause-btn"><i class="fas fa-play"></i></button>
+        <button class="ctrl-btn" id="next-btn"><i class="fas fa-forward-step"></i></button>
       </div>
     </div>
   </div>
-  <audio id="audio"></audio>
+  <audio id="audio" preload="auto"></audio>
 
   <!-- ZİYARETÇİ -->
+
   <div class="visitor-counter">
     <i class="fas fa-eye"></i>
     <span id="visitor-count">3528</span>
   </div>
 
   <script src="js/main.js"></script>
+
   <script src="js/typewriter.js"></script>
+
   <script src="js/github.js"></script>
+
   <script src="js/skills.js"></script>
+
   <script src="js/music-player.js"></script>
 
   <script>
-    // Compact nav toggle
-    const hamburger = document.getElementById('hamburger');
-    const nav       = document.getElementById('compact-nav');
-    hamburger.addEventListener('click', function(e){
+    // ── Hamburger (main.js'i override etmeden bağımsız) ──
+    const hbg = document.getElementById('hamburger');
+    const nav = document.getElementById('compact-nav');
+    hbg.addEventListener('click', function(e){
       e.stopPropagation();
-      hamburger.classList.toggle('active');
+      hbg.classList.toggle('active');
       nav.classList.toggle('open');
     });
     document.addEventListener('click', function(e){
-      if(!nav.contains(e.target) && !hamburger.contains(e.target)){
+      if(!nav.contains(e.target) && !hbg.contains(e.target)){
         nav.classList.remove('open');
-        hamburger.classList.remove('active');
+        hbg.classList.remove('active');
       }
     });
-    // Nav link tıklama
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', function(e){
         e.preventDefault();
         nav.classList.remove('open');
-        hamburger.classList.remove('active');
+        hbg.classList.remove('active');
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active-link'));
         this.classList.add('active-link');
         const id = this.getAttribute('href').substring(1);
@@ -273,14 +272,14 @@
       });
     });
 
-    // Ziyaretçi sayacı
+    // ── Ziyaretçi ──
     (function(){
-      const k = 'krak_visits';
-      const base = 3528;
-      let extra = parseInt(localStorage.getItem(k)||'0',10)+1;
-      localStorage.setItem(k, extra);
-      document.getElementById('visitor-count').textContent = (base+extra).toLocaleString();
+      const k = 'krak_visits', base = 3528;
+      let n = parseInt(localStorage.getItem(k)||'0',10)+1;
+      localStorage.setItem(k,n);
+      document.getElementById('visitor-count').textContent=(base+n).toLocaleString();
     })();
   </script>
+
 </body>
 </html>
