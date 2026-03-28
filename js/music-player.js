@@ -7,81 +7,103 @@ artist: “reallykrak”,
 src:    “Müzikler/hallettim.mp3”,
 art:    “image/reallykrak.png”
 }
-// Yeni şarkı: { title:”…”, artist:”…”, src:“Müzikler/….mp3”, art:“image/….png” }
 ];
 
-let currentIndex = 0;
-let isPlaying    = false;
+let idx       = 0;
+let isPlaying = false;
+let unlocked  = false;
 
-const audio      = document.getElementById(‘audio’);
-const playBtn    = document.getElementById(‘play-pause-btn’);
-const prevBtn    = document.getElementById(‘prev-btn’);
-const nextBtn    = document.getElementById(‘next-btn’);
-const songTitle  = document.getElementById(‘song-title’);
-const songArtist = document.getElementById(‘song-artist’);
-const albumArt   = document.getElementById(‘album-art’);
+const audio   = document.getElementById(‘audio’);
+const playBtn = document.getElementById(‘play-pause-btn’);
+const prevBtn = document.getElementById(‘prev-btn’);
+const nextBtn = document.getElementById(‘next-btn’);
+const titleEl = document.getElementById(‘song-title’);
+const artistEl= document.getElementById(‘song-artist’);
+const artEl   = document.getElementById(‘album-art’);
 
-function loadTrack(i) {
+audio.volume = 0.60;
+
+/* ── helpers ── */
+function load(i) {
 const t = playlist[i];
-audio.src              = t.src;
-songTitle.textContent  = t.title;
-songArtist.textContent = t.artist;
-albumArt.src           = t.art;
+audio.src     = t.src;
+titleEl.textContent  = t.title;
+artistEl.textContent = t.artist;
+artEl.src     = t.art;
 }
 
-function updateIcon() {
-playBtn.querySelector(‘i’).className = isPlaying ? ‘fas fa-pause’ : ‘fas fa-play’;
+function setIcon() {
+const ic = playBtn.querySelector(‘i’);
+ic.className = isPlaying ? ‘fas fa-pause’ : ‘fas fa-play’;
 }
 
-function play() {
-audio.play()
-.then(()  => { isPlaying = true;  updateIcon(); })
-.catch(() => { isPlaying = false; updateIcon(); });
+function doPlay() {
+const p = audio.play();
+if (p) p.then(() => { isPlaying = true;  setIcon(); })
+.catch(() => { isPlaying = false; setIcon(); });
 }
 
-function pause() {
+function doPause() {
 audio.pause();
 isPlaying = false;
-updateIcon();
+setIcon();
 }
 
-function playNext() {
-currentIndex = (currentIndex + 1) % playlist.length;
-loadTrack(currentIndex);
-play();
+function next() {
+idx = (idx + 1) % playlist.length;
+load(idx); doPlay();
 }
 
-function playPrev() {
-if (audio.currentTime > 3) {
-audio.currentTime = 0; play();
-} else {
-currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
-loadTrack(currentIndex); play();
-}
+function prev() {
+if (audio.currentTime > 3) { audio.currentTime = 0; doPlay(); }
+else { idx = (idx - 1 + playlist.length) % playlist.length; load(idx); doPlay(); }
 }
 
-// İlk yükleme
-audio.volume = 0.55;
-loadTrack(currentIndex);
+/* ── ilk yükleme ── */
+load(idx);
 
-// Oto-başlat
+/* ── autoplay:
+Önce sessizce dene. Tarayıcı izin verirse başlar.
+Vermezse: herhangi bir yere DOKUNULUNCA başlar.
+Sayfa kendi play butonuna basınca da çalışır.        ── */
 audio.play()
-.then(()  => { isPlaying = true;  updateIcon(); })
+.then(() => { isPlaying = true; unlocked = true; setIcon(); })
 .catch(() => {
-isPlaying = false; updateIcon();
-const start = () => {
-play();
-document.removeEventListener(‘click’,      start);
-document.removeEventListener(‘keydown’,    start);
-document.removeEventListener(‘touchstart’, start);
-};
-document.addEventListener(‘click’,      start, { once:true });
-document.addEventListener(‘keydown’,    start, { once:true });
-document.addEventListener(‘touchstart’, start, { once:true });
+// Tarayıcı autoplay’i engelledi
+isPlaying = false; setIcon();
+
+```
+  function onFirstInteraction() {
+    if (unlocked) return;
+    unlocked = true;
+    doPlay();
+    document.removeEventListener('click',      onFirstInteraction, true);
+    document.removeEventListener('touchstart', onFirstInteraction, true);
+    document.removeEventListener('keydown',    onFirstInteraction, true);
+  }
+  // capture:true → play butonuna basıldığında da tetiklenir
+  document.addEventListener('click',      onFirstInteraction, { capture:true, once:true });
+  document.addEventListener('touchstart', onFirstInteraction, { capture:true, once:true });
+  document.addEventListener('keydown',    onFirstInteraction, { capture:true, once:true });
+});
+```
+
+/* ── butonlar (tüm tıklamalar stopPropagation yapmaz,
+böylece ilk tıklama unlock’u da tetikler)           ── */
+playBtn.addEventListener(‘click’, function() {
+if (!unlocked) { unlocked = true; doPlay(); return; }
+isPlaying ? doPause() : doPlay();
 });
 
-playBtn.addEventListener(‘click’, e => { e.stopPropagation(); isPlaying ? pause() : play(); });
-prevBtn.addEventListener(‘click’, e => { e.stopPropagation(); playPrev(); });
-nextBtn.addEventListener(‘click’, e => { e.stopPropagation(); playNext(); });
-audio.addEventListener(‘ended’, playNext);
+prevBtn.addEventListener(‘click’, function() {
+if (!unlocked) { unlocked = true; load(idx); doPlay(); return; }
+prev();
+});
+
+nextBtn.addEventListener(‘click’, function() {
+if (!unlocked) { unlocked = true; load(idx); doPlay(); return; }
+next();
+});
+
+audio.addEventListener(‘ended’, next);
 });
