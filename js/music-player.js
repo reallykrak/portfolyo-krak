@@ -1,78 +1,90 @@
 document.addEventListener(‘DOMContentLoaded’, function () {
 
 /* ── PLAYLIST ─────────────────────────────────────────── */
-const playlist = [
+var playlist = [
 {
 title:  “Nuron’s Krak”,
 artist: “reallykrak”,
 src:    “Müzikler/hallettim.mp3”,
 art:    “image/reallykrak.png”
 }
-/* Eklemek için:
-{ title:”…”, artist:”…”, src:“Müzikler/….mp3”, art:“image/….png” } */
+/* Yeni şarkı eklemek:
+,{ title:”…”, artist:”…”, src:“Müzikler/….mp3”, art:“image/….png” } */
 ];
 
-let idx       = 0;
-let isPlaying = false;
-let unlocked  = false;
-let dragging  = false;
+var idx      = 0;
+var playing  = false;
+var dragging = false;
 
 /* ── DOM ──────────────────────────────────────────────── */
-const audio     = document.getElementById(‘audio’);
-const playBtn   = document.getElementById(‘play-pause-btn’);
-const prevBtn   = document.getElementById(‘prev-btn’);
-const nextBtn   = document.getElementById(‘next-btn’);
-const titleEl   = document.getElementById(‘song-title’);
-const artistEl  = document.getElementById(‘song-artist’);
-const artEl     = document.getElementById(‘album-art’);
-const fillEl    = document.getElementById(‘sp-fill’);
-const curEl     = document.getElementById(‘sp-current’);
-const durEl     = document.getElementById(‘sp-duration’);
-const barWrap   = document.getElementById(‘sp-bar-wrap’);
+var audio   = document.getElementById(‘audio’);
+var playBtn = document.getElementById(‘play-pause-btn’);
+var prevBtn = document.getElementById(‘prev-btn’);
+var nextBtn = document.getElementById(‘next-btn’);
+var titleEl = document.getElementById(‘song-title’);
+var artEl   = document.getElementById(‘song-artist’);
+var imgEl   = document.getElementById(‘album-art’);
+var fill    = document.getElementById(‘sp-fill’);
+var curEl   = document.getElementById(‘sp-current’);
+var durEl   = document.getElementById(‘sp-duration’);
+var barWrap = document.getElementById(‘sp-bar-wrap’);
 
 audio.volume = 0.65;
 
 /* ── helpers ──────────────────────────────────────────── */
 function fmt(s) {
-const m = Math.floor(s / 60);
-const sec = Math.floor(s % 60);
+s = isFinite(s) ? s : 0;
+var m = Math.floor(s / 60);
+var sec = Math.floor(s % 60);
 return m + ‘:’ + (sec < 10 ? ‘0’ : ‘’) + sec;
 }
 
-function setIcon() {
-playBtn.querySelector(‘i’).className = isPlaying ? ‘fas fa-pause’ : ‘fas fa-play’;
-if (isPlaying) artEl.classList.add(‘spinning’);
-else           artEl.classList.remove(‘spinning’);
+function syncUI() {
+var ic = playBtn.querySelector(‘i’);
+ic.className = playing ? ‘fas fa-pause’ : ‘fas fa-play’;
+if (playing) imgEl.classList.add(‘spinning’);
+else         imgEl.classList.remove(‘spinning’);
 }
 
-function load(i) {
-const t = playlist[i];
-audio.src          = t.src;
-titleEl.textContent  = t.title;
-artistEl.textContent = t.artist;
-artEl.src          = t.art;
-fillEl.style.width = ‘0%’;
-curEl.textContent  = ‘0:00’;
-durEl.textContent  = ‘0:00’;
+function loadTrack(i) {
+var t = playlist[i];
+audio.src           = t.src;
+titleEl.textContent = t.title;
+artEl.textContent   = t.artist;
+imgEl.src           = t.art;
+fill.style.width    = ‘0%’;
+curEl.textContent   = ‘0:00’;
+durEl.textContent   = ‘0:00’;
 }
 
+/* ── play / pause — her zaman güvenli ─────────────────── */
 function doPlay() {
-const p = audio.play();
-if (p) {
-p.then(() => { isPlaying = true;  unlocked = true; setIcon(); })
-.catch(() => { isPlaying = false; setIcon(); });
+var p = audio.play();
+if (p && typeof p.then === ‘function’) {
+p.then(function() {
+playing = true; syncUI();
+}).catch(function(err) {
+console.warn(‘Play engellendi:’, err.message);
+playing = false; syncUI();
+});
+} else {
+/* eski tarayıcılar */
+playing = true; syncUI();
 }
 }
 
 function doPause() {
 audio.pause();
-isPlaying = false;
-setIcon();
+playing = false; syncUI();
+}
+
+function togglePlay() {
+if (playing) doPause(); else doPlay();
 }
 
 function next() {
 idx = (idx + 1) % playlist.length;
-load(idx); doPlay();
+loadTrack(idx); doPlay();
 }
 
 function prev() {
@@ -80,80 +92,64 @@ if (audio.currentTime > 3) {
 audio.currentTime = 0; doPlay();
 } else {
 idx = (idx - 1 + playlist.length) % playlist.length;
-load(idx); doPlay();
+loadTrack(idx); doPlay();
 }
 }
 
-/* ── ilk yükleme ─────────────────────────────────────── */
-load(idx);
+/* ── İlk yükleme ──────────────────────────────────────── */
+loadTrack(idx);
 
-/* ── AUTOPLAY ─────────────────────────────────────────
-Tarayıcı izin verirse direkt başlar.
-Vermezse → ilk herhangi bir dokunuşta başlar
-(capture:true olduğu için play butonuna basınca da çalışır)
-────────────────────────────────────────────────────── */
-function unlock() {
-if (unlocked) return;
-unlocked = true;
-doPlay();
-}
-
-audio.play()
-.then(() => { isPlaying = true; unlocked = true; setIcon(); })
-.catch(() => {
-isPlaying = false; setIcon();
-document.addEventListener(‘click’,      unlock, { capture:true, once:true });
-document.addEventListener(‘touchstart’, unlock, { capture:true, once:true });
-document.addEventListener(‘keydown’,    unlock, { capture:true, once:true });
+/* ── Autoplay denemesi (tarayıcı izin verirse başlar) ─── */
+audio.play().then(function() {
+playing = true; syncUI();
+}).catch(function() {
+/* Tarayıcı reddetti — kullanıcı play’e basınca başlayacak */
+playing = false; syncUI();
 });
 
-/* ── Butonlar ────────────────────────────────────────── */
-playBtn.addEventListener(‘click’, function(e) {
-e.stopPropagation();
-if (!unlocked) { unlock(); return; }
-isPlaying ? doPause() : doPlay();
+/* ── Butonlar ─────────────────────────────────────────── */
+playBtn.addEventListener(‘click’, function() {
+togglePlay();
 });
-prevBtn.addEventListener(‘click’, function(e) {
-e.stopPropagation();
-if (!unlocked) { unlock(); return; }
+
+prevBtn.addEventListener(‘click’, function() {
 prev();
 });
-nextBtn.addEventListener(‘click’, function(e) {
-e.stopPropagation();
-if (!unlocked) { unlock(); return; }
+
+nextBtn.addEventListener(‘click’, function() {
 next();
 });
 
-/* ── Progress bar (tıklama + sürükleme) ─────────────── */
-function seekFromEvent(e) {
-const rect = barWrap.getBoundingClientRect();
-const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-if (isFinite(audio.duration)) {
+/* ── Progress bar tıklama / sürükleme ─────────────────── */
+function seekTo(clientX) {
+var rect = barWrap.getBoundingClientRect();
+var ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+if (isFinite(audio.duration) && audio.duration > 0) {
 audio.currentTime = ratio * audio.duration;
 }
 }
 
 barWrap.addEventListener(‘mousedown’, function(e) {
-dragging = true; seekFromEvent(e);
+dragging = true; seekTo(e.clientX);
 });
 barWrap.addEventListener(‘touchstart’, function(e) {
-dragging = true; seekFromEvent(e);
-}, { passive:true });
+dragging = true;
+if (e.touches[0]) seekTo(e.touches[0].clientX);
+}, { passive: true });
 document.addEventListener(‘mousemove’, function(e) {
-if (dragging) seekFromEvent(e);
+if (dragging) seekTo(e.clientX);
 });
 document.addEventListener(‘touchmove’, function(e) {
-if (dragging) seekFromEvent(e);
-}, { passive:true });
-document.addEventListener(‘mouseup’,    () => dragging = false);
-document.addEventListener(‘touchend’,   () => dragging = false);
+if (dragging && e.touches[0]) seekTo(e.touches[0].clientX);
+}, { passive: true });
+document.addEventListener(‘mouseup’,  function() { dragging = false; });
+document.addEventListener(‘touchend’, function() { dragging = false; });
 
-/* ── Audio events ────────────────────────────────────── */
+/* ── Audio event listeners ────────────────────────────── */
 audio.addEventListener(‘timeupdate’, function() {
-if (!dragging && isFinite(audio.duration) && audio.duration > 0) {
-const pct = (audio.currentTime / audio.duration) * 100;
-fillEl.style.width = pct + ‘%’;
+if (dragging) return;
+if (audio.duration > 0 && isFinite(audio.duration)) {
+fill.style.width   = (audio.currentTime / audio.duration * 100) + ‘%’;
 curEl.textContent  = fmt(audio.currentTime);
 }
 });
@@ -162,8 +158,7 @@ audio.addEventListener(‘loadedmetadata’, function() {
 if (isFinite(audio.duration)) durEl.textContent = fmt(audio.duration);
 });
 
+audio.addEventListener(‘play’,  function() { playing = true;  syncUI(); });
+audio.addEventListener(‘pause’, function() { playing = false; syncUI(); });
 audio.addEventListener(‘ended’, next);
-
-audio.addEventListener(‘play’,  function() { isPlaying = true;  setIcon(); });
-audio.addEventListener(‘pause’, function() { isPlaying = false; setIcon(); });
 });
