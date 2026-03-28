@@ -12,8 +12,7 @@
 </head>
 <body>
 
-  <!-- Kar taneleri - sadece küçük beyaz noktalar -->
-
+  <!-- Kar: küçük CSS noktaları -->
   <div class="snow-wrap" aria-hidden="true">
     <span class="sp"></span><span class="sp"></span><span class="sp"></span>
     <span class="sp"></span><span class="sp"></span><span class="sp"></span>
@@ -22,21 +21,17 @@
   </div>
 
   <!-- HEADER -->
-
   <header id="site-header">
     <div class="logo-badge">
       <div class="logo-circle"><i class="fas fa-code"></i></div>
       <span class="logo-text">krak</span>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span class="hbar"></span>
-      <span class="hbar"></span>
-      <span class="hbar"></span>
+      <span class="hbar"></span><span class="hbar"></span><span class="hbar"></span>
     </button>
   </header>
 
-  <!-- DROPDOWN NAV -->
-
+  <!-- NAV -->
   <nav class="drop-nav" id="drop-nav">
     <a href="#home"     class="nav-link active-link"><i class="fas fa-house"></i> Home</a>
     <a href="#projects" class="nav-link"><i class="fas fa-folder-open"></i> Projects</a>
@@ -46,216 +41,199 @@
 
   <main id="main-content">
 
-```
-<!-- HOME -->
-<section id="home" class="page-section active">
-  <div class="container">
-    <div class="banner-wrap">
-      <video class="banner-video" autoplay loop muted playsinline>
-        <source src="image/deneme.mov" type="video/mp4">
-        <source src="image/deneme.mov" type="video/quicktime">
-      </video>
-      <div class="banner-profile">
-        <img src="image/hello.png" alt="Profile" class="profile-circle">
-      </div>
-    </div>
-    <div class="below-banner">
-      <div class="about-card">
-        <div class="about-chip">ABOUT ME</div>
-        <p class="about-name">reallykrak</p>
-        <p class="about-desc">21 years old, professional software developer and reverse engineer with 9 years of experience.</p>
-      </div>
-      <div class="hero-right">
-        <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
-        <div class="type-container">
-          <span id="type-text"></span><span class="cursor">|</span>
+    <!-- HOME -->
+    <section id="home" class="page-section active">
+      <div class="container">
+        <div class="banner-wrap">
+          <video class="banner-video" autoplay loop muted playsinline>
+            <source src="image/deneme.mov" type="video/mp4">
+            <source src="image/deneme.mov" type="video/quicktime">
+          </video>
+          <div class="banner-profile">
+            <img src="image/hello.png" alt="Profile" class="profile-circle">
+          </div>
         </div>
-        <div class="hero-tags">
-          <span class="hero-tag"><i class="fas fa-code"></i> Developer</span>
-          <span class="hero-tag"><i class="fas fa-shield-halved"></i> Reverse Engineer</span>
-          <span class="hero-tag"><i class="fas fa-lightbulb"></i> Problem Solver</span>
+        <div class="below-banner">
+          <div class="about-card">
+            <div class="about-chip">ABOUT ME</div>
+            <p class="about-name">reallykrak</p>
+            <p class="about-desc">21 years old, professional software developer and reverse engineer with 9 years of experience.</p>
+          </div>
+          <div class="hero-right">
+            <h1>Hi, I'm <span class="highlight" id="name-text"></span></h1>
+            <div class="type-container"><span id="type-text"></span><span class="cursor">|</span></div>
+            <div class="hero-tags">
+              <span class="hero-tag"><i class="fas fa-code"></i> Developer</span>
+              <span class="hero-tag"><i class="fas fa-shield-halved"></i> Reverse Engineer</span>
+              <span class="hero-tag"><i class="fas fa-lightbulb"></i> Problem Solver</span>
+            </div>
+          </div>
         </div>
+        <div style="height:60px"></div>
       </div>
-    </div>
-    <div style="height:60px"></div>
-  </div>
-</section>
+    </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="page-section">
-  <div class="container">
-    <h2 class="section-title">My <span class="highlight">Projects</span></h2>
-    <p class="section-subtitle">Recent work from my GitHub</p>
-    <div class="github-stats">
-      <div class="stat-card"><i class="fas fa-code-branch"></i><span id="repo-count">0</span><p>Repositories</p></div>
-      <div class="stat-card"><i class="fas fa-star"></i><span id="stars-count">0</span><p>Stars</p></div>
-      <div class="stat-card"><i class="fas fa-code"></i><span id="languages-count">0</span><p>Languages</p></div>
-    </div>
-    <div class="projects-grid" id="projects-container"></div>
-    <div style="height:80px"></div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="page-section">
-  <div class="container">
-    <h2 class="section-title">My <span class="highlight">Skills</span></h2>
-    <p class="section-subtitle">Technologies &amp; tools I work with</p>
-
-    <div class="skill-category">
-      <div class="skill-cat-label"><i class="fas fa-terminal"></i> Programming Languages</div>
-      <div class="skill-grid">
-        <div class="skill-chip skill-btn"><i class="devicon-csharp-plain"></i> C#</div>
-        <div class="skill-chip skill-btn"><i class="devicon-javascript-plain"></i> JavaScript</div>
-        <div class="skill-chip skill-btn"><i class="devicon-typescript-plain"></i> TypeScript</div>
-        <div class="skill-chip skill-btn"><i class="devicon-python-plain"></i> Python</div>
-        <div class="skill-chip skill-btn"><i class="devicon-lua-plain"></i> Lua</div>
-        <div class="skill-chip skill-btn"><i class="devicon-cplusplus-plain"></i> C++</div>
-        <div class="skill-chip skill-btn"><i class="devicon-html5-plain"></i> HTML</div>
-        <div class="skill-chip skill-btn"><i class="devicon-css3-plain"></i> CSS</div>
+    <!-- PROJECTS -->
+    <section id="projects" class="page-section">
+      <div class="container">
+        <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+        <p class="section-subtitle">Recent work from my GitHub</p>
+        <div class="github-stats">
+          <div class="stat-card"><i class="fas fa-code-branch"></i><span id="repo-count">0</span><p>Repositories</p></div>
+          <div class="stat-card"><i class="fas fa-star"></i><span id="stars-count">0</span><p>Stars</p></div>
+          <div class="stat-card"><i class="fas fa-code"></i><span id="languages-count">0</span><p>Languages</p></div>
+        </div>
+        <div class="projects-grid" id="projects-container"></div>
+        <div style="height:80px"></div>
       </div>
-    </div>
+    </section>
 
-    <div class="skill-category">
-      <div class="skill-cat-label"><i class="fas fa-server"></i> Backend &amp; Runtime</div>
-      <div class="skill-grid">
-        <div class="skill-chip skill-btn"><i class="devicon-nodejs-plain"></i> Node.js</div>
-        <div class="skill-chip skill-btn"><i class="devicon-express-original"></i> Express</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-plug"></i> REST API</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-robot"></i> Bot Dev</div>
-        <div class="skill-chip skill-btn"><i class="fab fa-discord"></i> Discord.js</div>
+    <!-- SKILLS -->
+    <section id="skills" class="page-section">
+      <div class="container">
+        <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+        <p class="section-subtitle">Technologies &amp; tools I work with</p>
+        <div class="skill-category">
+          <div class="skill-cat-label"><i class="fas fa-terminal"></i> Programming Languages</div>
+          <div class="skill-grid">
+            <div class="skill-chip skill-btn"><i class="devicon-csharp-plain"></i> C#</div>
+            <div class="skill-chip skill-btn"><i class="devicon-javascript-plain"></i> JavaScript</div>
+            <div class="skill-chip skill-btn"><i class="devicon-typescript-plain"></i> TypeScript</div>
+            <div class="skill-chip skill-btn"><i class="devicon-python-plain"></i> Python</div>
+            <div class="skill-chip skill-btn"><i class="devicon-lua-plain"></i> Lua</div>
+            <div class="skill-chip skill-btn"><i class="devicon-cplusplus-plain"></i> C++</div>
+            <div class="skill-chip skill-btn"><i class="devicon-html5-plain"></i> HTML</div>
+            <div class="skill-chip skill-btn"><i class="devicon-css3-plain"></i> CSS</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-label"><i class="fas fa-server"></i> Backend &amp; Runtime</div>
+          <div class="skill-grid">
+            <div class="skill-chip skill-btn"><i class="devicon-nodejs-plain"></i> Node.js</div>
+            <div class="skill-chip skill-btn"><i class="devicon-express-original"></i> Express</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-plug"></i> REST API</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-robot"></i> Bot Dev</div>
+            <div class="skill-chip skill-btn"><i class="fab fa-discord"></i> Discord.js</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-label"><i class="fas fa-palette"></i> Frontend &amp; UI</div>
+          <div class="skill-grid">
+            <div class="skill-chip skill-btn"><i class="devicon-react-original"></i> React</div>
+            <div class="skill-chip skill-btn"><i class="devicon-tailwindcss-plain"></i> Tailwind</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-layer-group"></i> SPA</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-mobile-alt"></i> Responsive</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-label"><i class="fas fa-database"></i> Database</div>
+          <div class="skill-grid">
+            <div class="skill-chip skill-btn"><i class="devicon-mysql-plain"></i> MySQL</div>
+            <div class="skill-chip skill-btn"><i class="devicon-sqlite-plain"></i> SQLite</div>
+            <div class="skill-chip skill-btn"><i class="devicon-mongodb-plain"></i> MongoDB</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-table"></i> SQL</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-label"><i class="fas fa-bug"></i> Reverse Engineering</div>
+          <div class="skill-grid">
+            <div class="skill-chip skill-btn"><i class="fas fa-microchip"></i> Il2Cpp</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-hammer"></i> HarmonyLib</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-memory"></i> Cheat Engine</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-magnifying-glass"></i> x64dbg</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-eye"></i> dnSpy</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-cube"></i> MelonLoader</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-network-wired"></i> Packet Analysis</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-label"><i class="fas fa-tools"></i> Tools &amp; DevOps</div>
+          <div class="skill-grid">
+            <div class="skill-chip skill-btn"><i class="devicon-git-plain"></i> Git</div>
+            <div class="skill-chip skill-btn"><i class="fab fa-github"></i> GitHub</div>
+            <div class="skill-chip skill-btn"><i class="devicon-vscode-plain"></i> VS Code</div>
+            <div class="skill-chip skill-btn"><i class="devicon-visualstudio-plain"></i> Visual Studio</div>
+            <div class="skill-chip skill-btn"><i class="fab fa-docker"></i> Docker</div>
+            <div class="skill-chip skill-btn"><i class="fas fa-terminal"></i> CLI / Bash</div>
+          </div>
+        </div>
+        <div style="height:80px"></div>
       </div>
-    </div>
+    </section>
 
-    <div class="skill-category">
-      <div class="skill-cat-label"><i class="fas fa-palette"></i> Frontend &amp; UI</div>
-      <div class="skill-grid">
-        <div class="skill-chip skill-btn"><i class="devicon-react-original"></i> React</div>
-        <div class="skill-chip skill-btn"><i class="devicon-tailwindcss-plain"></i> Tailwind</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-layer-group"></i> SPA</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-mobile-alt"></i> Responsive</div>
+    <!-- CONTACT -->
+    <section id="contact" class="page-section">
+      <div class="container">
+        <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+        <p class="section-subtitle">Connect with me on social media</p>
+        <div class="social-links">
+          <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="soc-icon spotify"><i class="fab fa-spotify"></i></a>
+          <a href="https://youtube.com/reallykrak"   target="_blank" class="soc-icon youtube"><i class="fab fa-youtube"></i></a>
+          <a href="https://github.com/reallykrak"    target="_blank" class="soc-icon github"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/reallykrak" target="_blank" class="soc-icon instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="contact-card">
+          <h3>Send a Message</h3>
+          <form action="https://formsubmit.co/reallykrakw@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Portfolyondan Yeni Mesaj!">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="fg"><input type="text"  name="name"    placeholder="Your Name"    required class="fi"></div>
+            <div class="fg"><input type="email" name="email"   placeholder="Your Email"   required class="fi"></div>
+            <div class="fg"><textarea           name="message" placeholder="Your Message" required class="fi"></textarea></div>
+            <button type="submit" class="btn-send">Send <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+        <div style="height:80px"></div>
       </div>
-    </div>
-
-    <div class="skill-category">
-      <div class="skill-cat-label"><i class="fas fa-database"></i> Database</div>
-      <div class="skill-grid">
-        <div class="skill-chip skill-btn"><i class="devicon-mysql-plain"></i> MySQL</div>
-        <div class="skill-chip skill-btn"><i class="devicon-sqlite-plain"></i> SQLite</div>
-        <div class="skill-chip skill-btn"><i class="devicon-mongodb-plain"></i> MongoDB</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-table"></i> SQL</div>
-      </div>
-    </div>
-
-    <div class="skill-category">
-      <div class="skill-cat-label"><i class="fas fa-bug"></i> Reverse Engineering</div>
-      <div class="skill-grid">
-        <div class="skill-chip skill-btn"><i class="fas fa-microchip"></i> Il2Cpp</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-hammer"></i> HarmonyLib</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-memory"></i> Cheat Engine</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-magnifying-glass"></i> x64dbg</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-eye"></i> dnSpy</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-cube"></i> MelonLoader</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-network-wired"></i> Packet Analysis</div>
-      </div>
-    </div>
-
-    <div class="skill-category">
-      <div class="skill-cat-label"><i class="fas fa-tools"></i> Tools &amp; DevOps</div>
-      <div class="skill-grid">
-        <div class="skill-chip skill-btn"><i class="devicon-git-plain"></i> Git</div>
-        <div class="skill-chip skill-btn"><i class="fab fa-github"></i> GitHub</div>
-        <div class="skill-chip skill-btn"><i class="devicon-vscode-plain"></i> VS Code</div>
-        <div class="skill-chip skill-btn"><i class="devicon-visualstudio-plain"></i> Visual Studio</div>
-        <div class="skill-chip skill-btn"><i class="fab fa-docker"></i> Docker</div>
-        <div class="skill-chip skill-btn"><i class="fas fa-terminal"></i> CLI / Bash</div>
-      </div>
-    </div>
-    <div style="height:80px"></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="page-section">
-  <div class="container">
-    <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
-    <p class="section-subtitle">Connect with me on social media</p>
-    <div class="social-links">
-      <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca?si=LKGfU20wRP2jdOmCAI0G1Q" target="_blank" class="soc-icon spotify"><i class="fab fa-spotify"></i></a>
-      <a href="https://youtube.com/reallykrak"   target="_blank" class="soc-icon youtube"><i class="fab fa-youtube"></i></a>
-      <a href="https://github.com/reallykrak"    target="_blank" class="soc-icon github"><i class="fab fa-github"></i></a>
-      <a href="https://instagram.com/reallykrak" target="_blank" class="soc-icon instagram"><i class="fab fa-instagram"></i></a>
-    </div>
-    <div class="contact-card">
-      <h3>Send a Message</h3>
-      <form action="https://formsubmit.co/reallykrakw@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Portfolyondan Yeni Mesaj!">
-        <input type="hidden" name="_captcha" value="false">
-        <div class="fg"><input type="text"  name="name"    placeholder="Your Name"    required class="fi"></div>
-        <div class="fg"><input type="email" name="email"   placeholder="Your Email"   required class="fi"></div>
-        <div class="fg"><textarea           name="message" placeholder="Your Message" required class="fi"></textarea></div>
-        <button type="submit" class="btn-send">Send <i class="fas fa-paper-plane"></i></button>
-      </form>
-    </div>
-    <div style="height:80px"></div>
-  </div>
-</section>
-```
-
+    </section>
   </main>
 
-  <!-- SPOTIFY PLAYER -->
+  <!--
+    MÜZİK PLAYER
+    ÖNEMLİ: src içindeki klasör adını kendi klasörünle eşleştir.
+    Klasörün adı "Müzikler" ise src="Müzikler/hallettim.mp3" yap.
+    Klasörün adı "Muzikler"  ise src="Muzikler/hallettim.mp3"  yap.
+  -->
+  <audio id="the-audio" preload="auto" src="Müzikler/hallettim.mp3"></audio>
 
-  <div class="sp-player" id="sp-player">
-    <img id="sp-art" src="image/reallykrak.png" alt="art" class="sp-art">
-    <div class="sp-mid">
-      <div class="sp-meta">
-        <span class="sp-title"  id="sp-title">Nuron's Krak</span>
-        <span class="sp-artist" id="sp-artist">reallykrak</span>
-      </div>
-      <div class="sp-timeline">
-        <span class="sp-time" id="sp-cur">0:00</span>
-        <div class="sp-bar-outer" id="sp-bar">
-          <div class="sp-bar-inner" id="sp-fill"></div>
-        </div>
-        <span class="sp-time" id="sp-dur">0:00</span>
+  <!-- KOMPAKT PLAYER -->
+  <div class="mini-player" id="mini-player">
+    <img id="sp-art" src="image/reallykrak.png" alt="art" class="mini-art">
+    <div class="mini-info">
+      <span class="mini-title" id="sp-title">Nuron's Krak</span>
+      <div class="mini-prog">
+        <span class="mini-time" id="sp-cur">0:00</span>
+        <div class="mini-bar" id="sp-bar"><div class="mini-fill" id="sp-fill"></div></div>
+        <span class="mini-time" id="sp-dur">0:00</span>
       </div>
     </div>
-    <div class="sp-btns">
-      <button class="sp-btn" id="sp-prev"><i class="fas fa-backward-step"></i></button>
-      <button class="sp-btn sp-play-btn" id="sp-play"><i class="fas fa-play" id="sp-icon"></i></button>
-      <button class="sp-btn" id="sp-next"><i class="fas fa-forward-step"></i></button>
+    <div class="mini-btns">
+      <button class="mini-btn" id="sp-prev"><i class="fas fa-backward-step"></i></button>
+      <button class="mini-btn mini-play" id="sp-play"><i class="fas fa-play"></i></button>
+      <button class="mini-btn" id="sp-next"><i class="fas fa-forward-step"></i></button>
     </div>
   </div>
 
-  <!-- AUDIO -->
-
-<audio id="the-audio" preload="auto" src="Muzikler/hallettim.mp3"></audio>
-
   <!-- VISITOR -->
-
-  <div class="visitor-pill" id="visitor-pill">
+  <div class="visitor-pill">
     <i class="fas fa-eye"></i>
     <span id="visitor-count">3528</span>
   </div>
 
   <script src="js/typewriter.js"></script>
-
   <script src="js/github.js"></script>
-
   <script src="js/skills.js"></script>
-
   <script src="js/music-player.js"></script>
 
   <script>
     /* NAV */
-    var hbg  = document.getElementById('hamburger');
+    var hbg = document.getElementById('hamburger');
     var dnav = document.getElementById('drop-nav');
-    hbg.addEventListener('click', function(e) {
+    hbg.onclick = function(e) {
       e.stopPropagation();
       hbg.classList.toggle('open');
       dnav.classList.toggle('open');
-    });
+    };
     document.addEventListener('click', function(e) {
       if (!dnav.contains(e.target) && !hbg.contains(e.target)) {
         hbg.classList.remove('open');
@@ -263,26 +241,25 @@
       }
     });
     document.querySelectorAll('.nav-link').forEach(function(l) {
-      l.addEventListener('click', function(e) {
+      l.onclick = function(e) {
         e.preventDefault();
         hbg.classList.remove('open'); dnav.classList.remove('open');
-        document.querySelectorAll('.nav-link').forEach(function(x){x.classList.remove('active-link');});
+        document.querySelectorAll('.nav-link').forEach(function(x){ x.classList.remove('active-link'); });
         l.classList.add('active-link');
         var id = l.getAttribute('href').substring(1);
-        document.querySelectorAll('.page-section').forEach(function(s){s.classList.remove('active');});
+        document.querySelectorAll('.page-section').forEach(function(s){ s.classList.remove('active'); });
         document.getElementById(id).classList.add('active');
-        window.scrollTo(0,0);
-      });
+        window.scrollTo(0, 0);
+      };
     });
 
     /* VISITOR */
     (function() {
-      var k = 'krak_v4', base = 3528;
-      var n = parseInt(localStorage.getItem(k)||'0',10)+1;
-      localStorage.setItem(k,n);
-      document.getElementById('visitor-count').textContent=(base+n).toLocaleString();
+      var k = 'krak_v5', base = 3528;
+      var n = parseInt(localStorage.getItem(k) || '0', 10) + 1;
+      localStorage.setItem(k, n);
+      document.getElementById('visitor-count').textContent = (base + n).toLocaleString();
     })();
   </script>
-
 </body>
 </html>
