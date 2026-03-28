@@ -1,164 +1,160 @@
-document.addEventListener(‘DOMContentLoaded’, function () {
+// Müzik oynatıcı — en sade, en güvenilir yaklaşım
+(function() {
+‘use strict’;
 
-/* ── PLAYLIST ─────────────────────────────────────────── */
-var playlist = [
+var TRACKS = [
 {
 title:  “Nuron’s Krak”,
 artist: “reallykrak”,
-src:    “Müzikler/hallettim.mp3”,
+src:    “Muzikler/hallettim.mp3”,   // klasör adı: Muzikler (ü yok)
 art:    “image/reallykrak.png”
 }
-/* Yeni şarkı eklemek:
-,{ title:”…”, artist:”…”, src:“Müzikler/….mp3”, art:“image/….png” } */
 ];
 
-var idx      = 0;
-var playing  = false;
-var dragging = false;
+var idx = 0;
 
-/* ── DOM ──────────────────────────────────────────────── */
-var audio   = document.getElementById(‘audio’);
-var playBtn = document.getElementById(‘play-pause-btn’);
-var prevBtn = document.getElementById(‘prev-btn’);
-var nextBtn = document.getElementById(‘next-btn’);
-var titleEl = document.getElementById(‘song-title’);
-var artEl   = document.getElementById(‘song-artist’);
-var imgEl   = document.getElementById(‘album-art’);
-var fill    = document.getElementById(‘sp-fill’);
-var curEl   = document.getElementById(‘sp-current’);
-var durEl   = document.getElementById(‘sp-duration’);
-var barWrap = document.getElementById(‘sp-bar-wrap’);
+// DOM — window.onload ile bekliyoruz (DOMContentLoaded daha erken ama
+// bazı mobil tarayıcılarda audio elementi hazır olmayabilir)
+window.addEventListener(‘load’, function() {
+
+```
+var audio   = document.getElementById('the-audio');
+var playBtn = document.getElementById('sp-play');
+var prevBtn = document.getElementById('sp-prev');
+var nextBtn = document.getElementById('sp-next');
+var artImg  = document.getElementById('sp-art');
+var titleEl = document.getElementById('sp-title');
+var artEl   = document.getElementById('sp-artist');
+var fillEl  = document.getElementById('sp-fill');
+var curEl   = document.getElementById('sp-cur');
+var durEl   = document.getElementById('sp-dur');
+var barEl   = document.getElementById('sp-bar');
+
+if (!audio || !playBtn) return;
 
 audio.volume = 0.65;
 
-/* ── helpers ──────────────────────────────────────────── */
+/* ── format time ── */
 function fmt(s) {
-s = isFinite(s) ? s : 0;
-var m = Math.floor(s / 60);
-var sec = Math.floor(s % 60);
-return m + ‘:’ + (sec < 10 ? ‘0’ : ‘’) + sec;
+  if (!isFinite(s) || s < 0) s = 0;
+  var m = Math.floor(s / 60);
+  var sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
 }
 
+/* ── sync buton ikonu ve dönen art ── */
 function syncUI() {
-var ic = playBtn.querySelector(‘i’);
-ic.className = playing ? ‘fas fa-pause’ : ‘fas fa-play’;
-if (playing) imgEl.classList.add(‘spinning’);
-else         imgEl.classList.remove(‘spinning’);
+  var ic = playBtn.querySelector('i');
+  if (!audio.paused) {
+    ic.className = 'fas fa-pause';
+    artImg.classList.add('spin');
+  } else {
+    ic.className = 'fas fa-play';
+    artImg.classList.remove('spin');
+  }
 }
 
+/* ── şarkı yükle ── */
 function loadTrack(i) {
-var t = playlist[i];
-audio.src           = t.src;
-titleEl.textContent = t.title;
-artEl.textContent   = t.artist;
-imgEl.src           = t.art;
-fill.style.width    = ‘0%’;
-curEl.textContent   = ‘0:00’;
-durEl.textContent   = ‘0:00’;
+  var t = TRACKS[i];
+  audio.src           = t.src;
+  titleEl.textContent = t.title;
+  artEl.textContent   = t.artist;
+  artImg.src          = t.art;
+  fillEl.style.width  = '0%';
+  curEl.textContent   = '0:00';
+  durEl.textContent   = '0:00';
 }
 
-/* ── play / pause — her zaman güvenli ─────────────────── */
+/* ── PLAY — doğrudan, user gesture içinde ── */
 function doPlay() {
-var p = audio.play();
-if (p && typeof p.then === ‘function’) {
-p.then(function() {
-playing = true; syncUI();
-}).catch(function(err) {
-console.warn(‘Play engellendi:’, err.message);
-playing = false; syncUI();
-});
-} else {
-/* eski tarayıcılar */
-playing = true; syncUI();
-}
+  var p = audio.play();
+  if (p && p.catch) {
+    p.catch(function(e) {
+      console.warn('Audio play blocked:', e.message);
+    });
+  }
 }
 
-function doPause() {
-audio.pause();
-playing = false; syncUI();
-}
-
-function togglePlay() {
-if (playing) doPause(); else doPlay();
-}
-
-function next() {
-idx = (idx + 1) % playlist.length;
-loadTrack(idx); doPlay();
-}
-
-function prev() {
-if (audio.currentTime > 3) {
-audio.currentTime = 0; doPlay();
-} else {
-idx = (idx - 1 + playlist.length) % playlist.length;
-loadTrack(idx); doPlay();
-}
-}
-
-/* ── İlk yükleme ──────────────────────────────────────── */
+/* ── INIT ── */
 loadTrack(idx);
 
-/* ── Autoplay denemesi (tarayıcı izin verirse başlar) ─── */
-audio.play().then(function() {
-playing = true; syncUI();
-}).catch(function() {
-/* Tarayıcı reddetti — kullanıcı play’e basınca başlayacak */
-playing = false; syncUI();
-});
+/* ── PLAY BUTTON — en basit doğrudan onclick ── */
+playBtn.onclick = function() {
+  if (audio.paused) {
+    doPlay();
+  } else {
+    audio.pause();
+  }
+};
 
-/* ── Butonlar ─────────────────────────────────────────── */
-playBtn.addEventListener(‘click’, function() {
-togglePlay();
-});
+prevBtn.onclick = function() {
+  if (audio.currentTime > 3) {
+    audio.currentTime = 0;
+    doPlay();
+  } else {
+    idx = (idx - 1 + TRACKS.length) % TRACKS.length;
+    loadTrack(idx);
+    doPlay();
+  }
+};
 
-prevBtn.addEventListener(‘click’, function() {
-prev();
-});
+nextBtn.onclick = function() {
+  idx = (idx + 1) % TRACKS.length;
+  loadTrack(idx);
+  doPlay();
+};
 
-nextBtn.addEventListener(‘click’, function() {
-next();
-});
+/* ── Progress bar tıklama ── */
+var dragging = false;
 
-/* ── Progress bar tıklama / sürükleme ─────────────────── */
-function seekTo(clientX) {
-var rect = barWrap.getBoundingClientRect();
-var ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-if (isFinite(audio.duration) && audio.duration > 0) {
-audio.currentTime = ratio * audio.duration;
+function seekFromEvent(clientX) {
+  var rect = barEl.getBoundingClientRect();
+  var r = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+  if (audio.duration && isFinite(audio.duration)) {
+    audio.currentTime = r * audio.duration;
+  }
 }
-}
 
-barWrap.addEventListener(‘mousedown’, function(e) {
-dragging = true; seekTo(e.clientX);
+barEl.addEventListener('mousedown', function(e) {
+  dragging = true; seekFromEvent(e.clientX); e.preventDefault();
 });
-barWrap.addEventListener(‘touchstart’, function(e) {
-dragging = true;
-if (e.touches[0]) seekTo(e.touches[0].clientX);
+barEl.addEventListener('touchstart', function(e) {
+  dragging = true;
+  if (e.touches[0]) seekFromEvent(e.touches[0].clientX);
 }, { passive: true });
-document.addEventListener(‘mousemove’, function(e) {
-if (dragging) seekTo(e.clientX);
+document.addEventListener('mousemove', function(e) {
+  if (dragging) seekFromEvent(e.clientX);
 });
-document.addEventListener(‘touchmove’, function(e) {
-if (dragging && e.touches[0]) seekTo(e.touches[0].clientX);
+document.addEventListener('touchmove', function(e) {
+  if (dragging && e.touches[0]) seekFromEvent(e.touches[0].clientX);
 }, { passive: true });
-document.addEventListener(‘mouseup’,  function() { dragging = false; });
-document.addEventListener(‘touchend’, function() { dragging = false; });
+document.addEventListener('mouseup',  function() { dragging = false; });
+document.addEventListener('touchend', function() { dragging = false; });
 
-/* ── Audio event listeners ────────────────────────────── */
-audio.addEventListener(‘timeupdate’, function() {
-if (dragging) return;
-if (audio.duration > 0 && isFinite(audio.duration)) {
-fill.style.width   = (audio.currentTime / audio.duration * 100) + ‘%’;
-curEl.textContent  = fmt(audio.currentTime);
-}
+/* ── Audio events ── */
+audio.addEventListener('timeupdate', function() {
+  if (dragging) return;
+  if (audio.duration > 0 && isFinite(audio.duration)) {
+    fillEl.style.width = (audio.currentTime / audio.duration * 100) + '%';
+    curEl.textContent  = fmt(audio.currentTime);
+  }
 });
 
-audio.addEventListener(‘loadedmetadata’, function() {
-if (isFinite(audio.duration)) durEl.textContent = fmt(audio.duration);
+audio.addEventListener('loadedmetadata', function() {
+  if (isFinite(audio.duration)) durEl.textContent = fmt(audio.duration);
 });
 
-audio.addEventListener(‘play’,  function() { playing = true;  syncUI(); });
-audio.addEventListener(‘pause’, function() { playing = false; syncUI(); });
-audio.addEventListener(‘ended’, next);
+audio.addEventListener('play',  syncUI);
+audio.addEventListener('pause', syncUI);
+audio.addEventListener('ended', function() {
+  idx = (idx + 1) % TRACKS.length;
+  loadTrack(idx); doPlay();
 });
+
+/* ── Autoplay denemesi ── */
+doPlay();
+```
+
+});
+})();
