@@ -2,8 +2,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var TRACKS = [
     { title: "Tolunay",       src: "css/hallettim.mp3",        art: "image/reallykrak.png" },
-    { title: "Tolunay",       src: "css/hallettim1.mp3",       art: "image/reallykrak.png" },
-    { title: "Tolunay",       src: "css/hallettim2.mp3",       art: "image/reallykrak.png" }
+    { title: "Tolunay",       src: "css/hallettim1.mp3",       art: "image/tolunay.png" },
+    { title: "Tolunay",       src: "css/hallettim2.mp3",       art: "image/pode.png" }
   ];
 
   var idx = 0;
