@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
@@ -12,17 +13,13 @@
 </head>
 <body>
 
-  <!-- Kar taneleri -->
+  <!-- Kar taneleri - sadece küçük beyaz noktalar -->
 
-  <div class="snowflakes" aria-hidden="true">
-    <div class="snowflake">&#10053;</div>
-    <div class="snowflake">&#10052;</div>
-    <div class="snowflake">&#10053;</div>
-    <div class="snowflake">&#10052;</div>
-    <div class="snowflake">&#10053;</div>
-    <div class="snowflake">&#10052;</div>
-    <div class="snowflake">&#10053;</div>
-    <div class="snowflake">&#10052;</div>
+  <div class="snow-wrap" aria-hidden="true">
+    <span class="sp"></span><span class="sp"></span><span class="sp"></span>
+    <span class="sp"></span><span class="sp"></span><span class="sp"></span>
+    <span class="sp"></span><span class="sp"></span><span class="sp"></span>
+    <span class="sp"></span><span class="sp"></span><span class="sp"></span>
   </div>
 
   <!-- HEADER -->
@@ -63,7 +60,6 @@
         <img src="image/hello.png" alt="Profile" class="profile-circle">
       </div>
     </div>
-
     <div class="below-banner">
       <div class="about-card">
         <div class="about-chip">ABOUT ME</div>
@@ -191,15 +187,15 @@
       <a href="https://github.com/reallykrak"    target="_blank" class="soc-icon github"><i class="fab fa-github"></i></a>
       <a href="https://instagram.com/reallykrak" target="_blank" class="soc-icon instagram"><i class="fab fa-instagram"></i></a>
     </div>
-    <div class="contact-form">
+    <div class="contact-card">
       <h3>Send a Message</h3>
-      <form id="contact-form" action="https://formsubmit.co/reallykrakw@gmail.com" method="POST">
+      <form action="https://formsubmit.co/reallykrakw@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Portfolyondan Yeni Mesaj!">
         <input type="hidden" name="_captcha" value="false">
-        <div class="form-group"><input type="text"  name="name"    id="name"    placeholder="Your Name"    required class="form-input"></div>
-        <div class="form-group"><input type="email" name="email"   id="email"   placeholder="Your Email"   required class="form-input"></div>
-        <div class="form-group"><textarea           name="message" id="message" placeholder="Your Message" required class="form-input"></textarea></div>
-        <button type="submit" class="btn-send">Send Message <i class="fas fa-paper-plane"></i></button>
+        <div class="fg"><input type="text"  name="name"    placeholder="Your Name"    required class="fi"></div>
+        <div class="fg"><input type="email" name="email"   placeholder="Your Email"   required class="fi"></div>
+        <div class="fg"><textarea           name="message" placeholder="Your Message" required class="fi"></textarea></div>
+        <button type="submit" class="btn-send">Send <i class="fas fa-paper-plane"></i></button>
       </form>
     </div>
     <div style="height:80px"></div>
@@ -212,31 +208,34 @@
   <!-- SPOTIFY PLAYER -->
 
   <div class="sp-player" id="sp-player">
-    <img src="image/reallykrak.png" alt="art" class="sp-art" id="album-art">
-    <div class="sp-info">
-      <span class="sp-title"  id="song-title">Nuron's Krak</span>
-      <span class="sp-artist" id="song-artist">reallykrak</span>
-      <div class="sp-progress-row">
-        <span class="sp-time" id="sp-current">0:00</span>
-        <div class="sp-bar-wrap" id="sp-bar-wrap">
-          <div class="sp-bar-bg">
-            <div class="sp-bar-fill" id="sp-fill"></div>
-          </div>
+    <img id="sp-art" src="image/reallykrak.png" alt="art" class="sp-art">
+    <div class="sp-mid">
+      <div class="sp-meta">
+        <span class="sp-title"  id="sp-title">Nuron's Krak</span>
+        <span class="sp-artist" id="sp-artist">reallykrak</span>
+      </div>
+      <div class="sp-timeline">
+        <span class="sp-time" id="sp-cur">0:00</span>
+        <div class="sp-bar-outer" id="sp-bar">
+          <div class="sp-bar-inner" id="sp-fill"></div>
         </div>
-        <span class="sp-time" id="sp-duration">0:00</span>
+        <span class="sp-time" id="sp-dur">0:00</span>
       </div>
     </div>
-    <div class="sp-controls">
-      <button class="sp-btn" id="prev-btn"><i class="fas fa-backward-step"></i></button>
-      <button class="sp-btn sp-play" id="play-pause-btn"><i class="fas fa-play"></i></button>
-      <button class="sp-btn" id="next-btn"><i class="fas fa-forward-step"></i></button>
+    <div class="sp-btns">
+      <button class="sp-btn" id="sp-prev"><i class="fas fa-backward-step"></i></button>
+      <button class="sp-btn sp-play-btn" id="sp-play"><i class="fas fa-play" id="sp-icon"></i></button>
+      <button class="sp-btn" id="sp-next"><i class="fas fa-forward-step"></i></button>
     </div>
   </div>
-  <audio id="audio" preload="auto"></audio>
+
+  <!-- AUDIO -->
+
+<audio id="the-audio" preload="auto" src="Muzikler/hallettim.mp3"></audio>
 
   <!-- VISITOR -->
 
-  <div class="visitor-pill">
+  <div class="visitor-pill" id="visitor-pill">
     <i class="fas fa-eye"></i>
     <span id="visitor-count">3528</span>
   </div>
@@ -250,10 +249,9 @@
   <script src="js/music-player.js"></script>
 
   <script>
-    /* ── NAV ── */
-    const hbg  = document.getElementById('hamburger');
-    const dnav = document.getElementById('drop-nav');
-
+    /* NAV */
+    var hbg  = document.getElementById('hamburger');
+    var dnav = document.getElementById('drop-nav');
     hbg.addEventListener('click', function(e) {
       e.stopPropagation();
       hbg.classList.toggle('open');
@@ -265,26 +263,25 @@
         dnav.classList.remove('open');
       }
     });
-    document.querySelectorAll('.nav-link').forEach(function(link) {
-      link.addEventListener('click', function(e) {
+    document.querySelectorAll('.nav-link').forEach(function(l) {
+      l.addEventListener('click', function(e) {
         e.preventDefault();
-        hbg.classList.remove('open');
-        dnav.classList.remove('open');
-        document.querySelectorAll('.nav-link').forEach(function(l) { l.classList.remove('active-link'); });
-        this.classList.add('active-link');
-        var id = this.getAttribute('href').substring(1);
-        document.querySelectorAll('.page-section').forEach(function(s) { s.classList.remove('active'); });
+        hbg.classList.remove('open'); dnav.classList.remove('open');
+        document.querySelectorAll('.nav-link').forEach(function(x){x.classList.remove('active-link');});
+        l.classList.add('active-link');
+        var id = l.getAttribute('href').substring(1);
+        document.querySelectorAll('.page-section').forEach(function(s){s.classList.remove('active');});
         document.getElementById(id).classList.add('active');
-        window.scrollTo(0, 0);
+        window.scrollTo(0,0);
       });
     });
 
-    /* ── VISITOR ── */
+    /* VISITOR */
     (function() {
-      var k = 'krak_v3', base = 3528;
-      var n = parseInt(localStorage.getItem(k) || '0', 10) + 1;
-      localStorage.setItem(k, n);
-      document.getElementById('visitor-count').textContent = (base + n).toLocaleString();
+      var k = 'krak_v4', base = 3528;
+      var n = parseInt(localStorage.getItem(k)||'0',10)+1;
+      localStorage.setItem(k,n);
+      document.getElementById('visitor-count').textContent=(base+n).toLocaleString();
     })();
   </script>
 
