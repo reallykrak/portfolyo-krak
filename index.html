@@ -12,10 +12,13 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
+  <!-- Cursor glow (desktop) -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- Scroll progress -->
   <div class="scroll-progress" id="scroll-progress"></div>
 
-  <!-- Toast container -->
+  <!-- Toast -->
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Kar -->
@@ -33,8 +36,15 @@
       <span class="logo-text">krak</span>
       <span class="online-dot" title="Online"></span>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span class="hbar"></span><span class="hbar"></span><span class="hbar"></span>
+
+    <!-- YENİ HAMBURGER: pill buton -->
+    <button class="nav-pill" id="hamburger" aria-label="Menu">
+      <div class="nav-pill-lines">
+        <span class="nl nl-1"></span>
+        <span class="nl nl-2"></span>
+        <span class="nl nl-3"></span>
+      </div>
+      <span class="nav-pill-label" id="nav-pill-label">MENU</span>
     </button>
   </header>
 
@@ -56,7 +66,6 @@
       <span id="nav-song-name">Not playing</span>
     </div>
     <div class="nav-divider"></div>
-    <!-- Keyboard shortcuts hint -->
     <div class="nav-shortcuts">
       <span><kbd>Space</kbd> Play/Pause</span>
       <span><kbd>←</kbd><kbd>→</kbd> Skip</span>
@@ -95,7 +104,17 @@
           </div>
         </div>
 
-        <!-- Quick stats row -->
+        <!-- Activity card -->
+        <div class="activity-card">
+          <div class="ac-dot"></div>
+          <div class="ac-content">
+            <span class="ac-label">Currently</span>
+            <span class="ac-text">Building cool stuff &amp; breaking things apart</span>
+          </div>
+          <div class="ac-badge"><i class="fas fa-laptop-code"></i></div>
+        </div>
+
+        <!-- Quick stats -->
         <div class="quick-stats">
           <div class="qs-item">
             <i class="fas fa-calendar-check"></i>
@@ -228,98 +247,41 @@
         <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
         <p class="section-subtitle">Reach me through any platform</p>
         <div class="contact-cards">
-
           <div class="contact-card-item">
-            <div class="cc-icon" style="background:rgba(88,101,242,.18);border-color:rgba(88,101,242,.35)">
-              <i class="fab fa-discord" style="color:#5865F2"></i>
-            </div>
-            <div class="cc-info">
-              <span class="cc-platform">Discord</span>
-              <span class="cc-handle">reallykrak</span>
-            </div>
-            <button class="cc-btn cc-copy" onclick="showToast('Copied!'); copyText('reallykrak', this)">
-              <i class="fas fa-copy"></i> Copy
-            </button>
+            <div class="cc-icon" style="background:rgba(88,101,242,.18);border-color:rgba(88,101,242,.35)"><i class="fab fa-discord" style="color:#5865F2"></i></div>
+            <div class="cc-info"><span class="cc-platform">Discord</span><span class="cc-handle">reallykrak</span></div>
+            <button class="cc-btn cc-copy" onclick="showToast('Copied to clipboard!'); copyText('reallykrak', this)"><i class="fas fa-copy"></i> Copy</button>
           </div>
-
           <div class="contact-card-item">
-            <div class="cc-icon" style="background:rgba(0,136,204,.18);border-color:rgba(0,136,204,.35)">
-              <i class="fab fa-telegram" style="color:#0088cc"></i>
-            </div>
-            <div class="cc-info">
-              <span class="cc-platform">Telegram</span>
-              <span class="cc-handle">@reallykrak</span>
-            </div>
-            <a href="https://t.me/reallykrak" target="_blank" class="cc-btn cc-link">
-              <i class="fas fa-arrow-up-right-from-square"></i> Link
-            </a>
+            <div class="cc-icon" style="background:rgba(0,136,204,.18);border-color:rgba(0,136,204,.35)"><i class="fab fa-telegram" style="color:#0088cc"></i></div>
+            <div class="cc-info"><span class="cc-platform">Telegram</span><span class="cc-handle">@reallykrak</span></div>
+            <a href="https://t.me/reallykrak" target="_blank" class="cc-btn cc-link"><i class="fas fa-arrow-up-right-from-square"></i> Link</a>
           </div>
-
           <div class="contact-card-item">
-            <div class="cc-icon" style="background:rgba(255,0,0,.14);border-color:rgba(255,0,0,.30)">
-              <i class="fab fa-youtube" style="color:#FF0000"></i>
-            </div>
-            <div class="cc-info">
-              <span class="cc-platform">YouTube</span>
-              <span class="cc-handle">reallykrak</span>
-            </div>
-            <a href="https://youtube.com/reallykrak" target="_blank" class="cc-btn cc-link">
-              <i class="fas fa-arrow-up-right-from-square"></i> Link
-            </a>
+            <div class="cc-icon" style="background:rgba(255,0,0,.14);border-color:rgba(255,0,0,.30)"><i class="fab fa-youtube" style="color:#FF0000"></i></div>
+            <div class="cc-info"><span class="cc-platform">YouTube</span><span class="cc-handle">reallykrak</span></div>
+            <a href="https://youtube.com/reallykrak" target="_blank" class="cc-btn cc-link"><i class="fas fa-arrow-up-right-from-square"></i> Link</a>
           </div>
-
           <div class="contact-card-item">
-            <div class="cc-icon" style="background:rgba(214,36,159,.15);border-color:rgba(214,36,159,.32)">
-              <i class="fab fa-instagram" style="color:#d6249f"></i>
-            </div>
-            <div class="cc-info">
-              <span class="cc-platform">Instagram</span>
-              <span class="cc-handle">@reallykrak</span>
-            </div>
-            <a href="https://instagram.com/reallykrak" target="_blank" class="cc-btn cc-link">
-              <i class="fas fa-arrow-up-right-from-square"></i> Link
-            </a>
+            <div class="cc-icon" style="background:rgba(214,36,159,.15);border-color:rgba(214,36,159,.32)"><i class="fab fa-instagram" style="color:#d6249f"></i></div>
+            <div class="cc-info"><span class="cc-platform">Instagram</span><span class="cc-handle">@reallykrak</span></div>
+            <a href="https://instagram.com/reallykrak" target="_blank" class="cc-btn cc-link"><i class="fas fa-arrow-up-right-from-square"></i> Link</a>
           </div>
-
           <div class="contact-card-item">
-            <div class="cc-icon" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)">
-              <i class="fab fa-github" style="color:#fff"></i>
-            </div>
-            <div class="cc-info">
-              <span class="cc-platform">GitHub</span>
-              <span class="cc-handle">reallykrak</span>
-            </div>
-            <a href="https://github.com/reallykrak" target="_blank" class="cc-btn cc-link">
-              <i class="fas fa-arrow-up-right-from-square"></i> Link
-            </a>
+            <div class="cc-icon" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)"><i class="fab fa-github" style="color:#fff"></i></div>
+            <div class="cc-info"><span class="cc-platform">GitHub</span><span class="cc-handle">reallykrak</span></div>
+            <a href="https://github.com/reallykrak" target="_blank" class="cc-btn cc-link"><i class="fas fa-arrow-up-right-from-square"></i> Link</a>
           </div>
-
           <div class="contact-card-item">
-            <div class="cc-icon" style="background:rgba(29,185,84,.14);border-color:rgba(29,185,84,.30)">
-              <i class="fab fa-spotify" style="color:#1DB954"></i>
-            </div>
-            <div class="cc-info">
-              <span class="cc-platform">Spotify</span>
-              <span class="cc-handle">reallykrak</span>
-            </div>
-            <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca" target="_blank" class="cc-btn cc-link">
-              <i class="fas fa-arrow-up-right-from-square"></i> Link
-            </a>
+            <div class="cc-icon" style="background:rgba(29,185,84,.14);border-color:rgba(29,185,84,.30)"><i class="fab fa-spotify" style="color:#1DB954"></i></div>
+            <div class="cc-info"><span class="cc-platform">Spotify</span><span class="cc-handle">reallykrak</span></div>
+            <a href="https://open.spotify.com/user/31qqa62yiffselam2nviay5nv3ca" target="_blank" class="cc-btn cc-link"><i class="fas fa-arrow-up-right-from-square"></i> Link</a>
           </div>
-
           <div class="contact-card-item">
-            <div class="cc-icon" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)">
-              <i class="fas fa-envelope" style="color:#ccc"></i>
-            </div>
-            <div class="cc-info">
-              <span class="cc-platform">Email</span>
-              <span class="cc-handle">reallykrakw@gmail.com</span>
-            </div>
-            <a href="mailto:reallykrakw@gmail.com" class="cc-btn cc-link">
-              <i class="fas fa-paper-plane"></i> Send
-            </a>
+            <div class="cc-icon" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)"><i class="fas fa-envelope" style="color:#ccc"></i></div>
+            <div class="cc-info"><span class="cc-platform">Email</span><span class="cc-handle">reallykrakw@gmail.com</span></div>
+            <a href="mailto:reallykrakw@gmail.com" class="cc-btn cc-link"><i class="fas fa-paper-plane"></i> Send</a>
           </div>
-
         </div>
         <div style="height:80px"></div>
       </div>
@@ -328,9 +290,7 @@
   </main>
 
   <!-- BACK TO TOP -->
-  <button class="back-top" id="back-top" title="Back to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
+  <button class="back-top" id="back-top" title="Back to top"><i class="fas fa-chevron-up"></i></button>
 
   <!-- AUDIO -->
   <audio id="the-audio" preload="auto"></audio>
@@ -345,7 +305,6 @@
         <div class="mini-bar" id="sp-bar"><div class="mini-fill" id="sp-fill"></div></div>
         <span class="mini-time" id="sp-dur">0:00</span>
       </div>
-      <!-- Track dots -->
       <div class="track-dots">
         <span class="track-dot active"></span>
         <span class="track-dot"></span>
@@ -371,59 +330,78 @@
   <script src="js/music-player.js"></script>
 
   <script>
-    /* NAV */
-    var hbg = document.getElementById('hamburger');
+    /* ── HAMBURGER ── */
+    var hbg  = document.getElementById('hamburger');
     var dnav = document.getElementById('drop-nav');
-    hbg.onclick = function(e) {
-      e.stopPropagation();
-      hbg.classList.toggle('open');
-      dnav.classList.toggle('open');
-    };
+    var lbl  = document.getElementById('nav-pill-label');
+    var isOpen = false;
+
+    function toggleNav() {
+      isOpen = !isOpen;
+      hbg.classList.toggle('open', isOpen);
+      dnav.classList.toggle('open', isOpen);
+      lbl.textContent = isOpen ? 'CLOSE' : 'MENU';
+    }
+
+    hbg.onclick = function(e) { e.stopPropagation(); toggleNav(); };
     document.addEventListener('click', function(e) {
-      if (!dnav.contains(e.target) && !hbg.contains(e.target)) {
+      if (isOpen && !dnav.contains(e.target) && !hbg.contains(e.target)) {
+        isOpen = false;
         hbg.classList.remove('open');
         dnav.classList.remove('open');
+        lbl.textContent = 'MENU';
       }
     });
+
+    /* ── NAV LINKS ── */
     document.querySelectorAll('.nav-link').forEach(function(l) {
       l.onclick = function(e) {
         e.preventDefault();
+        isOpen = false;
         hbg.classList.remove('open');
         dnav.classList.remove('open');
+        lbl.textContent = 'MENU';
         document.querySelectorAll('.nav-link').forEach(function(x){ x.classList.remove('active-link'); });
         l.classList.add('active-link');
         var id = l.getAttribute('href').substring(1);
         document.querySelectorAll('.page-section').forEach(function(s){ s.classList.remove('active'); });
         document.getElementById(id).classList.add('active');
         window.scrollTo(0, 0);
+        document.getElementById('scroll-progress').style.width = '0%';
       };
     });
 
-    /* SCROLL PROGRESS */
+    /* ── SCROLL PROGRESS + BACK TO TOP ── */
     document.querySelectorAll('.page-section').forEach(function(sec) {
       sec.addEventListener('scroll', function() {
-        var scrolled = sec.scrollTop;
-        var total = sec.scrollHeight - sec.clientHeight;
-        var pct = total > 0 ? (scrolled / total) * 100 : 0;
+        var pct = sec.scrollHeight - sec.clientHeight > 0
+          ? (sec.scrollTop / (sec.scrollHeight - sec.clientHeight)) * 100 : 0;
         document.getElementById('scroll-progress').style.width = pct + '%';
-
-        // Back to top button
         var btn = document.getElementById('back-top');
-        if (btn) btn.classList.toggle('visible', scrolled > 200);
+        if (btn) btn.classList.toggle('visible', sec.scrollTop > 200);
       });
     });
-
-    /* BACK TO TOP */
     document.getElementById('back-top').onclick = function() {
-      var active = document.querySelector('.page-section.active');
-      if (active) active.scrollTo({ top: 0, behavior: 'smooth' });
+      var a = document.querySelector('.page-section.active');
+      if (a) a.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    /* TOAST */
-    function showToast(msg, type) {
+    /* ── CURSOR GLOW (only desktop) ── */
+    var cg = document.getElementById('cursor-glow');
+    if (window.matchMedia('(pointer:fine)').matches) {
+      document.addEventListener('mousemove', function(e) {
+        cg.style.left = e.clientX + 'px';
+        cg.style.top  = e.clientY + 'px';
+        cg.style.opacity = '1';
+      });
+      document.addEventListener('mouseleave', function() { cg.style.opacity = '0'; });
+    }
+
+    /* ── TOAST ── */
+    function showToast(msg) {
       var tc = document.getElementById('toast-container');
-      var t = document.createElement('div');
-      t.className = 'toast' + (type ? ' toast-' + type : '');
+      var t  = document.createElement('div');
+      t.className = 'toast';
       t.innerHTML = '<i class="fas fa-check-circle"></i> ' + msg;
       tc.appendChild(t);
       setTimeout(function() { t.classList.add('show'); }, 10);
@@ -433,20 +411,17 @@
       }, 2500);
     }
 
-    /* COPY */
+    /* ── COPY ── */
     function copyText(text, btn) {
       navigator.clipboard.writeText(text).then(function() {
         var orig = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
         btn.style.cssText = 'background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.50);color:#4ade80';
-        setTimeout(function() {
-          btn.innerHTML = orig;
-          btn.style.cssText = '';
-        }, 2000);
+        setTimeout(function() { btn.innerHTML = orig; btn.style.cssText = ''; }, 2000);
       });
     }
 
-    /* VISITOR */
+    /* ── VISITOR ── */
     (function() {
       var k = 'krak_v5', base = 3528;
       var n = parseInt(localStorage.getItem(k) || '0', 10) + 1;
