@@ -12,6 +12,13 @@
 </head>
 <body>
 
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Kar -->
   <div class="snow-wrap" aria-hidden="true">
     <span class="sp"></span><span class="sp"></span><span class="sp"></span>
     <span class="sp"></span><span class="sp"></span><span class="sp"></span>
@@ -48,6 +55,12 @@
       <i class="fas fa-music"></i>
       <span id="nav-song-name">Not playing</span>
     </div>
+    <div class="nav-divider"></div>
+    <!-- Keyboard shortcuts hint -->
+    <div class="nav-shortcuts">
+      <span><kbd>Space</kbd> Play/Pause</span>
+      <span><kbd>←</kbd><kbd>→</kbd> Skip</span>
+    </div>
   </nav>
 
   <main id="main-content">
@@ -64,6 +77,7 @@
             <img src="image/hello.png" alt="Profile" class="profile-circle">
           </div>
         </div>
+
         <div class="below-banner">
           <div class="about-card">
             <div class="about-chip">ABOUT ME</div>
@@ -80,6 +94,27 @@
             </div>
           </div>
         </div>
+
+        <!-- Quick stats row -->
+        <div class="quick-stats">
+          <div class="qs-item">
+            <i class="fas fa-calendar-check"></i>
+            <div><strong>9+</strong><span>Years Exp.</span></div>
+          </div>
+          <div class="qs-item">
+            <i class="fas fa-code-commit"></i>
+            <div><strong>500+</strong><span>Commits</span></div>
+          </div>
+          <div class="qs-item">
+            <i class="fas fa-box-archive"></i>
+            <div><strong>20+</strong><span>Projects</span></div>
+          </div>
+          <div class="qs-item">
+            <i class="fas fa-mug-hot"></i>
+            <div><strong>∞</strong><span>Coffee</span></div>
+          </div>
+        </div>
+
         <div style="height:60px"></div>
       </div>
     </section>
@@ -106,7 +141,9 @@
         <p class="section-subtitle">Latest repositories</p>
         <div class="projects-grid" id="projects-container"></div>
         <div style="text-align:center;margin-top:1.5rem">
-          <button class="load-more-btn" id="load-more-btn" style="display:none">Load More</button>
+          <button class="load-more-btn" id="load-more-btn" style="display:none">
+            <i class="fas fa-chevron-down"></i> Load More
+          </button>
         </div>
         <div style="height:80px"></div>
       </div>
@@ -200,7 +237,7 @@
               <span class="cc-platform">Discord</span>
               <span class="cc-handle">reallykrak</span>
             </div>
-            <button class="cc-btn cc-copy" onclick="copyText('reallykrak', this)">
+            <button class="cc-btn cc-copy" onclick="showToast('Copied!'); copyText('reallykrak', this)">
               <i class="fas fa-copy"></i> Copy
             </button>
           </div>
@@ -290,6 +327,11 @@
 
   </main>
 
+  <!-- BACK TO TOP -->
+  <button class="back-top" id="back-top" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
   <!-- AUDIO -->
   <audio id="the-audio" preload="auto"></audio>
 
@@ -297,11 +339,17 @@
   <div class="mini-player" id="mini-player">
     <img id="sp-art" src="image/reallykrak.png" alt="art" class="mini-art">
     <div class="mini-info">
-      <span class="mini-title" id="sp-title">Nuron's Krak</span>
+      <span class="mini-title" id="sp-title">Tolunay</span>
       <div class="mini-prog">
         <span class="mini-time" id="sp-cur">0:00</span>
         <div class="mini-bar" id="sp-bar"><div class="mini-fill" id="sp-fill"></div></div>
         <span class="mini-time" id="sp-dur">0:00</span>
+      </div>
+      <!-- Track dots -->
+      <div class="track-dots">
+        <span class="track-dot active"></span>
+        <span class="track-dot"></span>
+        <span class="track-dot"></span>
       </div>
     </div>
     <div class="mini-btns">
@@ -351,19 +399,49 @@
       };
     });
 
+    /* SCROLL PROGRESS */
+    document.querySelectorAll('.page-section').forEach(function(sec) {
+      sec.addEventListener('scroll', function() {
+        var scrolled = sec.scrollTop;
+        var total = sec.scrollHeight - sec.clientHeight;
+        var pct = total > 0 ? (scrolled / total) * 100 : 0;
+        document.getElementById('scroll-progress').style.width = pct + '%';
+
+        // Back to top button
+        var btn = document.getElementById('back-top');
+        if (btn) btn.classList.toggle('visible', scrolled > 200);
+      });
+    });
+
+    /* BACK TO TOP */
+    document.getElementById('back-top').onclick = function() {
+      var active = document.querySelector('.page-section.active');
+      if (active) active.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    /* TOAST */
+    function showToast(msg, type) {
+      var tc = document.getElementById('toast-container');
+      var t = document.createElement('div');
+      t.className = 'toast' + (type ? ' toast-' + type : '');
+      t.innerHTML = '<i class="fas fa-check-circle"></i> ' + msg;
+      tc.appendChild(t);
+      setTimeout(function() { t.classList.add('show'); }, 10);
+      setTimeout(function() {
+        t.classList.remove('show');
+        setTimeout(function() { t.remove(); }, 400);
+      }, 2500);
+    }
+
     /* COPY */
     function copyText(text, btn) {
       navigator.clipboard.writeText(text).then(function() {
         var orig = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        btn.style.background = 'rgba(34,197,94,.18)';
-        btn.style.borderColor = 'rgba(34,197,94,.50)';
-        btn.style.color = '#4ade80';
+        btn.style.cssText = 'background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.50);color:#4ade80';
         setTimeout(function() {
           btn.innerHTML = orig;
-          btn.style.background = '';
-          btn.style.borderColor = '';
-          btn.style.color = '';
+          btn.style.cssText = '';
         }, 2000);
       });
     }
